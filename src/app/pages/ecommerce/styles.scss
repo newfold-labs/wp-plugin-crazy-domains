@@ -1,0 +1,11 @@
+.ecommerce-template-common {
+  padding: 46px 24px 24px; // 2px below menu, 48px total spacing to page contents
+  @media screen and (min-width: 1814px) {
+    padding: 46px 0 24px;
+  }
+  margin: 0 auto;
+  @media (max-width: 600px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
