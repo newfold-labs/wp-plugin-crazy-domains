@@ -10,8 +10,7 @@ import {
 } from "../../util/helpers";
 
 import "@newfold-labs/wp-module-ecommerce";
-// import "@newfold-labs/wp-module-ecommerce/crazydomains.css";
-import "./crazydomains.css";
+import "@newfold-labs/wp-module-ecommerce/crazydomain.css";
 import "@newfold-labs/wp-module-ecommerce/styles.scss";
 import "./styles.scss";
 
