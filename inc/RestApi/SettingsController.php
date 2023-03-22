@@ -184,8 +184,6 @@ class SettingsController extends \WP_REST_Controller {
 			'hasSetHomepage'          => (bool) get_option( 'bh_has_set_homepage', false ),
 			'showOnFront'             => (string) get_option( 'show_on_front' ),
 			'pageOnFront'             => (int) get_option( 'page_on_front' ),
-			// Can be setup similar to BH under 'wordpress'
-			'isWooActive'             => class_exists( 'woocommerce' ) ? 1 : 0,
 		);
 
 		return $settings;

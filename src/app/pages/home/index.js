@@ -5,12 +5,9 @@ import WebHostingSection from './webHostingSection';
 import SettingsSection from './settingsSection';
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useContext } from '@wordpress/element';
-import AppStore from '../../data/store';
 
 const Home = () => {
-	let { store } = useContext( AppStore );
-	if ( store.isWooActive ) {
+	if ( window.WPPCD.isWooActive ) {
 		return <Navigate to="/home/store" />;
 	}
 	return (
