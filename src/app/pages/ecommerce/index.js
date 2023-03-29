@@ -2,7 +2,7 @@ import { Modal } from "@wordpress/components";
 import { useContext } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { useNavigate, useParams } from "react-router-dom";
-import AppStore from "../../data/store";
+import AppStore, { selectors } from "../../data/store";
 import {
   comingSoonAdminbarToggle,
   crazydomainsSettingsApiFetch,
@@ -20,7 +20,12 @@ function EcommercePage() {
   const { store, setStore } = useContext(AppStore);
   const navigate = useNavigate();
   let { section } = useParams();
-  const eCommerceState = { wp: { comingSoon: store.comingSoon } };
+  const eCommerceState = {
+    wp: {
+      comingSoon: store.comingSoon,
+      capabilities: selectors.getEcommerceCapabilities(store),
+    },
+  };
   const eCommerceActions = {
     toggleComingSoon: async () =>
       crazydomainsSettingsApiFetch(

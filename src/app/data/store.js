@@ -23,6 +23,19 @@ export const reformStore = ( store, endpoint, response ) => {
 	};
 };
 
+export const selectors = {
+	getEcommerceCapabilities(store) {
+		let capabilities = new Set();
+		if (store.isWooActive) {
+			capabilities.add('standard');
+			capabilities.add('experience');
+		} else {
+			capabilities.add('upgrade');
+		}
+		return capabilities;
+	},
+};
+
 export const AppStoreProvider = ( { children } ) => {
 	const [ booted, setBooted ] = useState( false );
 	const [ hasError, setError ] = useState( false );
