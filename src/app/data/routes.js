@@ -6,6 +6,7 @@ import Marketplace from '../pages/marketplace';
 import Settings from '../pages/settings';
 import Performance from '../pages/performance';
 import Help from '../pages/help';
+import Ecommerce from '../pages/ecommerce';
 
 export const AppRoutes = () => {
 	return (
@@ -52,6 +53,14 @@ export const routes = [
 		title: __( 'Home', 'wp-plugin-crazy-domains' ),
 		Component: Home,
 		Icon: grid,
+	},
+	{
+		name: '/home/store',
+		Component: Ecommerce
+	},
+	{
+		name: '/home/store/:section',
+		Component: Ecommerce
 	},
 	{
 		name: '/marketplace',

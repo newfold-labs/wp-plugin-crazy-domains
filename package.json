@@ -41,6 +41,7 @@
         "srb": "npm run simulate-runner-build"
     },
     "dependencies": {
+        "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v0.8.0",
         "@wordpress/a11y": "^2.5.1",
         "@wordpress/compose": "^5.0.6",
         "@wordpress/dom": "^2.6.0",

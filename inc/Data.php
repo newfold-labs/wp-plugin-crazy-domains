@@ -28,6 +28,7 @@ final class Data {
 			'wpversion' => $wp_version,
 			'admin'     => \admin_url(),
 			'assets'    => CRAZYDOMAINS_PLUGIN_URL . 'assets/',
+			'isWooActive' => class_exists( 'woocommerce' ),
 		);
 
 		return $runtime;
