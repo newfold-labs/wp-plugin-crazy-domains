@@ -10,9 +10,9 @@
     },
     "devDependencies": {
         "@testing-library/cypress": "^9.0.0",
-        "@wordpress/env": "^5.14.0",
-        "@wordpress/scripts": "^26.0.0",
-        "cypress": "^12.8.1",
+        "@wordpress/env": "^5.15.0",
+        "@wordpress/scripts": "^26.1.0",
+        "cypress": "^12.9.0",
         "cypress-axe": "^1.4.0"
     },
     "scripts": {
@@ -42,17 +42,17 @@
     },
     "dependencies": {
         "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v0.8.0",
-        "@wordpress/compose": "^5.19.0",
-        "@wordpress/dom-ready": "^3.29.0",
-        "@wordpress/element": "^4.20.0",
-        "@wordpress/i18n": "^4.29.0",
-        "@wordpress/icons": "^9.20.0",
+        "@wordpress/compose": "^6.7.0",
+        "@wordpress/dom-ready": "^3.30.0",
+        "@wordpress/element": "^5.7.0",
+        "@wordpress/i18n": "^4.30.0",
+        "@wordpress/icons": "^9.21.0",
         "classnames": "^2.3.2",
         "jquery": "^3.6.4",
         "lodash": "^4.17.21",
         "react": "^18.2.0",
-        "react-error-boundary": "^3.1.4",
-        "react-router-dom": "^6.9.0",
+        "react-error-boundary": "^4.0.3",
+        "react-router-dom": "^6.10.0",
         "react-use": "^17.4.0"
     }
 }
