@@ -22,7 +22,7 @@ class LoginRedirect {
 	/**
 	 * Get default redirect URL.
 	 *
-	 * @param string $url
+	 * @param string $url The redirect URL
 	 *
 	 * @return string
 	 */
