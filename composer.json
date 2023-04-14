@@ -11,6 +11,11 @@
             "homepage": "https://evanmullins.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "CrazyDomains\\": "inc/"
+        }
+    },
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true,
@@ -34,11 +39,6 @@
                 "newfold-labs/*"
             ]
         }
-    },
-    "require-dev": {
-        "newfold-labs/wp-php-standards": "^1.2",
-        "wp-cli/i18n-command": "^2.2",
-        "wp-phpunit/wp-phpunit": "^6.2"
     },
     "scripts": {
         "fix": "vendor/bin/phpcbf --standard=phpcs.xml .",
@@ -67,5 +67,10 @@
         "newfold-labs/wp-module-sso": "^1.0.3",
         "wp-forge/wp-update-handler": "^1.0",
         "wp-forge/wp-upgrade-handler": "^1.0"
+    },
+    "require-dev": {
+        "newfold-labs/wp-php-standards": "^1.2",
+        "wp-cli/i18n-command": "^2.2",
+        "wp-phpunit/wp-phpunit": "^6.2"
     }
 }

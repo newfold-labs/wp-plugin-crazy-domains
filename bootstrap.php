@@ -119,14 +119,10 @@ if ( is_admin() ) {
 }
 
 // Required files
-require CRAZYDOMAINS_PLUGIN_DIR . '/inc/Admin.php';
-require CRAZYDOMAINS_PLUGIN_DIR . '/inc/AdminBar.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/base.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/jetpack.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/partners.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/performance.php';
-require CRAZYDOMAINS_PLUGIN_DIR . '/inc/RestApi/CachingController.php';
-require CRAZYDOMAINS_PLUGIN_DIR . '/inc/RestApi/SettingsController.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/RestApi/rest-api.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/settings.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/updates.php';
@@ -137,3 +133,4 @@ if ( is_admin() ) {
 }
 
 AdminBar::init();
+LoginRedirect::init();
