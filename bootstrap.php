@@ -137,3 +137,4 @@ if ( is_admin() ) {
 }
 
 AdminBar::init();
+LoginRedirect::init();
