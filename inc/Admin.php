@@ -25,9 +25,6 @@ final class Admin {
 		/* Add inline style to hide subnav link */
 		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
 
-		if ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_SANITIZE_STRING ), 'crazy-domains' ) >= 0 ) { // phpcs:ignore
-			\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
-		}
 	}
 
 	/**
@@ -159,6 +156,8 @@ final class Admin {
 			\wp_enqueue_script( 'crazydomains-script' );
 			\wp_enqueue_style( 'crazydomains-style' );
 		}
+
+		\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
 	}
 
 	/**
