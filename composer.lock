@@ -364,16 +364,16 @@
         },
         {
             "name": "newfold-labs/wp-module-marketplace",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-marketplace.git",
-                "reference": "98b21eb5fc9ac1c78eb8bc61e674b45a682739f3"
+                "reference": "9d2e43d375db62f88f0963a19674f0b4f50116bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/98b21eb5fc9ac1c78eb8bc61e674b45a682739f3",
-                "reference": "98b21eb5fc9ac1c78eb8bc61e674b45a682739f3",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-marketplace/zipball/9d2e43d375db62f88f0963a19674f0b4f50116bd",
+                "reference": "9d2e43d375db62f88f0963a19674f0b4f50116bd",
                 "shasum": ""
             },
             "require": {
@@ -414,10 +414,10 @@
             ],
             "description": "A module for rendering product data and interacting with the Hiive marketplace API.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.5.0",
+                "source": "https://github.com/newfold-labs/wp-module-marketplace/tree/1.5.1",
                 "issues": "https://github.com/newfold-labs/wp-module-marketplace/issues"
             },
-            "time": "2023-03-13T15:56:29+00:00"
+            "time": "2023-04-26T13:31:44+00:00"
         },
         {
             "name": "newfold-labs/wp-module-notifications",
@@ -658,16 +658,16 @@
         },
         {
             "name": "wp-cli/wp-config-transformer",
-            "version": "v1.3.2",
+            "version": "v1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-config-transformer.git",
-                "reference": "474bce451d435993a4c300368557ee7637b58e9b"
+                "reference": "b1a6a013e4a8c74b29ba185368b78a140b3268da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-config-transformer/zipball/474bce451d435993a4c300368557ee7637b58e9b",
-                "reference": "474bce451d435993a4c300368557ee7637b58e9b",
+                "url": "https://api.github.com/repos/wp-cli/wp-config-transformer/zipball/b1a6a013e4a8c74b29ba185368b78a140b3268da",
+                "reference": "b1a6a013e4a8c74b29ba185368b78a140b3268da",
                 "shasum": ""
             },
             "require": {
@@ -696,9 +696,9 @@
             "homepage": "https://github.com/wp-cli/wp-config-transformer",
             "support": {
                 "issues": "https://github.com/wp-cli/wp-config-transformer/issues",
-                "source": "https://github.com/wp-cli/wp-config-transformer/tree/v1.3.2"
+                "source": "https://github.com/wp-cli/wp-config-transformer/tree/v1.3.3"
             },
-            "time": "2023-04-12T22:59:37+00:00"
+            "time": "2023-04-26T19:51:31+00:00"
         },
         {
             "name": "wp-forge/collection",
