@@ -11,7 +11,7 @@
  * Plugin Name:       The Crazy Domains Plugin
  * Plugin URI:        https://crazydomains.com
  * Description:       WordPress plugin that integrates a WordPress site with the Crazy Domains control panel, including performance, security, and update features.
- * Version:           0.2.0
+ * Version:           0.3.0
  * Requires at least: 4.7
  * Requires PHP:      5.6
  * Tested up to:      6.2
@@ -31,7 +31,7 @@ if ( defined( 'CRAZYDOMAINS_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'CRAZYDOMAINS_PLUGIN_VERSION', '0.2.0' );
+define( 'CRAZYDOMAINS_PLUGIN_VERSION', '0.3.0' );
 define( 'CRAZYDOMAINS_PLUGIN_FILE', __FILE__ );
 define( 'CRAZYDOMAINS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CRAZYDOMAINS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
