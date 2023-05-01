@@ -8,6 +8,10 @@
         "name": "Evan Mullins",
         "url": "https://evanmullins.com"
     },
+    "engines": {
+        "node": ">=16",
+        "npm": ">=8"
+    },
     "devDependencies": {
         "@testing-library/cypress": "^9.0.0",
         "@wordpress/env": "^5.16.0",
