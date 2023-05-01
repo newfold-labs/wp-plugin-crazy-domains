@@ -12,8 +12,8 @@
  * Plugin URI:        https://crazydomains.com
  * Description:       WordPress plugin that integrates a WordPress site with the Crazy Domains control panel, including performance, security, and update features.
  * Version:           0.3.0
- * Requires at least: 4.7
- * Requires PHP:      5.6
+ * Requires at least: 6.0
+ * Requires PHP:      7.1
  * Tested up to:      6.2
  * Author:            Crazy Domains
  * Author URI:        https://crazydomains.com
@@ -49,8 +49,8 @@ if ( 'plugins.php' === $pagenow ) {
 
 	$plugin_check = new Plugin_PHP_Compat_Check( __FILE__ );
 
-	$plugin_check->min_php_version = '5.3';
-	$plugin_check->min_wp_version  = '4.7';
+	$plugin_check->min_php_version = '7.1';
+	$plugin_check->min_wp_version  = '6.0';
 
 	$plugin_check->check_plugin_requirements();
 }
@@ -72,6 +72,6 @@ $nfd_plugins_check->legacy_plugins = array(
 $pass_nfd_check = $nfd_plugins_check->check_plugin_requirements();
 
 // Check PHP version before initializing to prevent errors if plugin is incompatible.
-if ( $pass_nfd_check && version_compare( PHP_VERSION, '5.3', '>=' ) ) {
-	require dirname( __FILE__ ) . '/bootstrap.php';
+if ( $pass_nfd_check && version_compare( PHP_VERSION, '7.1', '>=' ) ) {
+	require __DIR__ . '/bootstrap.php';
 }
