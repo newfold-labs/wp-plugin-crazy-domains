@@ -31,7 +31,7 @@ describe('Navigation', function () {
 			should('not.have.class', 'active');
 		cy.get('.link-Marketplace').click();
 		cy.wait(500);
-		cy.hash().should('eq', '#/marketplace');
+		cy.hash().should('eq', '#/marketplace/featured');
 		cy
 			.get('.link-Marketplace')
 			.should('have.class', 'active');
@@ -115,8 +115,8 @@ describe('Navigation', function () {
 		cy.get('.mobile-toggle').click();
 		cy.wait(500);
 		cy.get('.mobile-link-Home').should('be.visible');
-		cy.get('button[aria-label="Close dialog"]').should('be.visible')
-		cy.get('button[aria-label="Close dialog"]').click();
+		cy.get('button[aria-label="Close"]').should('be.visible')
+		cy.get('button[aria-label="Close"]').click();
 		cy.get('.mobile-link-Home').should('not.exist');
 	});
 });
