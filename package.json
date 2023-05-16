@@ -2,7 +2,7 @@
     "name": "wp-plugin-crazy-domains",
     "description": "WordPress plugin that integrates your WordPress site with the Crazy Domains control panel, including performance, security, and update features.",
     "license": "GPL-2.0-or-later",
-    "version": "0.3.0",
+    "version": "1.0.0",
     "private": true,
     "author": {
         "name": "Evan Mullins",
@@ -15,8 +15,8 @@
     "devDependencies": {
         "@testing-library/cypress": "^9.0.0",
         "@wordpress/env": "^5.16.0",
-        "@wordpress/scripts": "^26.2.0",
-        "cypress": "^12.10.0",
+        "@wordpress/scripts": "^26.4.0",
+        "cypress": "^12.12.0",
         "cypress-axe": "^1.4.0"
     },
     "scripts": {
@@ -45,18 +45,18 @@
         "srb": "npm run simulate-runner-build"
     },
     "dependencies": {
-        "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v0.8.2",
-        "@wordpress/compose": "^6.8.0",
-        "@wordpress/dom-ready": "^3.31.0",
-        "@wordpress/element": "^5.8.0",
-        "@wordpress/i18n": "^4.31.0",
-        "@wordpress/icons": "^9.22.0",
+        "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v0.8.3",
+        "@wordpress/compose": "^6.10.0",
+        "@wordpress/dom-ready": "^3.33.0",
+        "@wordpress/element": "^5.10.0",
+        "@wordpress/i18n": "^4.33.0",
+        "@wordpress/icons": "^9.24.0",
         "classnames": "^2.3.2",
         "jquery": "^3.6.4",
         "lodash": "^4.17.21",
         "react": "^18.2.0",
         "react-error-boundary": "^4.0.4",
-        "react-router-dom": "^6.10.0",
+        "react-router-dom": "^6.11.1",
         "react-use": "^17.4.0"
     }
 }
