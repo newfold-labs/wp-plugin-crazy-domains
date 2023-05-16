@@ -57,8 +57,10 @@ footer p {
 }
 
 footer p a {
+    /*
     color: var(--color-primary-dark);
-    text-decoration: none;
+    adjusted brand color for a11y compliance */
+    color: #4b8410;
 }
 
 footer p a:hover {
