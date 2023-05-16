@@ -90,6 +90,12 @@ describe('Coming Soon', function () {
 			.should('be.visible');
 	});
 
+	it('Coming soon page is Accessible', () => {
+		cy.injectAxe();
+		cy.wait(500);
+		cy.a11y('body');
+	});
+
 	it('Launching launches site', () => {
 		cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
 		cy.visit('/wp-admin/admin.php?page=crazy-domains#/settings');

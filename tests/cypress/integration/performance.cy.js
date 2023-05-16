@@ -10,7 +10,7 @@ describe('Performance Page', function () {
 
 	it('Is Accessible', () => {
 		cy.wait(500);
-		cy.checkA11y('.wppcd-app-body');
+		cy.a11y('.wppcd-app-body');
 	});
 
 	it('Has Cache Settings', () => {
