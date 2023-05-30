@@ -2,7 +2,7 @@
     "name": "wp-plugin-crazy-domains",
     "description": "WordPress plugin that integrates your WordPress site with the Crazy Domains control panel, including performance, security, and update features.",
     "license": "GPL-2.0-or-later",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "private": true,
     "author": {
         "name": "Evan Mullins",
@@ -13,6 +13,7 @@
         "npm": ">=8"
     },
     "devDependencies": {
+        "@replayio/cypress": "^0.5.15",
         "@testing-library/cypress": "^9.0.0",
         "@wordpress/env": "^5.16.0",
         "@wordpress/scripts": "^26.4.0",
