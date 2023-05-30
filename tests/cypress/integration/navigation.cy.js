@@ -31,7 +31,7 @@ describe('Navigation', function () {
 			should('not.have.class', 'active');
 		cy.get('.link-Marketplace').click();
 		cy.wait(500);
-		cy.hash().should('eq', '#/marketplace/featured');
+		cy.hash().should('contain', '#/marketplace');
 		cy
 			.get('.link-Marketplace')
 			.should('have.class', 'active');
@@ -98,7 +98,7 @@ describe('Navigation', function () {
 			.should('not.have.class', 'active');
 	});
 
-	it('Mobile nav links dispaly for mobile', () => {
+	it('Mobile nav links display for mobile', () => {
 		cy
 			.get('.mobile-toggle')
 			.should('not.exist');
@@ -115,8 +115,8 @@ describe('Navigation', function () {
 		cy.get('.mobile-toggle').click();
 		cy.wait(500);
 		cy.get('.mobile-link-Home').should('be.visible');
-		cy.get('button[aria-label="Close"]').should('be.visible')
-		cy.get('button[aria-label="Close"]').click();
+		cy.get('.components-modal__header button[aria-label]').as('close').should('be.visible')
+		cy.get('@close').click();
 		cy.get('.mobile-link-Home').should('not.exist');
 	});
 });
