@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af8a4a2381b2414f418e1f1568d614dd",
+    "content-hash": "8a68319351b95c8728246969f5c52395",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -265,20 +265,20 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v0.9.1",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "3d60452d65e90f207e9551eeb49e6d944b22ed75"
+                "reference": "bafd5a287a4b3b9d3b5a0448b80005e5e360c37d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/3d60452d65e90f207e9551eeb49e6d944b22ed75",
-                "reference": "3d60452d65e90f207e9551eeb49e6d944b22ed75",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/bafd5a287a4b3b9d3b5a0448b80005e5e360c37d",
+                "reference": "bafd5a287a4b3b9d3b5a0448b80005e5e360c37d",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-installer": "0.0.1"
+                "newfold-labs/wp-module-installer": "1.0.0"
             },
             "require-dev": {
                 "newfold-labs/wp-php-standards": "@stable",
@@ -316,24 +316,27 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v0.9.1",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.0.5",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-05-26T17:33:09+00:00"
+            "time": "2023-06-20T16:54:29+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
-            "version": "0.0.1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-installer.git",
-                "reference": "c7e6370f469750e5699f42966d6686049e644c07"
+                "reference": "5896e00fc6c6d830d3e5e30c03a780a46f7fb448"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/c7e6370f469750e5699f42966d6686049e644c07",
-                "reference": "c7e6370f469750e5699f42966d6686049e644c07",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-installer/zipball/5896e00fc6c6d830d3e5e30c03a780a46f7fb448",
+                "reference": "5896e00fc6c6d830d3e5e30c03a780a46f7fb448",
                 "shasum": ""
+            },
+            "require-dev": {
+                "newfold-labs/wp-php-standards": "^1.2"
             },
             "type": "library",
             "autoload": {
@@ -355,10 +358,10 @@
             ],
             "description": "An installer for WordPress plugins and themes.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-installer/tree/0.0.1",
+                "source": "https://github.com/newfold-labs/wp-module-installer/tree/1.0.0",
                 "issues": "https://github.com/newfold-labs/wp-module-installer/issues"
             },
-            "time": "2023-05-26T06:25:08+00:00"
+            "time": "2023-06-04T10:11:09+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
