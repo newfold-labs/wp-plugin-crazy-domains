@@ -11,7 +11,7 @@ import {
 
 import "@newfold-labs/wp-module-ecommerce";
 import "@newfold-labs/wp-module-ecommerce/crazydomain.css";
-import "@newfold-labs/wp-module-ecommerce/styles.scss";
+// import "@newfold-labs/wp-module-ecommerce/styles.scss";
 import "./styles.scss";
 
 const NewfoldECommerce = window.NewfoldECommerce;
