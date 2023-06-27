@@ -109,13 +109,13 @@ jobs:
       - name: Install WordPress
         run: npx @wordpress/env@latest start
 
-      - name: Run Cypress Tests
+      - name: Run Basic Cypress Tests
         env:
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
         if: ${{ github.repository != 'newfold-labs/wp-plugin-crazy-domains' || env.RECORD_REPLAY_API_KEY == '' }}
         run: npx cypress run
 
-      - name: Run Cypress Tests
+      - name: Run Advanced Cypress Tests
         uses: replayio/action-cypress@v0.3.0
         env:
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}

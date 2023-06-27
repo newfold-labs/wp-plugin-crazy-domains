@@ -53,7 +53,7 @@
         "react-use": "^17.4.0"
     },
     "devDependencies": {
-        "@replayio/cypress": "^1.0.3",
+        "@replayio/cypress": "^1.0.4",
         "@testing-library/cypress": "^9.0.0",
         "@wordpress/env": "^5.16.0",
         "@wordpress/scripts": "^26.6.0",
