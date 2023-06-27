@@ -4,6 +4,7 @@ const {phpVersion, core} = require('./.wp-env.json')
 const wpVersion = /[^/]*$/.exec(core)[0]
 
 module.exports = defineConfig({
+    projectId: "bqvwhq",
     env: {
         wpUsername: 'admin',
         wpPassword: 'password',
@@ -13,7 +14,7 @@ module.exports = defineConfig({
     downloadsFolder: 'tests/cypress/downloads',
     fixturesFolder: 'tests/cypress/fixtures',
     screenshotsFolder: 'tests/cypress/screenshots',
-    video: false,
+    video: true,
     videosFolder: 'tests/cypress/videos',
     videoUploadOnPasses: false,
     chromeWebSecurity: false,
