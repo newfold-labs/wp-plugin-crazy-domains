@@ -183,7 +183,7 @@ final class Admin {
 	 * @return string
 	 */
 	public static function add_brand_to_admin_footer( $footer_text ) {
-		$footer_text = \sprintf( \__( 'Thank you for creating with <a href="https://wordpress.org/">WordPress</a> and <a href="https://crazydomains.com/about-us">Crazy Domains</a>.', 'wp-plugin-crazy-domains' ) );
+		$footer_text = \sprintf( \__( 'Thank you for creating with <a href="https://wordpress.org/">WordPress</a> and <a href="https://crazydomains.com/about">Crazy Domains</a>.', 'wp-plugin-crazy-domains' ) );
 		return $footer_text;
 	}
 } // END \CrazyDomains\Admin
