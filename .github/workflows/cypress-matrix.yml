@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [ opened, edited, reopened, ready_for_review, synchronize ]
     branches:
-      - 'master'
+      - 'main'
   workflow_dispatch:
 
 concurrency:
@@ -117,7 +117,7 @@ jobs:
         run: npx cypress run
 
       - name: Run Cypress Tests
-        uses: replayio/action-cypress@v0.2.8
+        uses: replayio/action-cypress@v0.3.0
         env:
           RECORD_REPLAY_METADATA_TEST_RUN_TITLE: "crazy-domains, php-${{ matrix.phpVersion }}, wp-${{ matrix.wpVersion }}"
           RECORD_REPLAY_API_KEY: ${{ secrets.RECORD_REPLAY_API_KEY }}
