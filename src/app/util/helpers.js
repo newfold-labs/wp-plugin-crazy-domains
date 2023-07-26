@@ -119,14 +119,16 @@ export const crazydomainsPurgeCacheApiFetch = ( data, passError, thenCallback ) 
  */
 export const comingSoonAdminbarToggle = ( comingSoon ) => {
 	const comingsoonadminbar = document.getElementById(
-		'wp-admin-bar-crazydomains-coming_soon'
+		'nfd-site-status-text'
 	);
 	if ( ! comingsoonadminbar ) {
 		return;
 	}
 	if ( ! comingSoon ) {
-		comingsoonadminbar.classList.add( 'hideme' );
+		comingsoonadminbar.style.color = "#048200";
+		comingsoonadminbar.textContent = "Live";
 	} else {
-		comingsoonadminbar.classList.remove( 'hideme' );
+		comingsoonadminbar.style.color = "#E01C1C";
+		comingsoonadminbar.textContent = "Coming Soon";
 	}
 };

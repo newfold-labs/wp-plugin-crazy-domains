@@ -44,7 +44,7 @@ const ComingSoon = () => {
 				comingSoon,
 			} );
 			dispatchUpdateSnackbar( getComingSoonNoticeText() );
-			comingSoonAdminbarToggle();
+			comingSoonAdminbarToggle( comingSoon );
 		} );
 	}, [ comingSoon ] );
 
