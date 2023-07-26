@@ -55,7 +55,7 @@
     "devDependencies": {
         "@replayio/cypress": "^1.0.4",
         "@testing-library/cypress": "^9.0.0",
-        "@wordpress/env": "^5.16.0",
+        "@wordpress/env": "^8.4.0",
         "@wordpress/scripts": "^26.6.0",
         "cypress": "^12.15.0",
         "cypress-axe": "^1.4.0",
