@@ -1,4 +1,5 @@
 import './stylesheet.scss';
+import './tailwind.css';
 
 import AppStore, { AppStoreProvider } from './data/store';
 import { useLocation, HashRouter as Router } from 'react-router-dom';
@@ -20,6 +21,7 @@ import { default as NewfoldNotifications } from '../../vendor/newfold-labs/wp-mo
 // to pass to notifications module
 import apiFetch from '@wordpress/api-fetch';
 import { useState } from '@wordpress/element';
+import { Root, Alert } from "@newfold/ui-component-library";
 
 const Notices = () => {
 	if ( 'undefined' === typeof noticesStore ) {
@@ -106,6 +108,11 @@ const AppBody = ( props ) => {
 export const App = () => (
 	<AppStoreProvider>
 		<Router>
+		<Root context={ { isRtl: false } }>
+			<Alert variant="success">
+				Congrats! You've successfully setup the UI library.
+			</Alert>
+    	</Root>
 			<AppBody />
 		</Router>
 	</AppStoreProvider>
