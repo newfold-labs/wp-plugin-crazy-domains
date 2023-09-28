@@ -22,6 +22,7 @@ webpack.config.js
 *.xml
 *.yml
 *.zip
+*.scss
 
 # BEGIN NEWFOLD LABS RULES
 vendor/newfold-labs/wp-module-onboarding/src
