@@ -2,39 +2,37 @@
 .git
 .github
 /bin
-node_modules
+/node_modules
 /src
-tests
+/tests
 
 # Files
-.distignore
-.distinclude
-.gitattributes
-.gitignore
-.nvmrc
+/.*
 cypress.config.js
 set-latest-wp-version.js
 webpack.config.js
 
 # File Types
-*.json
-*.lock
-*.log
-*.md
-*.sql
-*.tar.gz
-*.xml
-*.yml
-*.zip
+/*.json
+/*.lock
+/*.log
+/*.md
+/*.sql
+/*.tar.gz
+/*.xml
+/*.yml
+/*.zip
+/*.scss
 
 # BEGIN NEWFOLD LABS RULES
-vendor/newfold-labs/wp-module-onboarding/src
-vendor/newfold-labs/wp-module-ecommerce/src
+vendor/newfold-labs/*/src
+vendor/newfold-labs/*/source
 vendor/newfold-labs/*/tests
-vendor/newfold-labs/*/.github
 vendor/newfold-labs/*/.*
 vendor/newfold-labs/*/*.xml
 vendor/newfold-labs/*/*.json
 vendor/newfold-labs/*/*.lock
 vendor/newfold-labs/*/*.scss
-# END NEWFOLD LABS RULES
+vendor/newfold-labs/*/*.md
+vendor/newfold-labs/*/*.config.js
+vendor/newfold-labs/*/LICENSE
