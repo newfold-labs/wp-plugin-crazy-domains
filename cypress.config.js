@@ -71,7 +71,15 @@ module.exports = defineConfig({
             return config;
         },
         baseUrl: 'http://localhost:8884',
-        specPattern: 'tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
+        specPattern: [
+            'tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
+            'vendor/newfold-labs/**/tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
+        ],
+		excludeSpecPattern: [
+            'vendor/newfold-labs/wp-module-coming-soon/tests/cypress/integration/', // until ecommerce module is added use the local coming soon test instead
+            'vendor/newfold-labs/wp-module-marketplace/tests/cypress/integration/', // until ui is updated use local marketplace tests instead
+            'vendor/newfold-labs/wp-module-performance/tests/cypress/integration/', // until ui is updated ignore performance tests
+        ],
         supportFile: 'tests/cypress/support/index.js',
         testIsolation: false,
     },
