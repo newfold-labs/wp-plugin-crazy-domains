@@ -10,7 +10,7 @@ module.exports = defineConfig({
         wpPassword: 'password',
         wpVersion,
         phpVersion,
-        pluginId: 'crazydomains',
+        pluginId: 'crazy-domains',
         appId: 'wppcd',
     },
     downloadsFolder: 'tests/cypress/downloads',
