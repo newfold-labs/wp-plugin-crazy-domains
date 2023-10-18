@@ -11,7 +11,8 @@ const NavLarge = () => (
 						to={ page.name }
 						className={ classNames(
 							`wppcd-nav-large__link`,
-							`link-${ page.title }`
+							`link-${ page.title }`,
+							`wppcd-app-navitem-${ page.title }`
 						) }
 					>
 						{ page.title }
