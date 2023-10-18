@@ -78,6 +78,8 @@ module.exports = defineConfig({
             'vendor/newfold-labs/**/tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
         ],
 		excludeSpecPattern: [
+			"vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/4-design-steps/**",
+			"vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/wp-module-support/",
             'vendor/newfold-labs/wp-module-coming-soon/tests/cypress/integration/', // until ecommerce module is added use the local coming soon test instead
             'vendor/newfold-labs/wp-module-marketplace/tests/cypress/integration/', // until ui is updated use local marketplace tests instead
             'vendor/newfold-labs/wp-module-performance/tests/cypress/integration/', // until ui is updated ignore performance tests
