@@ -10,6 +10,7 @@
  * @wordpress-plugin
  * Plugin Name:       The Crazy Domains Plugin
  * Plugin URI:        https://crazydomains.com
+ * Update URI:        https://github.com/newfold-labs/wp-plugin-crazy-domains/
  * Description:       WordPress plugin that integrates a WordPress site with the Crazy Domains control panel, including performance, security, and update features.
  * Version:           1.0.7
  * Requires at least: 6.0
