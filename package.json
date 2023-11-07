@@ -24,7 +24,7 @@
         "npm": ">=8"
     },
     "dependencies": {
-        "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v0.9.3",
+        "@newfold-labs/wp-module-ecommerce": "github:newfold-labs/wp-module-ecommerce#v1.3.9",
         "@wordpress/compose": "^6.22.0",
         "@wordpress/dom-ready": "^3.45.0",
         "@wordpress/element": "^5.20.0",
