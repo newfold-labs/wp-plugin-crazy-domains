@@ -1,25 +1,25 @@
 {
-    "core": "WordPress/WordPress#tags/6.3",
-    "config": {
-        "WP_DEBUG": true,
-        "WP_DEBUG_LOG": true,
-        "WP_DEBUG_DISPLAY": false,
-        "FS_METHOD": "direct"
-    },
-    "phpVersion": "8.1",
-    "plugins": [
-        "."
-    ],
-    "port": 8884,
-    "testsPort": 8885,
-    "env": {
-        "tests": {
-            "config": {
-                "WP_SITEURL": "localhost:8885",
-                "WP_TESTS_DOMAIN": "localhost:8885",
-                "WP_TESTS_TITLE": "Crazy Domains WordPress Plugin",
-                "WP_TESTS_BINARY": "php"
-            }
-        }
+  "core": "WordPress/WordPress#tags/6.4",
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": false,
+    "FS_METHOD": "direct"
+  },
+  "phpVersion": "8.1",
+  "plugins": [
+    "."
+  ],
+  "port": 8884,
+  "testsPort": 8885,
+  "env": {
+    "tests": {
+      "config": {
+        "WP_SITEURL": "localhost:8885",
+        "WP_TESTS_DOMAIN": "localhost:8885",
+        "WP_TESTS_TITLE": "Crazy Domains WordPress Plugin",
+        "WP_TESTS_BINARY": "php"
+      }
     }
+  }
 }

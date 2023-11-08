@@ -20,7 +20,7 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Validate version number
         if: ${{ github.repository == 'newfold-labs/wp-plugin-crazy-domains' }}
@@ -28,7 +28,7 @@ jobs:
           taggedVersion=${{ env.VERSION }}
           pluginHeaderVersion=`grep "Version:" wp-plugin-crazy-domains.php | grep -Eo "[0-9\.]*"`
           pluginConstantVersion=`grep "'CRAZYDOMAINS_PLUGIN_VERSION'," wp-plugin-crazy-domains.php | grep -Eo "[0-9\.]*"`
-          pluginPackageVersion=`grep "version" package.json | grep -Eo "[0-9\.]*"`
+          pluginPackageVersion=`grep '"version"' package.json | grep -Eo "[0-9\.]*"`
           echo "Tagged version: $taggedVersion"
           echo "Plugin header version: $pluginHeaderVersion"
           echo "Plugin constant version: $pluginConstantVersion"
@@ -55,7 +55,7 @@ jobs:
           echo "PACKAGE=${REPO##*/}" >> $GITHUB_OUTPUT
 
       - name: Set Node.js 16.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 16.x
 
@@ -96,14 +96,26 @@ jobs:
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-dist
 
-      - name: npm install
+      - name: Setup Registry
+        run: printf "\n//npm.pkg.github.com/:_authToken=${{ secrets.NEWFOLD_ACCESS_TOKEN }}" >> .npmrc
+
+      - name: NPM Install
         run: npm install --legacy-peer-deps
+
+      - name: Validate WP Versions
+        if: ${{ (github.repository == 'newfold-labs/wp-plugin-crazy-domains') && (github.event.release.prerelease == false) }}
+        run: |
+          wpEnvVersion=`grep "WordPress/WordPress#tags/" .wp-env.json | grep -Eo "[0-9\.]*"`
+          pluginHeaderTestedVersion=`grep "Tested up to:" wp-plugin-crazy-domains.php | grep -Eo "[0-9\.]*"`
+          echo "wp-env version: $wpEnvVersion"
+          echo "Plugin header tested version: $pluginHeaderTestedVersion"
+          [[ "$wpEnvVersion" == "$pluginHeaderTestedVersion" ]] || exit 1
 
       - name: Build JavaScript
         run: npm run build
 
       - name: Prepare files
-        run: rsync -r --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
+        run: rsync -r --include-from=.distinclude --exclude-from=.distignore . ${{ steps.workflow.outputs.DIST }}/${{ steps.workflow.outputs.PACKAGE }}
 
       - name: List Files
         working-directory: ${{ steps.workflow.outputs.DIST }}
