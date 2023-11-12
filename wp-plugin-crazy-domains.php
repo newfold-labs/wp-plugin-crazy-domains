@@ -12,10 +12,10 @@
  * Plugin URI:        https://crazydomains.com
  * Update URI:        https://github.com/newfold-labs/wp-plugin-crazy-domains/
  * Description:       WordPress plugin that integrates a WordPress site with the Crazy Domains control panel, including performance, security, and update features.
- * Version:           1.0.8
+ * Version:           2.0.0
  * Requires at least: 6.0
  * Requires PHP:      7.1
- * Tested up to:      6.4.0
+ * Tested up to:      6.4.1
  * Author:            Crazy Domains
  * Author URI:        https://crazydomains.com
  * Text Domain:       wp-plugin-crazy-domains
@@ -32,7 +32,7 @@ if ( defined( 'CRAZYDOMAINS_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'CRAZYDOMAINS_PLUGIN_VERSION', '1.0.8' );
+define( 'CRAZYDOMAINS_PLUGIN_VERSION', '2.0.0' );
 define( 'CRAZYDOMAINS_PLUGIN_FILE', __FILE__ );
 define( 'CRAZYDOMAINS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CRAZYDOMAINS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -46,7 +46,7 @@ define( 'CRAZYDOMAINS_BUILD_URL', CRAZYDOMAINS_PLUGIN_URL . 'build/' . CRAZYDOMA
 global $pagenow;
 if ( 'plugins.php' === $pagenow ) {
 
-	require CRAZYDOMAINS_PLUGIN_DIR . '/inc/plugin-php-compat-check.php';
+	require CRAZYDOMAINS_PLUGIN_DIR . '/inc/Plugin_PHP_Compat_Check.php';
 
 	$plugin_check = new Plugin_PHP_Compat_Check( __FILE__ );
 
@@ -57,7 +57,7 @@ if ( 'plugins.php' === $pagenow ) {
 }
 
 // Check NFD plugin incompatibilities
-require_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/plugin-nfd-compat-check.php';
+require_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/NFD_Plugin_Compat_Check.php';
 $nfd_plugins_check = new NFD_Plugin_Compat_Check( CRAZYDOMAINS_PLUGIN_FILE );
 // Defer to Incompatible plugin, self-deactivate
 $nfd_plugins_check->incompatible_plugins = array(
