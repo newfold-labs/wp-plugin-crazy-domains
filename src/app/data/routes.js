@@ -50,6 +50,7 @@ export const AppRoutes = () => {
 
 const topRoutePaths = [
 	'/home',
+	'/store',
 	'/marketplace',
 	'/performance',
 	'/settings',
@@ -65,54 +66,54 @@ export const routes = [
 	},
 	{
 		name: '/store',
-		title: __('Store', 'wp-plugin-crazydomains'),
+		title: __('Store', 'wp-plugin-crazy-domains'),
 		Component: EcomerceStore,
 		Icon: BuildingStorefrontIcon,
 		subRoutes: [
 			{
 				name: '/store/products',
-				title: __( 'Products', 'wp-plugin-crazydomains' ),
+				title: __( 'Products', 'wp-plugin-crazy-domains' ),
 			},
 			NewfoldRuntime.hasCapability( 'hasYithExtended' )
 			? {
 				name: "/store/sales_discounts",
-				title: __("Sales & Discounts", "wp-plugin-crazydomains"),
+				title: __("Sales & Discounts", "wp-plugin-crazy-domains"),
 			}
 			: null,
 			NewfoldRuntime.isWoo
 			? {
 				name: '/store/payments',
-				title: __( 'Payments', 'wp-plugin-bluehost' ),
+				title: __( 'Payments', 'wp-plugin-crazy-domains' ),
 			}
 			: null,
 			{
 				name: '/store/details',
-				title: __( 'Store Details', 'wp-plugin-crazydomains' ),
+				title: __( 'Store Details', 'wp-plugin-crazy-domains' ),
 			}
 		].filter(Boolean),
 	},
 	{
 		name: '/marketplace',
-		title: __( 'Marketplace', 'wp-plugin-crazydomains' ),
+		title: __( 'Marketplace', 'wp-plugin-crazy-domains' ),
 		Component: Marketplace,
 		Icon: ShoppingBagIcon,
 		subRoutes: await getMarketplaceSubnavRoutes(),
 	},
 	{
 		name: '/performance',
-		title: __( 'Performance', 'wp-plugin-crazydomains' ),
+		title: __( 'Performance', 'wp-plugin-crazy-domains' ),
 		Component: Performance,
 		Icon: BoltIcon,
 	},
 	{
 		name: '/settings',
-		title: __( 'Settings', 'wp-plugin-crazydomains' ),
+		title: __( 'Settings', 'wp-plugin-crazy-domains' ),
 		Component: Settings,
 		Icon: AdjustmentsHorizontalIcon,
 	},
 	{
 		name: '/help',
-		title: __( 'Help', 'wp-plugin-crazydomains' ),
+		title: __( 'Help', 'wp-plugin-crazy-domains' ),
 		Component: Help,
 		Icon: QuestionMarkCircleIcon,
 	},
