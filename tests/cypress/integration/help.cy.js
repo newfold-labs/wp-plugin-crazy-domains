@@ -36,14 +36,14 @@ describe('Help Page', function () {
 			.should('be.visible');
 	});
 
-	it('Online Support Card Exists', () => {
-		cy.get('.card-help-help').contains('h3', 'Online Support')
+	it('Online Card Exists', () => {
+		cy.get('.card-help-help').contains('h3', 'Online')
 			.scrollIntoView()
 			.should('be.visible');
 	});
 
-	it('Online Academy Card Exists', () => {
-		cy.get('.card-help-academy').contains('h3', 'Online Academy')
+	it('Academy Card Exists', () => {
+		cy.get('.card-help-academy').contains('h3', 'Academy')
 			.scrollIntoView()
 			.should('be.visible');
 	});

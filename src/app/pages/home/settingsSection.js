@@ -1,103 +1,41 @@
-import graphicUrl from '../../../../assets/svg/settings.svg';
-import { Heading } from '../../components';
-import {
-	Button,
-	Card,
-	CardBody,
-	CardHeader,
-	CardFooter,
-	Dashicon,
-} from '@wordpress/components';
-import { Icon, settings, store } from '@wordpress/icons';
+import ActionField from "../../components/action-field";
+import { SectionSettings } from "../../components/section";
 
 const SettingsSection = () => {
 	return (
-		<section className="wppcd-section wppcd-section-home-settings">
-			<img
-				src={ graphicUrl }
-				className="section-graphic"
-				alt={ __( 'Settings illustration', 'wp-plugin-crazy-domains' ) }
-			/>
-			<Card size="large" className="wppcd-section-card">
-				<CardHeader>
-					<Heading level="3">
-						{ __( 'Settings and Performance', 'wp-plugin-crazy-domains' ) }
-					</Heading>
-					<p>
-						{ __(
-							'Customize & fine-tune your site.',
-							'wp-plugin-crazy-domains'
-						) }
-					</p>
-				</CardHeader>
-				<CardFooter>
-					<div className="wppcd-cardlist-content">
-						<Heading level="4">
-							<Icon icon={ settings } />{ ' ' }
-							{ __( 'Manage Settings', 'wp-plugin-crazy-domains' ) }
-						</Heading>
-						<p>
-							{ __(
-								'Adjust auto-updates, comments, backed-up revisions & more.',
-								'wp-plugin-crazy-domains'
-							) }
-						</p>
-					</div>
-					<Button
-						variant="primary"
-						href="#/settings"
-						icon={ settings }
-						className="callout-link-settings"
-					>
-						{ __( 'Settings', 'wp-plugin-crazy-domains' ) }
-					</Button>
-				</CardFooter>
-				<CardFooter>
-					<div className="wppcd-cardlist-content">
-						<Heading level="4">
-							<Dashicon icon="performance" />{ ' ' }
-							{ __( 'Performance', 'wp-plugin-crazy-domains' ) }
-						</Heading>
-						<p>
-							{ __(
-								'Strike the balance between fresh updates and fastest delivery.',
-								'wp-plugin-crazy-domains'
-							) }
-						</p>
-					</div>
-					<Button
-						variant="primary"
-						href="#/performance"
-						icon={ <Dashicon icon="performance" /> }
-						className="callout-link-performance"
-					>
-						{ __( 'Performance', 'wp-plugin-crazy-domains' ) }
-					</Button>
-				</CardFooter>
-				<CardFooter>
-					<div className="wppcd-cardlist-content">
-						<Heading level="4">
-							<Icon icon={ store } />{ ' ' }
-							{ __( 'Marketplace', 'wp-plugin-crazy-domains' ) }
-						</Heading>
-						<p>
-							{ __(
-								'Add site services, themes or plugins from our marketplace.',
-								'wp-plugin-crazy-domains'
-							) }
-						</p>
-					</div>
-					<Button
-						variant="primary"
-						href="#/marketplace"
-						icon={ store }
-						className="callout-link-marketplace"
-					>
-						{ __( 'Visit Marketplace', 'wp-plugin-crazy-domains' ) }
-					</Button>
-				</CardFooter>
-			</Card>
-		</section>
+		<SectionSettings
+			title={__('Settings and Performance', 'wp-plugin-crazy-domains')}
+			description={__('Customize & fine-tune your site.', 'wp-plugin-crazy-domains')}
+		>
+			<div className="nfd-flex nfd-flex-col nfd-gap-5">
+				<ActionField
+					label={__("Manage Settings", "wp-plugin-crazy-domains")}
+					buttonLabel={__("Settings", "wp-plugin-crazy-domains")}
+					href={"#/settings"}
+					className={"wppcd-app-home-settings-action"}
+				>
+					{__('Manage your site settings. You can ajdust automatic updates, comments, revisions and more.', 'wp-plugin-crazy-domains')}
+				</ActionField>
+
+				<ActionField
+					label={__("Performance", "wp-plugin-crazy-domains")}
+					buttonLabel={__("Performance", "wp-plugin-crazy-domains")}
+					href={"#/performance"}
+					className={"wppcd-app-home-performance-action"}
+				>
+					{__('Manage site performance and caching settings as well as clear the site cache.', 'wp-plugin-crazy-domains')}
+				</ActionField>
+
+				<ActionField
+					label={__("Marketplace", "wp-plugin-crazy-domains")}
+					buttonLabel={__("Visit Marketplace", "wp-plugin-crazy-domains")}
+					href={"#/marketplace"}
+					className={"wppcd-app-home-marketplace-action"}
+				>
+					{__('Add site services, themes or plugins from the marketplace.', 'wp-plugin-crazy-domains')}
+				</ActionField>
+			</div>
+		</SectionSettings >
 	);
 };
 

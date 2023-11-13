@@ -1,100 +1,41 @@
-import graphicUrl from '../../../../assets/svg/website-content.svg';
-import { Heading } from '../../components';
-import {
-	Button,
-	Card,
-	CardBody,
-	CardHeader,
-	CardFooter,
-	Dashicon,
-} from '@wordpress/components';
+import ActionField from "../../components/action-field";
+import { SectionSettings } from "../../components/section";
 
 const WebContentSection = () => {
 	return (
-		<section className="wppcd-section wppcd-section-home-content">
-			<img
-				src={ graphicUrl }
-				className="section-graphic"
-				alt={ __( 'Website illustration', 'wp-plugin-crazy-domains' ) }
-			/>
-			<Card size="large" className="wppcd-section-card">
-				<CardHeader>
-					<Heading level="3">
-						{ __( 'Website Content', 'wp-plugin-crazy-domains' ) }
-					</Heading>
-					<p>
-						{ __(
-							'Create, manage & sort your story.',
-							'wp-plugin-crazy-domains'
-						) }
-					</p>
-				</CardHeader>
-				<CardFooter>
-					<div className="wppcd-cardlist-content">
-						<Heading level="4">
-							<Dashicon icon="admin-post" />{ ' ' }
-							{ __( 'Blog', 'wp-plugin-crazy-domains' ) }
-						</Heading>
-						<p>
-							{ __(
-								'Update your site with news as your story unfolds.',
-								'wp-plugin-crazy-domains'
-							) }
-						</p>
-					</div>
-					<Button
-						variant="primary"
-						href={ WPPCD.admin + 'post-new.php' }
-						icon="admin-post"
-					>
-						{ ' ' }
-						{ __( 'New Post', 'wp-plugin-crazy-domains' ) }{ ' ' }
-					</Button>
-				</CardFooter>
-				<CardFooter>
-					<div className="wppcd-cardlist-content">
-						<Heading level="4">
-							<Dashicon icon="welcome-add-page" />{ ' ' }
-							{ __( 'Pages', 'wp-plugin-crazy-domains' ) }
-						</Heading>
-						<p>
-							{ __(
-								"Share who you are, what you're about and how to get in touch.",
-								'wp-plugin-crazy-domains'
-							) }
-						</p>
-					</div>
-					<Button
-						variant="primary"
-						href={ WPPCD.admin + 'post-new.php?post_type=page' }
-						icon="welcome-add-page"
-					>
-						{ __( 'New Page', 'wp-plugin-crazy-domains' ) }
-					</Button>
-				</CardFooter>
-				<CardFooter>
-					<div className="wppcd-cardlist-content">
-						<Heading level="4">
-							<Dashicon icon="category" />{ ' ' }
-							{ __( 'Categories', 'wp-plugin-crazy-domains' ) }
-						</Heading>
-						<p>
-							{ __(
-								'Sort your story so visitors can focus on their interests.',
-								'wp-plugin-crazy-domains'
-							) }
-						</p>
-					</div>
-					<Button
-						variant="secondary"
-						href={ WPPCD.admin + 'edit-tags.php?taxonomy=category' }
-						icon="category"
-					>
-						{ __( 'Manage Categories', 'wp-plugin-crazy-domains' ) }
-					</Button>
-				</CardFooter>
-			</Card>
-		</section>
+		<SectionSettings
+			title={__('Website Content', 'wp-plugin-crazy-domains')}
+			description={__('Create, manage & sort your story.', 'wp-plugin-crazy-domains')}
+		>
+			<div className="nfd-flex nfd-flex-col nfd-gap-5">
+				<ActionField
+					label={__("Blog", "wp-plugin-crazy-domains")}
+					buttonLabel={__("New Post", "wp-plugin-crazy-domains")}
+					href={window.NewfoldRuntime.admin_url + 'post-new.php'}
+					className={"wppcd-app-home-blog-action"}
+				>
+					{__('Write a new blog post.', 'wp-plugin-crazy-domains')}
+				</ActionField>
+
+				<ActionField
+					label={__("Pages", "wp-plugin-crazy-domains")}
+					buttonLabel={__("New Page", "wp-plugin-crazy-domains")}
+					href={window.NewfoldRuntime.admin_url + 'post-new.php?post_type=page'}
+					className={"wppcd-app-home-pages-action"}
+				>
+					{__('Add fresh pages to your website.', 'wp-plugin-crazy-domains')}
+				</ActionField>
+
+				<ActionField
+					label={__("Categories", "wp-plugin-crazy-domains")}
+					buttonLabel={__("Manage Categories", "wp-plugin-crazy-domains")}
+					href={window.NewfoldRuntime.admin_url + 'edit-tags.php?taxonomy=category'}
+					className={"wppcd-app-home-categories-action"}
+				>
+					{__('Organize existing content into categories.', 'wp-plugin-crazy-domains')}
+				</ActionField>
+			</div>
+		</SectionSettings >
 	);
 };
 

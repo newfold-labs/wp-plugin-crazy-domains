@@ -1,4 +1,14 @@
-import { settings, help, grid, store } from '@wordpress/icons';
+import { 
+	HomeIcon,
+	ShoppingBagIcon,
+	WrenchScrewdriverIcon,
+	BoltIcon, 
+	AdjustmentsHorizontalIcon,
+	BuildingStorefrontIcon,
+	QuestionMarkCircleIcon } 
+from '@heroicons/react/24/outline';
+import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { getMarketplaceSubnavRoutes } from '../../../vendor/newfold-labs/wp-module-marketplace/components/marketplaceSubnav';
 import { Route, Routes } from 'react-router-dom';
 import { __ } from '@wordpress/i18n';
 import Home from '../pages/home';
@@ -6,7 +16,7 @@ import Marketplace from '../pages/marketplace';
 import Settings from '../pages/settings';
 import Performance from '../pages/performance';
 import Help from '../pages/help';
-import Ecommerce from '../pages/ecommerce';
+import EcomerceStore from '../pages/ecommerce';
 
 export const AppRoutes = () => {
 	return (
@@ -40,51 +50,72 @@ export const AppRoutes = () => {
 
 const topRoutePaths = [
 	'/home',
+	'/store',
 	'/marketplace',
 	'/performance',
 	'/settings',
-	'/help',
 ];
-const utilityRoutePaths = [ '/performance', '/settings', '/help' ];
+const utilityRoutePaths = [ '/help' ];
 
 export const routes = [
 	{
 		name: '/home',
 		title: __( 'Home', 'wp-plugin-crazy-domains' ),
 		Component: Home,
-		Icon: grid,
+		Icon: HomeIcon,
 	},
 	{
-		name: '/home/store',
-		Component: Ecommerce
-	},
-	{
-		name: '/home/store/:section',
-		Component: Ecommerce
+		name: '/store',
+		title: __('Store', 'wp-plugin-crazy-domains'),
+		Component: EcomerceStore,
+		Icon: BuildingStorefrontIcon,
+		subRoutes: [
+			{
+				name: '/store/products',
+				title: __( 'Products', 'wp-plugin-crazy-domains' ),
+			},
+			NewfoldRuntime.hasCapability( 'hasYithExtended' )
+			? {
+				name: "/store/sales_discounts",
+				title: __("Sales & Discounts", "wp-plugin-crazy-domains"),
+			}
+			: null,
+			NewfoldRuntime.isWoo
+			? {
+				name: '/store/payments',
+				title: __( 'Payments', 'wp-plugin-crazy-domains' ),
+			}
+			: null,
+			{
+				name: '/store/details',
+				title: __( 'Store Details', 'wp-plugin-crazy-domains' ),
+			}
+		].filter(Boolean),
 	},
 	{
 		name: '/marketplace',
 		title: __( 'Marketplace', 'wp-plugin-crazy-domains' ),
 		Component: Marketplace,
-		Icon: store,
+		Icon: ShoppingBagIcon,
+		subRoutes: await getMarketplaceSubnavRoutes(),
 	},
 	{
 		name: '/performance',
 		title: __( 'Performance', 'wp-plugin-crazy-domains' ),
 		Component: Performance,
-		Dashicon: 'performance',
+		Icon: BoltIcon,
 	},
 	{
 		name: '/settings',
 		title: __( 'Settings', 'wp-plugin-crazy-domains' ),
 		Component: Settings,
-		Icon: settings,
+		Icon: AdjustmentsHorizontalIcon,
 	},
 	{
 		name: '/help',
 		title: __( 'Help', 'wp-plugin-crazy-domains' ),
 		Component: Help,
-		Icon: help,
+		Icon: QuestionMarkCircleIcon,
 	},
 ];
 

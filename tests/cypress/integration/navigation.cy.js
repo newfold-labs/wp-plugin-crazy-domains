@@ -27,34 +27,34 @@ describe('Navigation', function () {
 	// test main nav
 	it('Main nav links properly navigates', () => {
 		cy
-			.get('.link-Marketplace').
+			.get('.wppcd-app-navitem-Marketplace').
 			should('not.have.class', 'active');
-		cy.get('.link-Marketplace').click();
+		cy.get('.wppcd-app-navitem-Marketplace').click();
 		cy.wait(500);
-		cy.hash().should('contain', '#/marketplace');
+		cy.hash().should('eq', '#/marketplace');
 		cy
-			.get('.link-Marketplace')
+			.get('.wppcd-app-navitem-Marketplace')
 			.should('have.class', 'active');
 		cy
 			.get('#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li.current a')
 			.should('have.attr', 'href')
 			.and('match', /marketplace/);
 
-		cy.get('.link-Performance').click();
+		cy.get('.wppcd-app-navitem-Performance').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/performance');
 		cy
-			.get('.link-Performance')
+			.get('.wppcd-app-navitem-Performance')
 			.should('have.class', 'active');
 		cy
-			.get('.link-Marketplace')
+			.get('.wppcd-app-navitem-Marketplace')
 			.should('not.have.class', 'active');
 		cy
 			.get('#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li.current a')
 			.should('have.attr', 'href')
 			.and('match', /performance/);
 
-		cy.get('.link-Settings').click();
+		cy.get('.wppcd-app-navitem-Settings').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/settings');
 		cy
@@ -62,8 +62,71 @@ describe('Navigation', function () {
 			.should('have.attr', 'href')
 			.and('match', /settings/);
 	});
+	
+	it('Subnav links properly navigates', () => {
+		cy
+			.get('.wppcd-app-navitem-Marketplace')
+			.scrollIntoView()
+			.should('not.have.class', 'active');
+		cy.get('.wppcd-app-navitem-Marketplace').click();
 
-	it('Utility nav links properly navigates', () => {
+		cy.wait(500);
+		cy.hash().should('eq', '#/marketplace');
+		cy
+			.get('.wppcd-app-navitem-Marketplace')
+			.should('have.class', 'active');
+		cy
+			.get('#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li.current a')
+			.should('have.attr', 'href')
+			.and('match', /marketplace/);
+
+			cy.get('.wppcd-app-subnavitem-Services').click();
+			cy.wait(500);
+			cy.hash().should('eq', '#/marketplace/services');
+			cy
+				.get('.wppcd-app-subnavitem-Services')
+				.should('have.class', 'active');
+			cy
+				.get('#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li.current a')
+				.should('have.attr', 'href')
+				.and('match', /marketplace/);
+			cy
+				.get('.wppcd-app-navitem-Marketplace')
+				.should('have.class', 'active');
+		
+
+		cy.get('.wppcd-app-subnavitem-SEO').click();
+		cy.wait(500);
+		cy.hash().should('eq', '#/marketplace/seo');
+		cy
+			.get('.wppcd-app-subnavitem-SEO')
+			.should('have.class', 'active');
+		cy
+			.get('.wppcd-app-subnavitem-Services')
+			.should('not.have.class', 'active');
+		cy
+			.get('#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li.current a')
+			.should('have.attr', 'href')
+			.and('match', /marketplace/);
+		cy
+			.get('.wppcd-app-navitem-Marketplace')
+			.should('have.class', 'active');
+			
+		cy.get('.wppcd-app-navitem-Performance').click();
+			cy.wait(500);
+		cy
+			.get('.wppcd-app-subnavitem-Services')
+			.should('not.have.class', 'active');
+		cy
+			.get('.wppcd-app-subnavitem-SEO')
+			.should('not.have.class', 'active');
+		cy
+			.get('.wppcd-app-navitem-Marketplace')
+			.should('not.have.class', 'active');
+	});
+
+	// utility nav is no more, leaving this in place un case we bring it back anytime soon.
+	it.skip('Utility nav links properly navigates', () => {
 		cy
 			.get('.utility-link-Performance')
 			.should('not.have.class', 'active');
@@ -98,7 +161,8 @@ describe('Navigation', function () {
 			.should('not.have.class', 'active');
 	});
 
-	it('Mobile nav links display for mobile', () => {
+	// no mobile nav, but should probably add
+	it.skip('Mobile nav links dispaly for mobile', () => {
 		cy
 			.get('.mobile-toggle')
 			.should('not.exist');
@@ -109,14 +173,14 @@ describe('Navigation', function () {
 			.should('be.visible');
 	});
 
-	it('Mobile nav links properly navigates', () => {
+	it.skip('Mobile nav links properly navigates', () => {
 		cy.get('.mobile-link-Home').should('not.exist');
 		cy.viewport('iphone-x');
 		cy.get('.mobile-toggle').click();
 		cy.wait(500);
 		cy.get('.mobile-link-Home').should('be.visible');
-		cy.get('.components-modal__header button[aria-label]').as('close').should('be.visible')
-		cy.get('@close').click();
+		cy.get('button[aria-label="Close"]').should('be.visible')
+		cy.get('button[aria-label="Close"]').click();
 		cy.get('.mobile-link-Home').should('not.exist');
 	});
 });

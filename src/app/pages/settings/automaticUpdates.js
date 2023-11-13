@@ -1,231 +1,284 @@
 import AppStore from '../../data/store';
-import { Heading, ErrorCard } from '../../components';
-import {
-	crazydomainsSettingsApiFetch,
-	dispatchUpdateSnackbar,
-} from '../../util/helpers';
-import {
-	Card,
-	CardBody,
-	CardHeader,
-	CardDivider,
-	ToggleControl,
-} from '@wordpress/components';
-import { useState } from '@wordpress/element';
-import { useEffect } from 'react';
+import { crazydomainsSettingsApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
-import classNames from 'classnames';
+import { useState } from '@wordpress/element';
+import { Alert, ToggleField } from "@newfold/ui-component-library";
+import { SectionSettings } from "../../components/section";
+import { useNotification } from '../../components/notifications/feed';
 
-const AutomaticUpdates = () => {
-	const { store, setStore } = useContext( AppStore );
-	const [ autoUpdatesAll, setAutoUpdatesAll ] = useState(
+const AutomaticUpdatesAll = ({ setError, notify }) => {
+	const { store, setStore } = useContext(AppStore);
+	const [autoUpdatesAll, setAutoUpdatesAll] = useState(
 		store.autoUpdatesMajorCore &&
-			store.autoUpdatesPlugins &&
-			store.autoUpdatesThemes
-			? true
-			: false
-	);
-	const [ autoUpdatesMajorCore, setAutoUpdatesCore ] = useState(
-		store.autoUpdatesMajorCore
-	);
-	const [ autoUpdatesPlugins, setAutoUpdatesPlugins ] = useState(
-		store.autoUpdatesPlugins
-	);
-	const [ autoUpdatesThemes, setAutoUpdatesThemes ] = useState(
+		store.autoUpdatesPlugins &&
 		store.autoUpdatesThemes
+		? true
+		: false
 	);
-	const [ isError, setError ] = useState( false );
 
+	const getAllNoticeTitle = () => {
+		return autoUpdatesAll
+			? __('Enabled All auto-updates', 'wp-plugin-crazy-domains')
+			: __('Disabled All auto-updates', 'wp-plugin-crazy-domains');
+	};
 	const getAllNoticeText = () => {
 		return autoUpdatesAll
-			? __( 'Everything will auto-update.', 'wp-plugin-crazy-domains' )
-			: __( 'Custom auto-update settings.', 'wp-plugin-crazy-domains' );
+			? __('Everything will automatically update.', 'wp-plugin-crazy-domains')
+			: __('Custom auto-update settings.', 'wp-plugin-crazy-domains');
 	};
-	const getAllHelpText = () => {
-		return autoUpdatesAll
-			? __( "We're on top of all your updates.", 'wp-plugin-crazy-domains' )
-			: __( 'Turn on for the safest, best experience.', 'wp-plugin-crazy-domains' );
+
+	const toggleAutoUpdatesAll = () => {
+		if ( autoUpdatesAll ) { // is unchecking
+			// just uncheck this one
+			setAutoUpdatesAll(!autoUpdatesAll);
+		} else { // is checking
+			crazydomainsSettingsApiFetch(
+				{ 
+					autoUpdatesMajorCore: true,
+					autoUpdatesPlugins: true,
+					autoUpdatesThemes: true
+				}, 
+				setError, 
+				(response) => {
+					setAutoUpdatesAll(!autoUpdatesAll);
+				}
+			);
+		}
 	};
-	const getCoreNoticeText = () => {
-		return autoUpdatesMajorCore
-			? __( 'WordPress Core will auto-update.', 'wp-plugin-crazy-domains' )
-			: __( 'WordPress Core will not auto-update.', 'wp-plugin-crazy-domains' );
-	};
-	const getCoreHelpText = () => {
-		return autoUpdatesMajorCore
-			? __( 'WordPress will automatically update.', 'wp-plugin-crazy-domains' )
-			: __( 'WordPress must be manually updated.', 'wp-plugin-crazy-domains' );
-	};
-	const getPluginsNoticeText = () => {
-		return autoUpdatesPlugins
-			? __( 'Plugins will auto-update.', 'wp-plugin-crazy-domains' )
-			: __( 'Plugins will not auto-update.', 'wp-plugin-crazy-domains' );
-	};
-	const getPluginsHelpText = () => {
-		return autoUpdatesPlugins
-			? __( 'All plugins will automatically update.', 'wp-plugin-crazy-domains' )
-			: __( 'Each plugin must be manually updated.', 'wp-plugin-crazy-domains' );
-	};
-	const getThemesNoticeText = () => {
-		return autoUpdatesThemes
-			? __( 'Themes will auto-update.', 'wp-plugin-crazy-domains' )
-			: __( 'Theme will not auto-update.', 'wp-plugin-crazy-domains' );
-	};
-	const getThemesHelpText = () => {
-		return autoUpdatesThemes
-			? __( 'All themes will automatically update.', 'wp-plugin-crazy-domains' )
-			: __( 'Each theme must be manually updated.', 'wp-plugin-crazy-domains' );
+
+	const notifySuccess = () => {
+		notify.push("everything-autoupdate-notice", {
+			title: getAllNoticeTitle(),
+			description: (
+				<span>
+					{getAllNoticeText()}
+				</span>
+			),
+			variant: "success",
+			autoDismiss: 5000,
+		});
 	};
 
 	useEffect( () => {
-		if ( autoUpdatesMajorCore && autoUpdatesPlugins && autoUpdatesThemes ) {
+		if ( store.autoUpdatesMajorCore && store.autoUpdatesPlugins && store.autoUpdatesThemes ) {
 			setAutoUpdatesAll( true );
 		} else {
 			setAutoUpdatesAll( false );
 		}
-	}, [ autoUpdatesMajorCore, autoUpdatesPlugins, autoUpdatesThemes ] );
+	}, [ store.autoUpdatesMajorCore, store.autoUpdatesPlugins, store.autoUpdatesThemes ] );
 
-	useUpdateEffect( () => {
-		if ( autoUpdatesAll ) {
-			setAutoUpdatesCore( autoUpdatesAll );
-			setAutoUpdatesPlugins( autoUpdatesAll );
-			setAutoUpdatesThemes( autoUpdatesAll );
-			dispatchUpdateSnackbar( getAllNoticeText() );
-		} else {
-			// don't set anything, just enable them
-		}
-	}, [ autoUpdatesAll ] );
+	useUpdateEffect(() => {
+		
+		setStore({
+			...store,
+			autoUpdatesAll,
+		});
 
-	useUpdateEffect( () => {
-		crazydomainsSettingsApiFetch(
-			{ autoUpdatesMajorCore },
-			setError,
-			( response ) => {
-				setStore( {
-					...store,
-					autoUpdatesMajorCore,
-				} );
-				if ( ! autoUpdatesAll ) {
-					dispatchUpdateSnackbar( getCoreNoticeText() );
-				}
-			}
-		);
-	}, [ autoUpdatesMajorCore ] );
+		notifySuccess();
+	}, [autoUpdatesAll]);
 
-	useUpdateEffect( () => {
-		crazydomainsSettingsApiFetch( { autoUpdatesPlugins }, setError, ( response ) => {
-			setStore( {
-				...store,
-				autoUpdatesPlugins,
-			} );
-			if ( ! autoUpdatesAll ) {
-				dispatchUpdateSnackbar( getPluginsNoticeText() );
-			}
-		} );
-	}, [ autoUpdatesPlugins ] );
-
-	useUpdateEffect( () => {
-		crazydomainsSettingsApiFetch( { autoUpdatesThemes }, setError, ( response ) => {
-			setStore( {
-				...store,
-				autoUpdatesThemes,
-			} );
-			if ( ! autoUpdatesAll ) {
-				dispatchUpdateSnackbar( getThemesNoticeText() );
-			}
-		} );
-	}, [ autoUpdatesThemes ] );
-
-	if ( isError ) {
-		return <ErrorCard error={ isError } />;
-	}
 	return (
-		<Card
-			className={ classNames(
-				'card-auto-updates',
-				`everything-${ autoUpdatesAll ? 'on' : 'off' }`
-			) }
-		>
-			<CardHeader>
-				<Heading level="3">
-					{ __( 'Automatic Updates', 'wp-plugin-crazy-domains' ) }
-				</Heading>
-			</CardHeader>
-			<CardBody>
-				{ __(
-					'We strongly recommend letting us manage updates to automatically receive critical security patches, bug fixes and new features as they become available.',
-					'wp-plugin-crazy-domains'
-				) }
-			</CardBody>
-			<CardDivider />
-			<CardBody className="autoupdate-all-setting">
-				<ToggleControl
-					label={ __( 'Managed', 'wp-plugin-crazy-domains' ) }
-					className="autoupdate-all-toggle"
-					checked={ autoUpdatesAll }
-					help={ getAllHelpText() }
-					onChange={ () => {
-						setAutoUpdatesAll( ( value ) => ! value );
-					} }
-				/>
-			</CardBody>
-			{ ! autoUpdatesAll && (
-				<Fragment>
-					<CardDivider />
-					<CardBody
-						className={ `autoupdate-core-setting  ${
-							autoUpdatesAll ? 'disabled' : ''
-						}` }
-					>
-						<ToggleControl
-							label={ __( 'WordPress Core', 'wp-plugin-crazy-domains' ) }
-							className="autoupdate-core-toggle"
-							checked={ autoUpdatesMajorCore }
-							disabled={ autoUpdatesAll }
-							help={ getCoreHelpText() }
-							onChange={ () => {
-								setAutoUpdatesCore( ( value ) => ! value );
-							} }
-						/>
-					</CardBody>
-					<CardDivider />
-					<CardBody
-						className={ `autoupdate-plugin-setting  ${
-							autoUpdatesAll ? 'disabled' : ''
-						}` }
-					>
-						<ToggleControl
-							label={ __( 'Plugins', 'wp-plugin-crazy-domains' ) }
-							className="autoupdate-plugin-toggle"
-							checked={ autoUpdatesPlugins }
-							disabled={ autoUpdatesAll }
-							help={ getPluginsHelpText() }
-							onChange={ () => {
-								setAutoUpdatesPlugins( ( value ) => ! value );
-							} }
-						/>
-					</CardBody>
-					<CardDivider />
-					<CardBody
-						className={ `autoupdate-theme-setting  ${
-							autoUpdatesAll ? 'disabled' : ''
-						}` }
-					>
-						<ToggleControl
-							label={ __( 'Themes', 'wp-plugin-crazy-domains' ) }
-							className="autoupdate-theme-toggle"
-							checked={ autoUpdatesThemes }
-							disabled={ autoUpdatesAll }
-							help={ getThemesHelpText() }
-							onChange={ () => {
-								setAutoUpdatesThemes( ( value ) => ! value );
-							} }
-						/>
-					</CardBody>
-				</Fragment>
-			) }
-		</Card>
+		<ToggleField
+			id="autoupdate-all-toggle"
+			label={__('Manage All Updates', 'wp-plugin-crazy-domains')}
+			checked={autoUpdatesAll}
+			onChange={toggleAutoUpdatesAll}
+		/>
 	);
-};
+}
+
+const AutomaticUpdatesMajorCore = ({ setError, notify }) => {
+	const { store, setStore } = useContext(AppStore);
+	const [autoUpdatesMajorCore, setAutoUpdatesCore] = useState(
+		store.autoUpdatesMajorCore
+	);
+
+	const getCoreNoticeTitle = () => {
+		return autoUpdatesMajorCore
+			? __('Enabled Core auto-updates', 'wp-plugin-crazy-domains')
+			: __('Disabled Core auto-updates', 'wp-plugin-crazy-domains');
+	};
+	const getCoreNoticeText = () => {
+		return autoUpdatesMajorCore
+			? __('WordPress will automatically update.', 'wp-plugin-crazy-domains')
+			: __('WordPress must be manually updated.', 'wp-plugin-crazy-domains');
+	};
+
+	const toggleAutoUpdatesMajorCore = () => {
+		crazydomainsSettingsApiFetch({ autoUpdatesMajorCore: !autoUpdatesMajorCore }, setError, (response) => {
+			setAutoUpdatesCore(!autoUpdatesMajorCore);
+		});
+	};
+
+	const notifySuccess = () => {
+		notify.push("major-core-autoupdate-notice", {
+			title: getCoreNoticeTitle(),
+			description: (
+				<span>
+					{getCoreNoticeText()}
+				</span>
+			),
+			variant: "success",
+			autoDismiss: 5000,
+		});
+	};
+
+	useUpdateEffect(() => {
+		setStore({
+			...store,
+			autoUpdatesMajorCore,
+		});
+
+		notifySuccess();
+	}, [autoUpdatesMajorCore]);
+
+	return (
+		<ToggleField
+			id="autoupdate-core-toggle"
+			label={__('WordPress Core', 'wp-plugin-crazy-domains')}
+			checked={autoUpdatesMajorCore || store.autoUpdatesAll}
+			disabled={store.autoUpdatesAll}
+			onChange={toggleAutoUpdatesMajorCore}
+		/>
+	);
+}
+
+const AutomaticUpdatesPlugins = ({ setError, notify }) => {
+	const { store, setStore } = useContext(AppStore);
+	const [autoUpdatesPlugins, setAutoUpdatesPlugins] = useState(
+		store.autoUpdatesPlugins
+	);
+
+	const getPluginsNoticeTitle = () => {
+		return autoUpdatesPlugins
+			? __('Enabled Plugins auto-update', 'wp-plugin-crazy-domains')
+			: __('Disabled Plugins auto-update', 'wp-plugin-crazy-domains');
+	};
+	const getPluginsNoticeText = () => {
+		return autoUpdatesPlugins
+			? __('All plugins will automatically update.', 'wp-plugin-crazy-domains')
+			: __('Each plugin must be manually updated.', 'wp-plugin-crazy-domains');
+	};
+
+	const toggleAutoUpdatesPlugins = () => {
+		crazydomainsSettingsApiFetch({ autoUpdatesPlugins: !autoUpdatesPlugins }, setError, (response) => {
+			setAutoUpdatesPlugins(!autoUpdatesPlugins);
+		});
+	};
+
+	const notifySuccess = () => {
+		notify.push("plugins-autoupdate-notice", {
+			title: getPluginsNoticeTitle(),
+			description: (
+				<span>
+					{getPluginsNoticeText()}
+				</span>
+			),
+			variant: "success",
+			autoDismiss: 5000,
+		});
+	};
+
+	useUpdateEffect(() => {
+		setStore({
+			...store,
+			autoUpdatesPlugins,
+		});
+
+		notifySuccess();
+	}, [autoUpdatesPlugins]);
+
+	return (
+		<ToggleField
+			id="autoupdate-plugins-toggle"
+			label={__('Plugins', 'wp-plugin-crazy-domains')}
+			checked={autoUpdatesPlugins || store.autoUpdatesAll}
+			disabled={store.autoUpdatesAll}
+			onChange={toggleAutoUpdatesPlugins}
+		/>
+	);
+}
+
+const AutomaticUpdatesThemes = ({ setError, notify }) => {
+	const { store, setStore } = useContext(AppStore);
+	const [autoUpdatesThemes, setAutoUpdatesThemes] = useState(
+		store.autoUpdatesThemes
+	);
+
+	const getThemesNoticeTitle = () => {
+		return autoUpdatesThemes
+			? __('Enabled Themes auto-update', 'wp-plugin-crazy-domains')
+			: __('Disabled Themes auto-update', 'wp-plugin-crazy-domains');
+	};
+
+	const getThemesNoticeText = () => {
+		return autoUpdatesThemes
+			? __('All themes will automatically update.', 'wp-plugin-crazy-domains')
+			: __('Each theme must be manually updated.', 'wp-plugin-crazy-domains');
+	};
+
+	const toggleAutoUpdatesThemes = () => {
+		crazydomainsSettingsApiFetch({ autoUpdatesThemes: !autoUpdatesThemes }, setError, (response) => {
+			setAutoUpdatesThemes(!autoUpdatesThemes);
+		});
+	};
+
+	const notifySuccess = () => {
+		notify.push("themes-autoupdate-notice", {
+			title: getThemesNoticeTitle(),
+			description: (
+				<span>
+					{getThemesNoticeText()}
+				</span>
+			),
+			variant: "success",
+			autoDismiss: 5000,
+		});
+	};
+
+	useUpdateEffect(() => {
+		setStore({
+			...store,
+			autoUpdatesThemes,
+		});
+
+		notifySuccess();
+	}, [autoUpdatesThemes]);
+
+	return (
+		<ToggleField
+			id="autoupdate-themes-toggle"
+			label={__('Themes', 'wp-plugin-crazy-domains')}
+			checked={autoUpdatesThemes || store.autoUpdatesAll}
+			disabled={store.autoUpdatesAll}
+			onChange={toggleAutoUpdatesThemes}
+		/>
+	);
+}
+
+const AutomaticUpdates = () => {
+	const [isError, setError] = useState(false);
+
+	let notify = useNotification();
+
+	return (
+		<SectionSettings
+			title={__('Automatic Updates', 'wp-plugin-crazy-domains')}
+			description={__('Keeping automatic updates on ensures timely security fixes and the latest features.', 'wp-plugin-crazy-domains')}
+		>
+			<div className="nfd-flex nfd-flex-col nfd-gap-4">
+				<AutomaticUpdatesAll setError={setError} notify={notify} />
+				<AutomaticUpdatesMajorCore setError={setError} notify={notify} />
+				<AutomaticUpdatesPlugins setError={setError} notify={notify} />
+				<AutomaticUpdatesThemes setError={setError} notify={notify} />
+				{isError &&
+					<Alert variant="error">
+						{__('Oops! Something went wrong. Please try again.', 'wp-plugin-crazy-domains')}
+					</Alert>
+				}
+			</div>
+		</SectionSettings>
+	);
+}
 
 export default AutomaticUpdates;
