@@ -259,7 +259,7 @@
 @layer components {
 	.nfd-root {
 		/* mobile menu modal */
-		.hgwp-app-sidenav-mobile {
+		.wppcd-app-sidenav-mobile {
             .nfd-modal__close {
                 @apply 
                 nfd-flex
