@@ -6,8 +6,8 @@ const wpVersion = /[^/]*$/.exec(core)[0]
 module.exports = defineConfig({
     projectId: "bqvwhq",
     env: {
-        wpUsername: 'admin',
-        wpPassword: 'password',
+        wpUsername: 'Alani',
+        wpPassword: 'Admin@123',
         wpVersion,
         phpVersion,
         pluginId: 'crazy-domains',
@@ -72,7 +72,7 @@ module.exports = defineConfig({
 
             return config;
         },
-        baseUrl: 'http://localhost:8884',
+        baseUrl: 'http://localhost:10047',
         specPattern: [
             'tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
             'vendor/newfold-labs/**/tests/cypress/integration/**/*.cy.{js,jsx,ts,tsx}',
