@@ -24,6 +24,7 @@ import { NotificationFeed } from './components/notifications/feed';
 import { default as NewfoldNotifications } from '../../vendor/newfold-labs/wp-module-notifications/assets/js/components/notifications/';
 // to pass to notifications module
 import apiFetch from '@wordpress/api-fetch';
+import { addQueryArgs } from '@wordpress/url';
 import { useState } from '@wordpress/element';
 
 const Notices = () => {
@@ -80,11 +81,11 @@ const AppBody = (props) => {
 			<NewfoldNotifications
 				constants={{
 					context: 'crazy-domains-plugin',
-					page: hashedPath,
-					resturl: NewfoldRuntime.resturl
+					page: hashedPath
 				}}
 				methods={{
 					apiFetch,
+					addQueryArgs,
 					classnames,
 					filter,
 					useState,
