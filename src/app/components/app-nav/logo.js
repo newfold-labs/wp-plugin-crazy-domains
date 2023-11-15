@@ -1,5 +1,5 @@
 import { Button } from '@wordpress/components';
-import { Heading } from '../../components';
+import { Heading } from '..';
 import { ReactComponent as Brand } from '../../../../assets/svg/crazydomains-logo.svg';
 import { delay } from 'lodash';
 
@@ -15,10 +15,9 @@ const Mark = () => {
 	return (
 		<Button
 			icon={ <Brand className="wppcd-logo" /> }
-			style={ { height: '39px' } }
-			iconSize={ 39 }
+			style={ { width: '190px', height: 'auto' } }
 			onMouseUp={ defocus }
-			className="logo-mark"
+			className="logo-mark nfd-p-0"
 			href="#/home"
 		/>
 	);

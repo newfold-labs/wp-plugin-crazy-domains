@@ -1,7 +1,7 @@
 :root {
    // Primary
-   --color-primary: #6FAC2F;
-   --color-primary-dark: #568F1B;
+   --color-primary: #548224;
+   --color-primary-dark: #44691D;
    --color-primary-light: #D3F0B5;
    --color-primary-lighter: #E6F6D6;
    // Secondary
@@ -14,9 +14,9 @@
    --color-text: #4F595C;
    --color-link: #00A1EF;
    --color-border: rgba(0, 0, 0, 0.1);
-   --color-success: #388E3C;
+   --color-success: #348538;
    --color-warning: #F57C00;
-   --color-error: #D32F2F;
+   --color-error: #DB3131;
    // Contrast
    --color-white: #FFFFFF;
    --color-off-white: #F0F0F5;
@@ -24,7 +24,7 @@
    --color-success-contrast: #DFF2E0;
    --color-warning-contrast: #FFE3C6;
    --color-error-contrast: #F6D3D3;
-   --color-canvas: #FDFDFD;
+   --color-canvas: #F5F6F8;
 }
 
 html {
@@ -81,21 +81,21 @@ body.toplevel_page_crazy-domains {
 
 }
 .wppcd {
-    color: var(--color-text);
+    // color: var(--color-text);
 
-    h1, h2, h3, h4, h5, h6 {
-        color: var(--color-title);
-        font-weight: 700;
-    }
-    .wppcd-nav a {
-        color: var(--color-black);
-    }
-    p, div {
-        color: var(--color-text);
-        font-size: 15px;
-        font-weight: 400;
-        line-height: 1.45;
-    }
+    // h1, h2, h3, h4, h5, h6 {
+    //     color: var(--color-title);
+    //     font-weight: 700;
+    // }
+    // .wppcd-nav a {
+    //     color: var(--color-black);
+    // }
+    // p, div {
+    //     color: var(--color-text);
+    //     font-size: 15px;
+    //     font-weight: 400;
+    //     line-height: 1.45;
+    // }
     .components-card__body .components-toggle-control .components-base-control__field .components-toggle-control__label,
     .components-card__body .components-input-control__label,
     .components-card__body .components-input-control__label *,
@@ -156,15 +156,15 @@ body.toplevel_page_crazy-domains {
     box-sizing: border-box;
 }
 
-.wppcd-app-body {
-    padding: 18px 24px 0;
-    &-inner {
-        max-width: 1290px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-    }
-}
+// .wppcd-app-body {
+//     padding: 18px 24px 0;
+//     &-inner {
+//         max-width: 1290px;
+//         margin-left: auto;
+//         margin-right: auto;
+//         width: 100%;
+//     }
+// }
 
 .components-snackbar__content {
     color: var(--color-off-white) !important;
