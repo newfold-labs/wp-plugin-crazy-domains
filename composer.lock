@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8125a09930b7a26de53094c090a805ca",
+    "content-hash": "2a782a271d3c675c059bfd7eba81fd51",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -216,16 +216,16 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.4.11",
+            "version": "2.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "c244dd52e7e07bf0d890e51892e179c62f197bac"
+                "reference": "a21d4579037add8bb921426f8d41e15d13b81af3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/c244dd52e7e07bf0d890e51892e179c62f197bac",
-                "reference": "c244dd52e7e07bf0d890e51892e179c62f197bac",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/a21d4579037add8bb921426f8d41e15d13b81af3",
+                "reference": "a21d4579037add8bb921426f8d41e15d13b81af3",
                 "shasum": ""
             },
             "require": {
@@ -258,10 +258,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.11",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.4.13",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2023-11-13T19:54:44+00:00"
+            "time": "2023-11-29T18:53:24+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
@@ -326,16 +326,16 @@
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
-            "version": "v1.3.9",
+            "version": "v1.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-ecommerce.git",
-                "reference": "dc87a1feae60dc0b5df0795ded184a5bc859131b"
+                "reference": "81be77c59780688861190096947525d1c3bc074a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/dc87a1feae60dc0b5df0795ded184a5bc859131b",
-                "reference": "dc87a1feae60dc0b5df0795ded184a5bc859131b",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-ecommerce/zipball/81be77c59780688861190096947525d1c3bc074a",
+                "reference": "81be77c59780688861190096947525d1c3bc074a",
                 "shasum": ""
             },
             "require": {
@@ -378,10 +378,10 @@
             ],
             "description": "Brand Agnostic eCommerce Experience",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.9",
+                "source": "https://github.com/newfold-labs/wp-module-ecommerce/tree/v1.3.13",
                 "issues": "https://github.com/newfold-labs/wp-module-ecommerce/issues"
             },
-            "time": "2023-11-06T11:21:13+00:00"
+            "time": "2023-12-01T10:50:14+00:00"
         },
         {
             "name": "newfold-labs/wp-module-installer",
