@@ -11,6 +11,7 @@ module.exports = defineConfig({
         phpVersion,
         pluginId: 'crazy-domains',
         appId: 'wppcd',
+        pluginSlug: 'wp-plugin-crazy-domains',
     },
     downloadsFolder: 'tests/cypress/downloads',
     fixturesFolder: 'tests/cypress/fixtures',
