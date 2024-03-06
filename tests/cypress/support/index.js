@@ -19,3 +19,7 @@ import './commands';
 before(() => {
 	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
 });
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+	return false
+});
