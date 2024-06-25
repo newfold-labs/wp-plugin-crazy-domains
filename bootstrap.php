@@ -12,6 +12,7 @@ use WP_Forge\UpgradeHandler\UpgradeHandler;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
+use NewfoldLabs\WP\Module\Features\Features;
 
 // Composer autoloader
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -133,3 +134,6 @@ if ( is_admin() ) {
 
 AdminBar::init();
 LoginRedirect::init();
+
+// Instantiate the Features singleton
+Features::getInstance();

@@ -1,6 +1,8 @@
 import { Container, Page } from "@newfold/ui-component-library";
-import AutomaticUpdates from './automaticUpdates';
 import ComingSoon from './comingSoon';
+import AutomaticUpdates from './automaticUpdates';
+import WonderBlocksSettings from './wonderBlocksSettings';
+import AutomaticUpdates from './automaticUpdates';
 import CommentSettings from './commentSettings';
 import ContentSettings from './contentSettings';
 
@@ -16,6 +18,16 @@ const Settings = () => {
 
 				<Container.Block separator={true} className={'wppcd-app-settings-coming-soon'}>
 					<ComingSoon />
+				</Container.Block>
+
+				<Container.Block
+					separator={ true }
+					className={ 'wppcd-app-settings-wonder-blocks' }
+				>
+					<Container.SettingsField
+						title={ __( 'Features', 'wp-plugin-crazy-domains' ) }
+					></Container.SettingsField>
+					<WonderBlocksSettings />
 				</Container.Block>
 
 				<Container.Block separator={true} className={'wppcd-app-settings-update'}>

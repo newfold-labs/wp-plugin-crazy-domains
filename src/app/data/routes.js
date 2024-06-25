@@ -17,6 +17,7 @@ import Settings from '../pages/settings';
 import Performance from '../pages/performance';
 import Help from '../pages/help';
 import EcomerceStore from '../pages/ecommerce';
+import Admin from '../pages/admin';
 
 export const AppRoutes = () => {
 	return (
@@ -63,12 +64,14 @@ export const routes = [
 		title: __( 'Home', 'wp-plugin-crazy-domains' ),
 		Component: Home,
 		Icon: HomeIcon,
+		condition: true,
 	},
 	{
 		name: '/store',
 		title: __('Store', 'wp-plugin-crazy-domains'),
 		Component: EcomerceStore,
 		Icon: BuildingStorefrontIcon,
+		condition: true,
 		subRoutes: [
 			{
 				name: '/store/products',
@@ -98,24 +101,33 @@ export const routes = [
 		Component: Marketplace,
 		Icon: ShoppingBagIcon,
 		subRoutes: await getMarketplaceSubnavRoutes(),
+		condition: true,
 	},
 	{
 		name: '/performance',
 		title: __( 'Performance', 'wp-plugin-crazy-domains' ),
 		Component: Performance,
 		Icon: BoltIcon,
+		condition: await window.NewfoldFeatures.isEnabled( 'performance' ),
 	},
 	{
 		name: '/settings',
 		title: __( 'Settings', 'wp-plugin-crazy-domains' ),
 		Component: Settings,
 		Icon: AdjustmentsHorizontalIcon,
+		condition: true,
 	},
 	{
 		name: '/help',
 		title: __( 'Help', 'wp-plugin-crazy-domains' ),
 		Component: Help,
 		Icon: QuestionMarkCircleIcon,
+	},
+	{
+		name: '/admin',
+		title: __( 'Admin', 'wp-plugin-hostgator' ),
+		Component: Admin,
+		condition: true,
 	},
 ];
 

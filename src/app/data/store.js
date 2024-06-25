@@ -50,7 +50,13 @@ export const AppStoreProvider = ( { children } ) => {
 		if ( false === booted ) {
 			crazydomainsApiFetchSettings()
 				.then( ( settings ) => {
-					setStore( { ...store, ...window.WPPCD, ...settings } );
+					setStore( { 
+						...store,
+						...window.WPPCD,
+						...settings,
+						features: window.NewfoldFeatures.features,
+						toggleableFeatures: window.NewfoldFeatures.togglable,
+					} );
 					window.WPPCD.migrated = true;
 					setBooted( true );
 				} )

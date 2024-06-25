@@ -1,5 +1,5 @@
 import { OnboardingScreen } from "@newfold-labs/wp-module-ecommerce";
-import { useNotification } from "../../components/notifications/feed";
+import { useNotification } from "../../components/notifications";
 import AppStore from "../../data/store";
 import { useContext } from "@wordpress/element";
 import { crazydomainsSettingsApiFetch } from "../../util/helpers";

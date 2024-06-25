@@ -8,6 +8,7 @@
 namespace CrazyDomains;
 
 use CrazyDomains\Data;
+use function NewfoldLabs\WP\Module\Features\isEnabled;
 
 /**
  * \CrazyDomains\Admin
@@ -45,12 +46,31 @@ final class Admin {
 	 * @return array
 	 */
 	public static function subpages() {
-		return array(
-			'crazy-domains#/home'        => __( 'Home', 'wp-plugin-crazy-domains' ),
+		$home          = array(
+			'crazy-domains#/home' => __( 'Home', 'wp-plugin-crazy-domains' ),
+		);
+		$marketplace   = array(
 			'crazy-domains#/marketplace' => __( 'Marketplace', 'wp-plugin-crazy-domains' ),
+		);
+		// add performance if enabled
+		$performance = isEnabled( 'performance' )
+		? array(
 			'crazy-domains#/performance' => __( 'Performance', 'wp-plugin-crazy-domains' ),
-			'crazy-domains#/settings'    => __( 'Settings', 'wp-plugin-crazy-domains' ),
-			'crazy-domains#/help'        => __( 'Help', 'wp-plugin-crazy-domains' ),
+		)
+		: array();
+		$settings    = array(
+			'crazy-domains#/settings' => __( 'Settings', 'wp-plugin-crazy-domains' ),
+		);
+		$help    = array(
+			'crazy-domains#/help' => __( 'Help', 'wp-plugin-crazy-domains' ),
+		);
+
+		return array_merge(
+			$home,
+			$marketplace,
+			$performance,
+			$settings,
+			$help,
 		);
 	}
 
@@ -142,7 +162,7 @@ final class Admin {
 		\wp_register_script(
 			'crazydomains-script',
 			CRAZYDOMAINS_BUILD_URL . '/index.js',
-			array_merge( $asset['dependencies'], [ 'nfd-runtime' ] ),
+			array_merge( $asset['dependencies'], [ 'newfold-features', 'nfd-runtime' ] ),
 			$asset['version'],
 			true
 		);

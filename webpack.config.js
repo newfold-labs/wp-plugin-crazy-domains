@@ -8,6 +8,7 @@ const { ProvidePlugin } = require('webpack');
  */
 const alias = {
     App: path.resolve(__dirname, '/src/app/'),
+    Assets: path.resolve( __dirname, '/assets/' ),
     Store: path.resolve(__dirname, '/src/app/data/store.js'),
     Routes: path.resolve(__dirname, '/src/app/data/routes.js'),
 };
