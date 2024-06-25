@@ -5,8 +5,7 @@ import {
 } from '../../util/helpers';
 import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
-import { Alert, ToggleField } from "@newfold/ui-component-library";
-import { SectionSettings } from "../../components/section";
+import { Alert, Container, ToggleField } from "@newfold/ui-component-library";
 import { useNotification } from '../../components/notifications/feed';
 
 const ComingSoon = () => {
@@ -64,7 +63,7 @@ const ComingSoon = () => {
 	}, [comingSoon]);
 
 	return (
-		<SectionSettings
+		<Container.SettingsField
 			title={__('Maintenance Mode', 'wp-plugin-crazy-domains')}
 			description={__('Still building your site? Need to make a big change?', 'wp-plugin-crazy-domains')}
 		>
@@ -94,7 +93,7 @@ const ComingSoon = () => {
 					</Alert>
 				}
 			</div>
-		</SectionSettings>
+		</Container.SettingsField>
 	);
 }
 

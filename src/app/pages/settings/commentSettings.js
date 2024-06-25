@@ -2,8 +2,7 @@ import AppStore from '../../data/store';
 import { crazydomainsSettingsApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
 import { useState } from '@wordpress/element';
-import { Alert, SelectField, ToggleField } from "@newfold/ui-component-library";
-import { SectionSettings } from "../../components/section";
+import { Alert, Container, ToggleField } from "@newfold/ui-component-library";
 import { useNotification } from '../../components/notifications/feed';
 
 const OldPostsComments = ({ setError, notify }) => {
@@ -227,7 +226,7 @@ const CommentSettings = () => {
 
 	let notify = useNotification();
 	return (
-		<SectionSettings
+		<Container.SettingsField
 			title={__('Comments', 'wp-plugin-crazy-domains')}
 			description={__('Comments allow visitors to provide feedback and respond to your posts or pages.', 'wp-plugin-crazy-domains')}
 		>
@@ -241,7 +240,7 @@ const CommentSettings = () => {
 					</Alert>
 				}
 			</div>
-		</SectionSettings >
+		</Container.SettingsField >
 	);
 };
 

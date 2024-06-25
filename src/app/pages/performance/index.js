@@ -1,11 +1,10 @@
 import AppStore from '../../data/store';
-import { Page } from '../../components/page';
+import { Page, Container } from "@newfold/ui-component-library";
 import { useState, useEffect, useContext, Fragment } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import classnames from 'classnames';
 import { useUpdateEffect } from 'react-use';
 import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
-import { SectionContainer, SectionHeader, SectionContent, SectionSettings } from '../../components/section';
 import { useNotification } from '../../components/notifications/feed';
 import { 
     crazydomainsSettingsApiFetch as newfoldSettingsApiFetch, 
@@ -45,10 +44,10 @@ const PerformancePage = () => {
 
 	return (
 		<Page title="Performance" className={"wppcd-app-settings-page"}>
-			<SectionContainer className={'wppcd-app-settings-container'}>
-                <SectionHeader
+			<Container className={'wppcd-app-settings-container'}>
+                <Container.Header
                     title={__('Performance', 'wp-plugin-crazy-domains')}
-                    subTitle={__('This is where you can manage cache settings for your website.', 'wp-plugin-crazy-domains')}
+                    description={__('This is where you can manage cache settings for your website.', 'wp-plugin-crazy-domains')}
                     className={'wppcd-app-settings-header'}
                 />
                 <NewfoldPerformance
@@ -56,7 +55,7 @@ const PerformancePage = () => {
                     methods={moduleMethods}
                     Components={moduleComponents}
                 />
-            </SectionContainer>
+            </Container>
 		</Page>
 	);
 };
