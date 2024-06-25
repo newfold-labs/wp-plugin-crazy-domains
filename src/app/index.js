@@ -18,13 +18,13 @@ import { setActiveSubnav } from './util/helpers';
 import { kebabCase, filter } from 'lodash';
 import { AppNav } from './components/app-nav';
 import { SiteInfoBar } from './components/site-info';
-import { NotificationFeed } from './components/notifications/feed';
+import { NotificationFeed } from 'App/components/notifications';
+import { addQueryArgs } from '@wordpress/url';
 
 // component sourced from module
 import { default as NewfoldNotifications } from '../../vendor/newfold-labs/wp-module-notifications/assets/js/components/notifications/';
 // to pass to notifications module
 import apiFetch from '@wordpress/api-fetch';
-import { addQueryArgs } from '@wordpress/url';
 import { useState } from '@wordpress/element';
 
 const Notices = () => {

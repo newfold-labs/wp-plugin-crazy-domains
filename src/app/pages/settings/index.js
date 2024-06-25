@@ -1,6 +1,5 @@
 import { Container, Page } from "@newfold/ui-component-library";
 import ComingSoon from './comingSoon';
-import AutomaticUpdates from './automaticUpdates';
 import WonderBlocksSettings from './wonderBlocksSettings';
 import AutomaticUpdates from './automaticUpdates';
 import CommentSettings from './commentSettings';
