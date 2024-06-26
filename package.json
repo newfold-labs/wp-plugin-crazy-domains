@@ -20,8 +20,8 @@
         "William Earnhardt (https://wearnhardt.com)"
     ],
     "engines": {
-        "node": ">=16",
-        "npm": ">=8"
+        "node": ">=20",
+        "npm": ">=10"
     },
     "dependencies": {
         "@heroicons/react": "^2.1.1",
