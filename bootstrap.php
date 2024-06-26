@@ -11,8 +11,9 @@ use WP_Forge\WPUpdateHandler\PluginUpdater;
 use WP_Forge\UpgradeHandler\UpgradeHandler;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
-use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 use NewfoldLabs\WP\Module\Features\Features;
+
+use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 
 // Composer autoloader
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -37,7 +38,7 @@ $crazydomains_module_container = new Container(
 $crazydomains_module_container->set(
 	'plugin',
 	$crazydomains_module_container->service(
-		function() {
+		function () {
 			return new Plugin(
 				array(
 					'id'           => 'crazy-domains',

@@ -70,7 +70,7 @@ $nfd_plugins_check->legacy_plugins = array(
 	'The HostGator Plugin' => 'wp-plugin-hostgator/wp-plugin-hostgator.php',
 	'The Web.com Plugin'   => 'wp-plugin-web/wp-plugin-web.php',
 );
-$pass_nfd_check = $nfd_plugins_check->check_plugin_requirements();
+$pass_nfd_check                    = $nfd_plugins_check->check_plugin_requirements();
 
 // Check PHP version before initializing to prevent errors if plugin is incompatible.
 if ( $pass_nfd_check && version_compare( PHP_VERSION, '7.1', '>=' ) ) {

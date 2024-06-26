@@ -30,8 +30,6 @@ final class Data {
 				'region'  => $crazydomains_module_container->plugin()->region,
 			),
 		);
-
 		return $runtime;
 	}
-
 }

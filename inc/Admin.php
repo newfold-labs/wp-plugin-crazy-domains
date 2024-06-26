@@ -33,6 +33,10 @@ final class Admin {
 
 	/**
 	 * Add to runtime
+	 * 
+	 * @param array $sdk - runtime properties from module
+	 * 
+	 * @return array
 	 */
 	public static function add_to_runtime( $sdk ) {
 		return array_merge( $sdk, Data::runtime() );
@@ -46,10 +50,10 @@ final class Admin {
 	 * @return array
 	 */
 	public static function subpages() {
-		$home          = array(
+		$home        = array(
 			'crazy-domains#/home' => __( 'Home', 'wp-plugin-crazy-domains' ),
 		);
-		$marketplace   = array(
+		$marketplace = array(
 			'crazy-domains#/marketplace' => __( 'Marketplace', 'wp-plugin-crazy-domains' ),
 		);
 		// add performance if enabled
@@ -61,7 +65,7 @@ final class Admin {
 		$settings    = array(
 			'crazy-domains#/settings' => __( 'Settings', 'wp-plugin-crazy-domains' ),
 		);
-		$help    = array(
+		$help        = array(
 			'crazy-domains#/help' => __( 'Help', 'wp-plugin-crazy-domains' ),
 		);
 
@@ -162,7 +166,7 @@ final class Admin {
 		\wp_register_script(
 			'crazydomains-script',
 			CRAZYDOMAINS_BUILD_URL . '/index.js',
-			array_merge( $asset['dependencies'], [ 'newfold-features', 'nfd-runtime' ] ),
+			array_merge( $asset['dependencies'], array( 'newfold-features', 'nfd-runtime' ) ),
 			$asset['version'],
 			true
 		);
