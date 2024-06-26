@@ -11,13 +11,13 @@ const MarketplacePage = () => {
 	
     // constants to pass to module
 	const moduleConstants = {
-		'supportsCTB': false,
-		'text': {
-			'title': __('Marketplace', 'wp-plugin-crazy-domains'),
-			'subTitle': __('Explore our featured collection of tools and services.', 'wp-plugin-crazy-domains'),
-			'error': __('Oops, there was an error loading the marketplace, please try again later.', 'wp-plugin-crazy-domains'),
-			'noProducts': __('Sorry, no marketplace items. Please, try again later.', 'wp-plugin-crazy-domains'),
-			'loadMore': __('Load More', 'wp-plugin-crazy-domains'),
+		supportsCTB: false,
+		text: {
+			title: __('Marketplace', 'wp-plugin-crazy-domains'),
+			subTitle: __('Explore our featured collection of tools and services.', 'wp-plugin-crazy-domains'),
+			error: __('Oops, there was an error loading the marketplace, please try again later.', 'wp-plugin-crazy-domains'),
+			noProducts: __('Sorry, no marketplace items. Please, try again later.', 'wp-plugin-crazy-domains'),
+			loadMore: __('Load More', 'wp-plugin-crazy-domains'),
 		}
 	};
     // methods to pass to module
@@ -30,11 +30,6 @@ const MarketplacePage = () => {
         NewfoldRuntime,
     };
 
-	const moduleComponents = {
-		SectionHeader,
-		SectionContent,
-	}
-
 	return (
         <Page className={"wppcd-app-marketplace-page"}>
 			<Container className={'wppcd-app-marketplace-container'}>
@@ -42,7 +37,6 @@ const MarketplacePage = () => {
 				<NewfoldMarketplace 
 					methods={moduleMethods}
 					constants={moduleConstants}
-					Components={moduleComponents}
 				/>
 
 			</Container>

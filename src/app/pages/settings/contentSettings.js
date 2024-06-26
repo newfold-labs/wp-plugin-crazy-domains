@@ -2,7 +2,7 @@ import AppStore from '../../data/store';
 import { crazydomainsSettingsApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
 import { useState } from '@wordpress/element';
-import { Alert, Container, ToggleField } from "@newfold/ui-component-library";
+import { Alert, Container, SelectField } from "@newfold/ui-component-library";
 import { useNotification } from 'App/components/notifications';
 
 const ContentRevisions = ({ setError, notify }) => {

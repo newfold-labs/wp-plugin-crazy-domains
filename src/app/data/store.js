@@ -1,4 +1,5 @@
 import { createContext, useMemo } from '@wordpress/element';
+import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 
 import apiFetch from '@wordpress/api-fetch';
 
@@ -11,7 +12,7 @@ const AppStore = createContext( DEFAULT );
 
 export const crazydomainsApiFetchSettings = async ( options = {} ) => {
 	return await apiFetch( {
-		url: window.WPPCD.resturl + '/crazy-domains/v1/settings',
+		url: NewfoldRuntime.createApiUrl( '/crazy-domains/v1/settings' ),
 		...options,
 	} );
 };
@@ -21,19 +22,6 @@ export const reformStore = ( store, endpoint, response ) => {
 		...store,
 		[ _camelCase( endpoint ) ]: response,
 	};
-};
-
-export const selectors = {
-	getEcommerceCapabilities(store) {
-		let capabilities = new Set();
-		if (store.isWooActive) {
-			capabilities.add('standard');
-			capabilities.add('experience');
-		} else {
-			capabilities.add('upgrade');
-		}
-		return capabilities;
-	},
 };
 
 export const AppStoreProvider = ( { children } ) => {
@@ -57,7 +45,6 @@ export const AppStoreProvider = ( { children } ) => {
 						features: window.NewfoldFeatures.features,
 						toggleableFeatures: window.NewfoldFeatures.togglable,
 					} );
-					window.WPPCD.migrated = true;
 					setBooted( true );
 				} )
 				.catch( ( error ) => {
@@ -72,6 +59,19 @@ export const AppStoreProvider = ( { children } ) => {
 			{ children }{ ' ' }
 		</AppStore.Provider>
 	);
+};
+
+export const selectors = {
+	getEcommerceCapabilities(store) {
+		let capabilities = new Set();
+		if (store.isWooActive) {
+			capabilities.add('standard');
+			capabilities.add('experience');
+		} else {
+			capabilities.add('upgrade');
+		}
+		return capabilities;
+	},
 };
 
 export default AppStore;

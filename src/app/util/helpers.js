@@ -124,6 +124,7 @@ export const updateUI = (
  * @param {Function} passError    setter for the error in component
  * @param {Function} thenCallback method to call in promise then
  * @return {Promise} apiFetch promise with attached then and catch callbacks
+ */
 export const crazydomainsSettingsApiFetch = ( data, passError, thenCallback ) => {
 	return apiFetch( {
 		// path: 'crazydomains/v1/settings', //  can't use path bacause it breaks on temp domains
