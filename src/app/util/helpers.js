@@ -1,5 +1,6 @@
 import { dispatch } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
+import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 
 let lastNoticeId;
 const W_NAV = document.querySelector( '#toplevel_page_crazy-domains .wp-submenu' );
@@ -128,7 +129,7 @@ export const updateUI = (
 export const crazydomainsSettingsApiFetch = ( data, passError, thenCallback ) => {
 	return apiFetch( {
 		// path: 'crazydomains/v1/settings', //  can't use path bacause it breaks on temp domains
-		url: window.WPPCD.resturl + '/crazy-domains/v1/settings',
+		url: NewfoldRuntime.createApiUrl( '/crazy-domains/v1/settings' ),
 		method: 'POST',
 		data,
 	} )
