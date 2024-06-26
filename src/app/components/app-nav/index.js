@@ -1,10 +1,15 @@
-import { useEffect } from '@wordpress/element';
+import { useEffect, useState } from '@wordpress/element';
+import apiFetch from '@wordpress/api-fetch';
 import { useViewportMatch } from '@wordpress/compose';
-import { Modal, SidebarNavigation } from "@newfold/ui-component-library"
+import { addQueryArgs } from '@wordpress/url';
+import classnames from 'classnames';
+import { filter } from 'lodash';
+import { Modal, SidebarNavigation } from '@newfold/ui-component-library';
 import { NavLink, useLocation } from 'react-router-dom';
-import Logo from "./logo";
-import { topRoutes, utilityRoutes } from "../../data/routes";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Bars3Icon } from '@heroicons/react/24/outline';
+import { topRoutes, utilityRoutes } from 'App/data/routes';
+import Logo from './logo';
+import { default as NewfoldNotifications } from '@modules/wp-module-notifications/assets/js/components/notifications/';
 
 export const SideNavHeader = () => {
 	return (
@@ -15,7 +20,7 @@ export const SideNavHeader = () => {
 }
 
 export const SideNavMenu = () => {
-	let location = useLocation();
+	const location = useLocation();
 
 	const primaryMenu = () => {
 		return (
@@ -67,7 +72,11 @@ export const SideNavMenu = () => {
 
 		// open active's submenu if it exists
 		const activeMenu = document.querySelector('.wppcd-app-sidenav .active');
-		if (activeMenu && null !== activeMenu.nextSibling && activeMenu.nextSibling.classList.contains('wppcd-app-navitem-submenu')) {
+		if (
+			activeMenu && 
+			null !== activeMenu.nextSibling && 
+			activeMenu.nextSibling.classList.contains('wppcd-app-navitem-submenu')
+		) {
 			activeMenu.nextSibling.classList.remove('nfd-hidden');
 		}
 	}
@@ -131,6 +140,9 @@ export const SideNavMenuSubItem = ({ label, name, path, action }) => {
 }
 
 export const SideNav = () => {
+	const  location = useLocation();
+	const hashedPath = '#' + location.pathname;
+
 	return (
 		<aside className="wppcd-app-sidenav nfd-shrink-0 nfd-hidden min-[783px]:nfd-block nfd-pb-6 nfd-bottom-0 nfd-w-56">
 			<SidebarNavigation>
@@ -139,9 +151,23 @@ export const SideNav = () => {
 					<SideNavMenu />
 				</SidebarNavigation.Sidebar>
 			</SidebarNavigation>
+			<NewfoldNotifications
+				constants={ {
+					context: 'crazy-domains-app-nav',
+					page: hashedPath,
+				} }
+				methods={ {
+					apiFetch,
+					addQueryArgs,
+					classnames,
+					filter,
+					useState,
+					useEffect,
+				} }
+			/>
 		</aside>
 	);
-}
+};
 
 export const MobileNav = () => {
 	const [isOpen, setIsOpen] = useState(false);

@@ -1,11 +1,9 @@
 import './stylesheet.scss';
-import './tailwind.css';
+import './tailwind.pcss';
 
-import { Root } from "@newfold/ui-component-library";
-import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import AppStore, { AppStoreProvider } from './data/store';
 import { useLocation, HashRouter as Router } from 'react-router-dom';
-import { __ } from '@wordpress/i18n';
+import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { SnackbarList, Spinner } from '@wordpress/components';
 import classnames from 'classnames';
 import AppRoutes from './data/routes';
@@ -14,50 +12,37 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { store as noticesStore } from '@wordpress/notices';
-import { setActiveSubnav } from './util/helpers';
 import { kebabCase, filter } from 'lodash';
+import { useHandlePageLoad } from './util/hooks';
+import { Root } from "@newfold/ui-component-library";
 import { AppNav } from './components/app-nav';
 import { SiteInfoBar } from './components/site-info';
 import { NotificationFeed } from 'App/components/notifications';
-import { addQueryArgs } from '@wordpress/url';
 
 // component sourced from module
 import { default as NewfoldNotifications } from '../../vendor/newfold-labs/wp-module-notifications/assets/js/components/notifications/';
 // to pass to notifications module
 import apiFetch from '@wordpress/api-fetch';
+import { addQueryArgs } from '@wordpress/url';
 import { useState } from '@wordpress/element';
 
 const Notices = () => {
-	if ('undefined' === typeof noticesStore) {
-		return null;
-	}
 	const notices = useSelect(
-		(select) =>
-			select(noticesStore)
+		( select ) =>
+			select( noticesStore )
 				.getNotices()
-				.filter((notice) => notice.type === 'snackbar'),
+				.filter( ( notice ) => notice.type === 'snackbar' ),
 		[]
 	);
-	const { removeNotice } = useDispatch(noticesStore);
+	const { removeNotice } = useDispatch( noticesStore );
+
 	return (
 		<SnackbarList
 			className="edit-site-notices"
-			notices={notices}
-			onRemove={removeNotice}
+			notices={ notices }
+			onRemove={ removeNotice }
 		/>
 	);
-};
-
-const handlePageLoad = () => {
-	const location = useLocation();
-	const routeContents = document.querySelector('.wppcd-app-body-inner');
-	useEffect(() => {
-		setActiveSubnav(location.pathname);
-		window.scrollTo(0, 0);
-		if (routeContents) {
-			routeContents.focus({ preventScroll: true });
-		}
-	}, [location.pathname]);
 };
 
 const AppBody = (props) => {
@@ -65,7 +50,7 @@ const AppBody = (props) => {
 	const hashedPath = '#' + location.pathname;
 	const { booted, hasError } = useContext(AppStore);
 
-	handlePageLoad();
+	useHandlePageLoad();
 
 	return (
 		<main
@@ -104,7 +89,7 @@ const AppBody = (props) => {
 			</div>
 
 			<div className="wppcd-app-snackbar">
-				<Notices />
+			{ 'undefined' !== typeof noticesStore && <Notices /> }
 			</div>
 		</main>
 	);

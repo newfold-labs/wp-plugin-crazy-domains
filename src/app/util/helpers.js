@@ -1,58 +1,13 @@
+import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { dispatch } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
-import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 
 let lastNoticeId;
-const W_NAV = document.querySelector( '#toplevel_page_crazy-domains .wp-submenu' );
-/**
- * Set active nav in wp admin sub pages.
- *
- * @param  path
- */
-export const setActiveSubnav = ( path ) => {
-	if ( W_NAV ) {
-		const W_NAV_LIS = W_NAV.children;
-		if ( W_NAV_LIS ) {
-			for ( let i = 0; i < W_NAV_LIS.length; i++ ) {
-				// get all children li elements
-				const link = W_NAV_LIS[ i ].children[ 0 ];
-				if ( link ) {
-					const href = link.getAttribute( 'href' );
-					// check each child a href for match with path
-					if (
-						href.endsWith( path ) || // match
-						( path.includes( '/marketplace/' ) &&
-							href.endsWith( 'marketplace' ) ) ||
-						( path === '/' && href.endsWith( 'home' ) )
-					) {
-						// highlight home subnav for root page
-						// update li class when match
-						W_NAV_LIS[ i ].classList.add( 'current' );
-					} else {
-						W_NAV_LIS[ i ].classList.remove( 'current' );
-					}
-					// highlight our home nav for root level access
-					const W_HOME_NAV = document.querySelector(
-						'.wppcd-nav a[href="#/home"]'
-					);
-					if ( W_HOME_NAV ) {
-						if ( path === '/' || path === '/home' ) {
-							W_HOME_NAV.classList.add( 'active' );
-						} else {
-							W_HOME_NAV.classList.remove( 'active' );
-						}
-					}
-				}
-			}
-		}
-	}
-};
 
 /**
  * Wrapper method to dispatch snackbar notice
  *
- * @param  string text text for notice
- * @param  text
+ * @param {string} text text for notice
  */
 export const dispatchUpdateSnackbar = ( text = 'Settings Saved' ) => {
 	//clear previous notice so they don't stack up when quickly saving multiple settings
@@ -151,7 +106,7 @@ export const crazydomainsSettingsApiFetch = ( data, passError, thenCallback ) =>
  */
 export const crazydomainsPurgeCacheApiFetch = ( data, passError, thenCallback ) => {
 	return apiFetch( {
-		url: window.WPPCD.resturl + '/crazy-domains/v1/caching',
+		url: NewfoldRuntime.createApiUrl( '/crazy-domains/v1/caching' ),
 		method: 'DELETE',
 		data,
 	} )
