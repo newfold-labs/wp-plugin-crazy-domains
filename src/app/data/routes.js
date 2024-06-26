@@ -16,7 +16,7 @@ import Marketplace from '../pages/marketplace';
 import Settings from '../pages/settings';
 import Performance from '../pages/performance';
 import Help from '../pages/help';
-import EcomerceStore from '../pages/ecommerce';
+import Store from '../pages/ecommerce/page';
 import Admin from '../pages/admin';
 
 export const AppRoutes = () => {
@@ -69,31 +69,32 @@ export const routes = [
 	{
 		name: '/store',
 		title: __('Store', 'wp-plugin-crazy-domains'),
-		Component: EcomerceStore,
+		Component: Store,
 		Icon: BuildingStorefrontIcon,
 		condition: true,
 		subRoutes: [
 			{
 				name: '/store/products',
-				title: __( 'Products', 'wp-plugin-crazy-domains' ),
+				title: __( 'Products & Services', 'wp-plugin-crazy-domains' ),
 			},
-			NewfoldRuntime.hasCapability( 'hasYithExtended' )
-			? {
-				name: "/store/sales_discounts",
-				title: __("Sales & Discounts", "wp-plugin-crazy-domains"),
-			}
-			: null,
+			NewfoldRuntime.hasCapability( 'hasYithExtended' ) ||
+			NewfoldRuntime.hasCapability( 'canAccessGlobalCTB' )
+				? {
+						name: '/store/sales_discounts',
+						title: __( 'Sales & Promotions', 'wp-plugin-crazy-domains' ),
+				  }
+				: null,
 			NewfoldRuntime.isWoo
-			? {
-				name: '/store/payments',
-				title: __( 'Payments', 'wp-plugin-crazy-domains' ),
-			}
-			: null,
+				? {
+						name: '/store/payments',
+						title: __( 'Payments', 'wp-plugin-crazy-domains' ),
+				  }
+				: null,
 			{
 				name: '/store/details',
 				title: __( 'Store Details', 'wp-plugin-crazy-domains' ),
-			}
-		].filter(Boolean),
+			},
+		].filter( Boolean ),
 	},
 	{
 		name: '/marketplace',
