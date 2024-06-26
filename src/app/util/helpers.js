@@ -167,17 +167,5 @@ export const crazydomainsPurgeCacheApiFetch = ( data, passError, thenCallback ) 
  * Coming soon admin bar
  */
 export const comingSoonAdminbarToggle = ( comingSoon ) => {
-	const comingsoonadminbar = document.getElementById(
-		'nfd-site-status-text'
-	);
-	if ( ! comingsoonadminbar ) {
-		return;
-	}
-	if ( ! comingSoon ) {
-		comingsoonadminbar.style.color = "#048200";
-		comingsoonadminbar.textContent = "Live";
-	} else {
-		comingsoonadminbar.style.color = "#E01C1C";
-		comingsoonadminbar.textContent = "Coming Soon";
-	}
+	window.NewfoldRuntime.comingSoon.toggleAdminBarSiteStatus( comingSoon );
 };

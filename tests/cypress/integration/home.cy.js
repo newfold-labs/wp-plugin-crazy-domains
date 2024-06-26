@@ -6,20 +6,19 @@ describe('Home Page', function () {
 
 	before(() => {
 		cy.visit('/wp-admin/admin.php?page=' + pluginId + '#/home');
-		cy.injectAxe();
 	});
 
 	it('Site Info Exists', () => {
 		cy.window().then((win) => {
 			const siteTitle = win.NewfoldRuntime.siteTitle;
-
 			cy.get('.' + appId + '-app-site-info').contains('h3', siteTitle)
 			.scrollIntoView()
 			.should('be.visible');
-		  })
+		})
 	});
 
 	it('Is Accessible', () => {
+		cy.injectAxe();
 		cy.wait(500);
 		cy.checkA11y('.' + appId + '-app-body');
 	});
