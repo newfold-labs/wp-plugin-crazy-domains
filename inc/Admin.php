@@ -28,14 +28,14 @@ final class Admin {
 		/* Add inline style to hide subnav link */
 		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
 		/* Add runtime for data store */
-		\add_filter('newfold_runtime', array( __CLASS__, 'add_to_runtime' ) );
+		\add_filter( 'newfold_runtime', array( __CLASS__, 'add_to_runtime' ) );
 	}
 
 	/**
 	 * Add to runtime
-	 * 
+	 *
 	 * @param array $sdk - runtime properties from module
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function add_to_runtime( $sdk ) {
