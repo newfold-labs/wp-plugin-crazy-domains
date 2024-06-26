@@ -57,7 +57,7 @@ module.exports = defineConfig({
 			if ( semver.satisfies( config.env.wpSemverVersion, '<6.4.0' ) || semver.satisfies( config.env.phpSemverVersion, '<7.4.0' )) {
 				config.excludeSpecPattern = config.excludeSpecPattern.concat( [
 					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Site-Capabilities/**',
-					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/homePageWithWoo.cy.js'
+					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/homePageWithWoo.cy.js',
 				] );
 			}
 
@@ -83,7 +83,6 @@ module.exports = defineConfig({
         ],
 		excludeSpecPattern: [
 			"vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/wp-module-support/",
-            'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/5-AI-SiteGen-onboarding-flow/*.cy.js', // skip onboarding sitegen tests for now
         ],
         supportFile: 'tests/cypress/support/index.js',
         testIsolation: false,
