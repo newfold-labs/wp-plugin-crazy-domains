@@ -109,15 +109,18 @@ final class Admin {
 			0
 		);
 
-		foreach ( self::subpages() as $route => $title ) {
-			\add_submenu_page(
-				'crazy-domains',
-				$title,
-				$title,
-				'manage_options',
-				$route,
-				array( __CLASS__, 'render' )
-			);
+		// If we're outside of App, add subpages to App menu
+		if ( false === ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'crazy-domains' ) >= 0 ) ) { // phpcs:ignore		
+			foreach ( self::subpages() as $route => $title ) {
+				\add_submenu_page(
+					'crazy-domains',
+					$title,
+					$title,
+					'manage_options',
+					$route,
+					array( __CLASS__, 'render' )
+				);
+			}
 		}
 	}
 
