@@ -1,46 +1,52 @@
 import { 
 	HomeIcon,
 	ShoppingBagIcon,
-	WrenchScrewdriverIcon,
 	BoltIcon, 
 	AdjustmentsHorizontalIcon,
 	BuildingStorefrontIcon,
 	QuestionMarkCircleIcon } 
 from '@heroicons/react/24/outline';
 import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
-import { getMarketplaceSubnavRoutes } from '../../../vendor/newfold-labs/wp-module-marketplace/components/marketplaceSubnav';
+import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
 import { Route, Routes } from 'react-router-dom';
-import { __ } from '@wordpress/i18n';
 import Home from '../pages/home';
-import Marketplace from '../pages/marketplace';
-import Settings from '../pages/settings';
-import Performance from '../pages/performance';
-import Help from '../pages/help';
 import Store from '../pages/ecommerce/page';
+import Marketplace from '../pages/marketplace';
+import Performance from '../pages/performance';
+import Settings from '../pages/settings';
+import Help from '../pages/help';
 import Admin from '../pages/admin';
+
+const addPartialMatch = ( prefix, path ) =>
+	prefix === path ? `${ prefix }/*` : path;
 
 export const AppRoutes = () => {
 	return (
 		<Routes>
-			{ routes.map( ( page ) => (
-				<Route
-					end
-					key={ page.name }
-					path={
-						'/marketplace' === page.name
-							? '/marketplace/*'
-							: page.name
-					}
-					element={ <page.Component /> }
-				/>
-			) ) }
+			{ routes.map(
+				( page ) =>
+					true === page.condition && (
+						<Route
+							end
+							key={ page.name }
+							path={ addPartialMatch(
+								'/marketplace',
+								addPartialMatch( '/store', page.name )
+							) }
+							element={ <page.Component /> }
+						/>
+					)
+			) }
 			<Route path="/" element={ <Home /> } />
 			<Route
 				path="*"
 				element={
 					<main style={ { padding: '1rem' } }>
 						<p>
-							{ __( "There's nothing here!", 'wp-plugin-crazy-domains' ) }
+							{ __(
+								"There's nothing here!",
+								'wp-plugin-crazy-domains'
+							) }
 						</p>
 					</main>
 				}
@@ -123,6 +129,7 @@ export const routes = [
 		title: __( 'Help', 'wp-plugin-crazy-domains' ),
 		Component: Help,
 		Icon: QuestionMarkCircleIcon,
+		condition: true,
 	},
 	{
 		name: '/admin',

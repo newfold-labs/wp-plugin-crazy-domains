@@ -53,6 +53,9 @@ final class Admin {
 		$home        = array(
 			'crazy-domains#/home' => __( 'Home', 'wp-plugin-crazy-domains' ),
 		);
+		$store       = array(
+			'crazy-domains#/store' => __( 'Store', 'wp-plugin-crazy-domains' ),
+		);
 		$marketplace = array(
 			'crazy-domains#/marketplace' => __( 'Marketplace', 'wp-plugin-crazy-domains' ),
 		);
@@ -71,6 +74,7 @@ final class Admin {
 
 		return array_merge(
 			$home,
+			$store,
 			$marketplace,
 			$performance,
 			$settings,
