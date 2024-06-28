@@ -1,4 +1,3 @@
-import help from '../../data/help';
 import { 
 	Button,
 	Card,
@@ -6,6 +5,7 @@ import {
 	Container,
 	Page
 } from "@newfold/ui-component-library";
+import help from 'App/data/help';
 
 const HelpCard = ({ item }) => {
 	return (
