@@ -89,6 +89,10 @@ const ComingSoon = () => {
 	};
 
 	useUpdateEffect( () => {
+		setComingSoon( store.comingSoon );
+	}, [ store.comingSoon ] );
+
+	useUpdateEffect( () => {
 		setStore( {
 			...store,
 			comingSoon,
