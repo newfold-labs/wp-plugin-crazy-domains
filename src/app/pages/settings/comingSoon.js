@@ -97,6 +97,7 @@ const ComingSoon = () => {
 			...store,
 			comingSoon,
 		} );
+
 		notifySuccess();
 		comingSoonAdminbarToggle( comingSoon );
 	}, [ comingSoon ] );
