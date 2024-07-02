@@ -27,7 +27,6 @@ final class Data {
 				'version' => CRAZYDOMAINS_PLUGIN_VERSION,
 				'assets'  => CRAZYDOMAINS_PLUGIN_URL . 'assets/',
 				'brand'   => $crazydomains_module_container->plugin()->brand,
-				'region'  => $crazydomains_module_container->plugin()->region,
 			),
 		);
 		return $runtime;
