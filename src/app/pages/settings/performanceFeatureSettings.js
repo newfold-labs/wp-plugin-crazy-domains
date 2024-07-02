@@ -69,7 +69,7 @@ const PerformanceFeatureSettings = () => {
 			performance,
 		} );
 		notifySuccess( getPerformanceNoticeTitle, getPerformanceNoticeText );
-		updateUI( '.hgwp-app-navitem-Performance', performance );
+		updateUI( '.wppcd-app-navitem-Performance', performance );
 	}, [ performance ] );
 
 	return (
