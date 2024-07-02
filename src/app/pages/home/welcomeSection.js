@@ -1,5 +1,5 @@
 import { OnboardingScreen } from "@newfold-labs/wp-module-ecommerce";
-import { useUpdateEffect } from 'react-use';
+import { useUpdateEffect } from "react-use";
 
 import { useNotification } from "../../components/notifications";
 import AppStore from "../../data/store";
