@@ -133,7 +133,7 @@ export const routes = [
 	},
 	{
 		name: '/admin',
-		title: __( 'Admin', 'wp-plugin-hostgator' ),
+		title: __( 'Admin', 'wp-plugin-crazy-domains' ),
 		Component: Admin,
 		condition: true,
 	},
