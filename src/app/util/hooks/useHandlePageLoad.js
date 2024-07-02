@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
  */
 const useHandlePageLoad = () => {
 	const location = useLocation();
-	const routeContents = document.querySelector( '.wppbh-app-body-inner' );
+	const routeContents = document.querySelector( '.wppcd-app-body-inner' );
 
 	useEffect( () => {
 		window.scrollTo( 0, 0 );
