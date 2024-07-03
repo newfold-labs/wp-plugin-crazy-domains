@@ -2,7 +2,6 @@ import { useEffect, useState } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import { useViewportMatch } from '@wordpress/compose';
 import { addQueryArgs } from '@wordpress/url';
-import classnames from 'classnames';
 import { filter } from 'lodash';
 import { Modal, SidebarNavigation } from '@newfold/ui-component-library';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -159,7 +158,6 @@ export const SideNav = () => {
 				methods={ {
 					apiFetch,
 					addQueryArgs,
-					classnames,
 					filter,
 					useState,
 					useEffect,

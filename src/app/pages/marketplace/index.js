@@ -1,7 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect } from '@wordpress/element';
 import { useLocation, useMatch, useNavigate } from 'react-router-dom';
-import classnames from 'classnames';
 import { Container, Page } from '@newfold/ui-component-library';
 import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
 // component sourced from marketplace module
@@ -35,7 +34,7 @@ const MarketplacePage = () => {
     // methods to pass to module
     const moduleMethods = {
         apiFetch,
-        classnames,
+        classNames,
         useState,
         useEffect,
         useLocation,

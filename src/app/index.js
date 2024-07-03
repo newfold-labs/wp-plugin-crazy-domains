@@ -5,7 +5,6 @@ import AppStore, { AppStoreProvider } from './data/store';
 import { useLocation, HashRouter as Router } from 'react-router-dom';
 import { NewfoldRuntime } from '@newfold-labs/wp-module-runtime';
 import { SnackbarList, Spinner } from '@wordpress/components';
-import classnames from 'classnames';
 import AppRoutes from './data/routes';
 import ErrorCard from './components/errorCard';
 import { useDispatch, useSelect } from '@wordpress/data';
@@ -55,7 +54,7 @@ const AppBody = (props) => {
 	return (
 		<main
 			id="wppcd-app-rendered"
-			className={classnames(
+			className={classNames(
 				'wpadmin-brand-crazydomains',
 				`wppcd-wp-${NewfoldRuntime.wpversion}`,
 				`wppcd-page-${kebabCase(location.pathname)}`,
@@ -71,7 +70,6 @@ const AppBody = (props) => {
 				methods={{
 					apiFetch,
 					addQueryArgs,
-					classnames,
 					filter,
 					useState,
 					useEffect
