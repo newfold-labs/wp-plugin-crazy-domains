@@ -1,5 +1,5 @@
 import { Button } from '@wordpress/components';
-import { Heading } from '..';
+import { Title } from '@newfold/ui-component-library';
 import { ReactComponent as Brand } from '../../../../assets/svg/crazydomains-logo.svg';
 import { delay } from 'lodash';
 
@@ -27,9 +27,9 @@ const Logo = () => {
 	return (
 		<div className="wppcd-logo-wrap">
 			<Mark />
-			<Heading level="2" className="screen-reader-text">
+			<Title as="h2" className="screen-reader-text">
 				{ __( 'Crazy Domains WordPress Plugin', 'wp-plugin-crazy-domains' ) }
-			</Heading>
+			</Title>
 		</div>
 	);
 };
