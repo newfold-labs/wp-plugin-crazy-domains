@@ -11,6 +11,8 @@ use WP_Forge\WPUpdateHandler\PluginUpdater;
 use WP_Forge\UpgradeHandler\UpgradeHandler;
 use NewfoldLabs\WP\ModuleLoader\Container;
 use NewfoldLabs\WP\ModuleLoader\Plugin;
+use NewfoldLabs\WP\Module\Features\Features;
+
 use function NewfoldLabs\WP\ModuleLoader\container as setContainer;
 
 // Composer autoloader
@@ -36,7 +38,7 @@ $crazydomains_module_container = new Container(
 $crazydomains_module_container->set(
 	'plugin',
 	$crazydomains_module_container->service(
-		function() {
+		function () {
 			return new Plugin(
 				array(
 					'id'           => 'crazy-domains',
@@ -133,3 +135,6 @@ if ( is_admin() ) {
 
 AdminBar::init();
 LoginRedirect::init();
+
+// Instantiate the Features singleton
+Features::getInstance();

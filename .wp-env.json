@@ -1,5 +1,5 @@
 {
-  "core": "WordPress/WordPress#tags/6.4.1",
+  "core": "WordPress/WordPress#tags/6.6",
   "config": {
     "WP_DEBUG": true,
     "WP_DEBUG_LOG": true,
@@ -9,6 +9,9 @@
   "phpVersion": "8.1",
   "plugins": [
     "."
+  ],
+  "themes": [
+    "https://downloads.wordpress.org/theme/yith-wonder.latest-stable.zip"
   ],
   "port": 8884,
   "testsPort": 8885,

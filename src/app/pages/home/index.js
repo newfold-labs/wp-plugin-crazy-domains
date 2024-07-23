@@ -1,5 +1,4 @@
-import { Page } from '../../components/page';
-import { SectionContainer, SectionHeader, SectionContent } from '../../components/section';
+import { Page, Container } from "@newfold/ui-component-library";
 import ComingSoon from '../settings/comingSoon';
 import SettingsSection from './settingsSection';
 import WebContentSection from './webContentSection';
@@ -10,27 +9,27 @@ const Home = () => {
 	return (
 		<Page title="Settings" className={"wppcd-app-home-page wppcd-home"}>
 			<WelcomeSection />
-			<SectionContainer className={'wppcd-app-home-container'}>
-				<SectionHeader
+			<Container className={'wppcd-app-home-container'}>
+				<Container.Header
 					title={__('More', 'wp-plugin-carzy-domains')}
 					className={'wppcd-app-home-header display-none'}
 				/>
-				<SectionContent separator={true} className={'wppcd-app-home-coming-soon'}>
+				<Container.Block separator={true} className={'wppcd-app-home-coming-soon'}>
 					<ComingSoon />
-				</SectionContent>
+				</Container.Block>
 
-				<SectionContent separator={true} className={'wppcd-app-home-content'}>
+				<Container.Block separator={true} className={'wppcd-app-home-content'}>
 					<WebContentSection />
-				</SectionContent>
+				</Container.Block>
 
-				<SectionContent separator={true} className={'wppcd-app-home-settings'}>
+				<Container.Block separator={true} className={'wppcd-app-home-settings'}>
 					<SettingsSection />
-				</SectionContent>
+				</Container.Block>
 
-				<SectionContent separator={false} className={'wppcd-app-home-hosting'}>
+				<Container.Block separator={false} className={'wppcd-app-home-hosting'}>
 					<WebHostingSection />
-				</SectionContent>
-			</SectionContainer>
+				</Container.Block>
+			</Container>
 		</Page>
 	);
 };

@@ -5,21 +5,20 @@ import {
 } from '../../util/helpers';
 import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
-import { Alert, ToggleField } from "@newfold/ui-component-library";
-import { SectionSettings } from "../../components/section";
-import { useNotification } from '../../components/notifications/feed';
+import { Alert, Container, ToggleField } from "@newfold/ui-component-library";
+import { useNotification } from 'App/components/notifications';
 
 const ComingSoon = () => {
-	const { store, setStore } = useContext(AppStore);
-	const [comingSoon, setComingSoon] = useState(store.comingSoon);
-	const [isError, setError] = useState(false);
+	const { store, setStore } = useContext( AppStore );
+	const [ comingSoon, setComingSoon ] = useState( store.comingSoon );
+	const [ isError, setError ] = useState( false );
 
 	let notify = useNotification();
 
 	const getComingSoonNoticeTitle = () => {
 		return comingSoon
-			? __('Coming soon activated', 'wp-plugin-crazy-domains')
-			: __('Coming soon deactivated', 'wp-plugin-crazy-domains');
+			? __( 'Coming soon activated', 'wp-plugin-crazy-domains' )
+			: __( 'Coming soon deactivated', 'wp-plugin-crazy-domains' );
 	};
 
 	const getComingSoonNoticeText = () => {
@@ -34,14 +33,50 @@ const ComingSoon = () => {
 			);
 	};
 
+	const getComingSoonSectionTitle = () => {
+		const getStatus = () => {
+			return comingSoon ? (
+				<span className="nfd-text-[#e10001] coming-soon-status">
+					{ __( 'Not Live', 'wp-plugin-crazy-domains' ) }
+				</span>
+			) : (
+				<span className="nfd-text-[#008112] coming-soon-status">
+					{ __( 'Live', 'wp-plugin-crazy-domains' ) }
+				</span>
+			);
+		};
+
+		return (
+			<span>
+				{ __( 'Site Status', 'wp-plugin-crazy-domains' ) }: { getStatus() }
+			</span>
+		);
+	};
+
 	const toggleComingSoon = () => {
-		crazydomainsSettingsApiFetch({ comingSoon: !comingSoon }, setError, (response) => {
-			setComingSoon(!comingSoon);
-		});
+		crazydomainsSettingsApiFetch(
+			{ comingSoon: !comingSoon },
+			setError,
+			( response ) => {
+				setComingSoon( !comingSoon );
+			}
+		);
+	};
+
+	const getComingSoonSectionDescription = () => {
+		return comingSoon
+			? __(
+					'Turn off your "Coming Soon" page when you are ready to launch your website.',
+					'wp-plugin-crazy-domains'
+			  )
+			: __(
+					'Turn on your "Coming Soon" page when you need to make major changes to your website.',
+					'wp-plugin-crazy-domains'
+			  );
 	};
 
 	const notifySuccess = () => {
-		notify.push("coming-soon-toggle-notice", {
+		notify.push( "coming-soon-toggle-notice", {
 			title: getComingSoonNoticeTitle(),
 			description: (
 				<span>
@@ -50,23 +85,27 @@ const ComingSoon = () => {
 			),
 			variant: "success",
 			autoDismiss: 5000,
-		});
+		} );
 	};
 
-	useUpdateEffect(() => {
-		setStore({
+	useUpdateEffect( () => {
+		setComingSoon( store.comingSoon );
+	}, [ store.comingSoon ] );
+
+	useUpdateEffect( () => {
+		setStore( {
 			...store,
 			comingSoon,
-		});
+		} );
 
 		notifySuccess();
-		comingSoonAdminbarToggle(comingSoon);
-	}, [comingSoon]);
+		comingSoonAdminbarToggle( comingSoon );
+	}, [ comingSoon ] );
 
 	return (
-		<SectionSettings
-			title={__('Maintenance Mode', 'wp-plugin-crazy-domains')}
-			description={__('Still building your site? Need to make a big change?', 'wp-plugin-crazy-domains')}
+		<Container.SettingsField
+			title={ getComingSoonSectionTitle() }
+			description={ getComingSoonSectionDescription() }
 		>
 			<div className="nfd-flex nfd-flex-col nfd-gap-6">
 				<ToggleField
@@ -76,7 +115,7 @@ const ComingSoon = () => {
 						'Your Coming Soon page lets you hide your site from visitors while you make the magic happen.',
 						'wp-plugin-crazy-domains'
 					)}
-					checked={comingSoon}
+					checked={ comingSoon }
 					onChange={() => {
 						toggleComingSoon();
 					}}
@@ -94,7 +133,7 @@ const ComingSoon = () => {
 					</Alert>
 				}
 			</div>
-		</SectionSettings>
+		</Container.SettingsField>
 	);
 }
 
