@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a7043591d1dde1a78df4d5300cc87f0",
+    "content-hash": "77c7535f0d903cadb17e73d1e2f6d186",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2219,16 +2219,16 @@
         },
         {
             "name": "newfold-labs/wp-php-standards",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-php-standards.git",
-                "reference": "a486fb541e890ee87dc387eaea0644101e728464"
+                "reference": "7ef8833b93f8bcdf52c6006f3adb53972d0799a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-php-standards/zipball/a486fb541e890ee87dc387eaea0644101e728464",
-                "reference": "a486fb541e890ee87dc387eaea0644101e728464",
+                "url": "https://api.github.com/repos/newfold-labs/wp-php-standards/zipball/7ef8833b93f8bcdf52c6006f3adb53972d0799a6",
+                "reference": "7ef8833b93f8bcdf52c6006f3adb53972d0799a6",
                 "shasum": ""
             },
             "require": {
@@ -2249,10 +2249,10 @@
             ],
             "description": "PHP Code Sniffer Standards for Newfold WordPress projects.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-php-standards/tree/1.2.3",
+                "source": "https://github.com/newfold-labs/wp-php-standards/tree/1.2.4",
                 "issues": "https://github.com/newfold-labs/wp-php-standards/issues"
             },
-            "time": "2024-04-22T20:09:45+00:00"
+            "time": "2024-07-22T23:16:21+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",
