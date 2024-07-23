@@ -1,15 +1,17 @@
 // <reference types="Cypress" />
 
 describe('Help Page', function () {
+	const appId = Cypress.env( 'appId' );
+	const pluginId = Cypress.env( 'pluginId' );
 
 	before(() => {
-		cy.visit('/wp-admin/admin.php?page=crazy-domains#/help');
+		cy.visit('/wp-admin/admin.php?page=' + pluginId + '#/help');
 	});
 	
 	it('Is Accessible', () => {
 		cy.injectAxe();
-		cy.wait(500);
-		cy.a11y('.wppcd-app-body');
+		cy.wait(1000);
+		cy.a11y('.' + appId + '-app-body');
 	});
 
 	it('Email Card Exists', () => {

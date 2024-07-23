@@ -8,6 +8,7 @@
 namespace CrazyDomains;
 
 use CrazyDomains\Data;
+use function NewfoldLabs\WP\Module\Features\isEnabled;
 
 /**
  * \CrazyDomains\Admin
@@ -27,11 +28,15 @@ final class Admin {
 		/* Add inline style to hide subnav link */
 		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
 		/* Add runtime for data store */
-		\add_filter('newfold_runtime', array( __CLASS__, 'add_to_runtime' ) );
+		\add_filter( 'newfold_runtime', array( __CLASS__, 'add_to_runtime' ) );
 	}
 
 	/**
 	 * Add to runtime
+	 *
+	 * @param array $sdk - runtime properties from module
+	 *
+	 * @return array
 	 */
 	public static function add_to_runtime( $sdk ) {
 		return array_merge( $sdk, Data::runtime() );
@@ -45,12 +50,35 @@ final class Admin {
 	 * @return array
 	 */
 	public static function subpages() {
-		return array(
-			'crazy-domains#/home'        => __( 'Home', 'wp-plugin-crazy-domains' ),
+		$home        = array(
+			'crazy-domains#/home' => __( 'Home', 'wp-plugin-crazy-domains' ),
+		);
+		$store       = array(
+			'crazy-domains#/store' => __( 'Store', 'wp-plugin-crazy-domains' ),
+		);
+		$marketplace = array(
 			'crazy-domains#/marketplace' => __( 'Marketplace', 'wp-plugin-crazy-domains' ),
+		);
+		// add performance if enabled
+		$performance = isEnabled( 'performance' )
+		? array(
 			'crazy-domains#/performance' => __( 'Performance', 'wp-plugin-crazy-domains' ),
-			'crazy-domains#/settings'    => __( 'Settings', 'wp-plugin-crazy-domains' ),
-			'crazy-domains#/help'        => __( 'Help', 'wp-plugin-crazy-domains' ),
+		)
+		: array();
+		$settings    = array(
+			'crazy-domains#/settings' => __( 'Settings', 'wp-plugin-crazy-domains' ),
+		);
+		$help        = array(
+			'crazy-domains#/help' => __( 'Help', 'wp-plugin-crazy-domains' ),
+		);
+
+		return array_merge(
+			$home,
+			$store,
+			$marketplace,
+			$performance,
+			$settings,
+			$help,
 		);
 	}
 
@@ -85,15 +113,18 @@ final class Admin {
 			0
 		);
 
-		foreach ( self::subpages() as $route => $title ) {
-			\add_submenu_page(
-				'crazy-domains',
-				$title,
-				$title,
-				'manage_options',
-				$route,
-				array( __CLASS__, 'render' )
-			);
+		// If we're outside of App, add subpages to App menu
+		if ( false === ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'crazy-domains' ) >= 0 ) ) { // phpcs:ignore		
+			foreach ( self::subpages() as $route => $title ) {
+				\add_submenu_page(
+					'crazy-domains',
+					$title,
+					$title,
+					'manage_options',
+					$route,
+					array( __CLASS__, 'render' )
+				);
+			}
 		}
 	}
 
@@ -142,7 +173,7 @@ final class Admin {
 		\wp_register_script(
 			'crazydomains-script',
 			CRAZYDOMAINS_BUILD_URL . '/index.js',
-			array_merge( $asset['dependencies'], [ 'nfd-runtime' ] ),
+			array_merge( $asset['dependencies'], array( 'newfold-features', 'nfd-runtime' ) ),
 			$asset['version'],
 			true
 		);
