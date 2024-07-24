@@ -73,6 +73,6 @@
     "require-dev": {
         "newfold-labs/wp-php-standards": "^1.2",
         "wp-cli/i18n-command": "^2.5",
-        "wp-phpunit/wp-phpunit": "^6.4"
+        "wp-phpunit/wp-phpunit": "^6.6"
     }
 }
