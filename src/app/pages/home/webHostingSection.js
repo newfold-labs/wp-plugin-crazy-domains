@@ -1,9 +1,9 @@
 import ActionField from "../../components/action-field";
-import { SectionSettings } from "../../components/section";
+import { Container } from "@newfold/ui-component-library";
 
 const WebHostingSection = () => {
 	return (
-		<SectionSettings
+		<Container.SettingsField
 			title={__('Web Hosting', 'wp-plugin-crazy-domains')}
 			description={__('Access & manage your Carzy Domains account.', 'wp-plugin-crazy-domains')}
 		>
@@ -25,7 +25,7 @@ const WebHostingSection = () => {
 					{__("Manage Crazy Domains account products, options and billing.", "wp-plugin-crazy-domains")}
 				</ActionField>
 			</div>
-		</SectionSettings>
+		</Container.SettingsField>
 	);
 };
 

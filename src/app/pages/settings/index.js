@@ -1,37 +1,47 @@
-import AutomaticUpdates from './automaticUpdates';
+import { Container, Page } from "@newfold/ui-component-library";
 import ComingSoon from './comingSoon';
+import WonderBlocksSettings from './wonderBlocksSettings';
+import AutomaticUpdates from './automaticUpdates';
 import CommentSettings from './commentSettings';
 import ContentSettings from './contentSettings';
-import { Page } from '../../components/page';
-import { SectionContainer, SectionHeader, SectionContent } from '../../components/section';
 
 const Settings = () => {
 	return (
 		<Page title="Settings" className={"wppcd-app-settings-page"}>
-			<SectionContainer className={'wppcd-app-settings-container'}>
-				<SectionHeader
+			<Container className={'wppcd-app-settings-container'}>
+				<Container.Header
 					title={__('Settings', 'wp-plugin-crazy-domains')}
-					subTitle={__('This is where you can manage common settings for your website.', 'wp-plugin-crazy-domains')}
+					description={__('This is where you can manage common settings for your website.', 'wp-plugin-crazy-domains')}
 					className={'wppcd-app-settings-header'}
 				/>
 
-				<SectionContent separator={true} className={'wppcd-app-settings-coming-soon'}>
+				<Container.Block separator={true} className={'wppcd-app-settings-coming-soon'}>
 					<ComingSoon />
-				</SectionContent>
+				</Container.Block>
 
-				<SectionContent separator={true} className={'wppcd-app-settings-update'}>
+				<Container.Block
+					separator={ true }
+					className={ 'wppcd-app-settings-wonder-blocks' }
+				>
+					<Container.SettingsField
+						title={ __( 'Features', 'wp-plugin-crazy-domains' ) }
+					></Container.SettingsField>
+					<WonderBlocksSettings />
+				</Container.Block>
+
+				<Container.Block separator={true} className={'wppcd-app-settings-update'}>
 					<AutomaticUpdates />
-				</SectionContent>
+				</Container.Block>
 
-				<SectionContent separator={true} className={'wppcd-app-settings-content'}>
+				<Container.Block separator={true} className={'wppcd-app-settings-content'}>
 					<ContentSettings />
-				</SectionContent>
+				</Container.Block>
 
-				<SectionContent className={'wppcd-app-settings-comments'}>
+				<Container.Block className={'wppcd-app-settings-comments'}>
 					<CommentSettings />
-				</SectionContent>
+				</Container.Block>
 
-			</SectionContainer>
+			</Container>
 		</Page>
 	);
 };
