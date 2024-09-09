@@ -442,5 +442,5 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: build/2.1.0/index.js:1
-msgid "Wonder Blocks provides a library of customizable block patterns and page templates."
+msgid "WonderBlocks provides a library of customizable block patterns and page templates."
 msgstr ""
