@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "586abca42aae93f1ae16dc523c1d96b5",
+    "content-hash": "451becfa6124e55197d4eae0e9f3bbb2",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -478,20 +478,21 @@
         },
         {
             "name": "newfold-labs/wp-module-data",
-            "version": "2.6.3",
+            "version": "2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-data.git",
-                "reference": "f98dfabe6a4cb10aec6dcd6e81fc7d269238e9a4"
+                "reference": "e5c949ac106c867c6c64a83429c27d800b0d43ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/f98dfabe6a4cb10aec6dcd6e81fc7d269238e9a4",
-                "reference": "f98dfabe6a4cb10aec6dcd6e81fc7d269238e9a4",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-data/zipball/e5c949ac106c867c6c64a83429c27d800b0d43ac",
+                "reference": "e5c949ac106c867c6c64a83429c27d800b0d43ac",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
+                "newfold-labs/wp-module-context": "^1.0",
                 "newfold-labs/wp-module-loader": "^1.0.10",
                 "wp-forge/helpers": "^2.0",
                 "wp-forge/wp-query-builder": "^1.0.4",
@@ -569,10 +570,10 @@
             ],
             "description": "Newfold Data Module",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.3",
+                "source": "https://github.com/newfold-labs/wp-module-data/tree/2.6.4",
                 "issues": "https://github.com/newfold-labs/wp-module-data/issues"
             },
-            "time": "2024-08-30T19:51:58+00:00"
+            "time": "2024-10-17T16:16:30+00:00"
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
@@ -1033,16 +1034,16 @@
         },
         {
             "name": "newfold-labs/wp-module-notifications",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-notifications.git",
-                "reference": "81bb49e73e90d15eb83523c6f6b8885e14553a3a"
+                "reference": "1cf375e3252b935967da00f516ff64098ebd1850"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/81bb49e73e90d15eb83523c6f6b8885e14553a3a",
-                "reference": "81bb49e73e90d15eb83523c6f6b8885e14553a3a",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/1cf375e3252b935967da00f516ff64098ebd1850",
+                "reference": "1cf375e3252b935967da00f516ff64098ebd1850",
                 "shasum": ""
             },
             "require": {
@@ -1071,10 +1072,10 @@
             ],
             "description": "A module for managing Newfold in-site notifications.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.6.0",
+                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.6.1",
                 "issues": "https://github.com/newfold-labs/wp-module-notifications/issues"
             },
-            "time": "2024-09-10T14:38:09+00:00"
+            "time": "2024-10-09T19:54:08+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
@@ -3966,8 +3967,8 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "platform-overrides": {
         "php": "7.0.0"
     },
