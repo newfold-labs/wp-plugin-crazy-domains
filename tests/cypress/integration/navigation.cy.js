@@ -5,7 +5,6 @@ describe('Navigation', { testIsolation: true }, function () {
 
 	beforeEach( () => {
 		cy.wpLogin();
-		cy.exec( 'npx wp-env run cli wp transient delete newfold_marketplace' );
 		cy.visit( `/wp-admin/admin.php?page=${ Cypress.env( 'pluginId' ) }#/home` );
 	});
 
@@ -49,6 +48,8 @@ describe('Navigation', { testIsolation: true }, function () {
 	});
 	
 	it('Subnav links properly navigates', () => {
+		cy.exec( 'npx wp-env run cli wp transient delete newfold_marketplace' );
+		cy.reload();
 		cy
 			.get( appClass + '-app-navitem-Marketplace')
 			.scrollIntoView()

@@ -5,8 +5,7 @@ describe('Settings Page', { testIsolation: true }, function () {
 
 	beforeEach( () => {
 		cy.wpLogin();
-		cy.exec( 'npx wp-env run cli wp transient delete newfold_marketplace' );
-		cy.visit( `/wp-admin/admin.php?page=${ Cypress.env( 'pluginId' ) }#/home` );
+		cy.visit( `/wp-admin/admin.php?page=${ Cypress.env( 'pluginId' ) }#/settings` );
 	});
 
 	it('Is Accessible', () => {
