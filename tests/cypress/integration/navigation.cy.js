@@ -1,16 +1,16 @@
 // <reference types="Cypress" />
 
-describe('Navigation', function () {
-	const appId = Cypress.env( 'appId' );
-	const pluginId = Cypress.env( 'pluginId' );
+describe('Navigation', { testIsolation: true }, function () {
+	const appClass = '.' + Cypress.env( 'appId' );
 
-	before(() => {
+	beforeEach( () => {
+		cy.wpLogin();
 		cy.exec( 'npx wp-env run cli wp transient delete newfold_marketplace' );
-		cy.visit('/wp-admin/admin.php?page=' + pluginId );
+		cy.visit( `/wp-admin/admin.php?page=${ Cypress.env( 'pluginId' ) }#/home` );
 	});
 
 	it( "Admin submenu shouldn't exist inside app", () => {
-		cy.get( '#adminmenu #toplevel_page_' + pluginId + ' ul.wp-submenu' ).should(
+		cy.get( `#adminmenu #toplevel_page_${ Cypress.env( 'pluginId' ) } ul.wp-submenu` ).should(
 			'not.exist'
 		);
 	} );
@@ -98,62 +98,18 @@ describe('Navigation', function () {
 			.should('not.have.class', 'active');
 	});
 
-	// utility nav is no more, leaving this in place in case we bring it back anytime soon.
-	it.skip('Utility nav links properly navigates', () => {
-		cy
-			.get('.utility-link-Performance')
-			.should('not.have.class', 'active');
-		cy
-			.get('.utility-link-Performance').click();
-		cy.wait(500);
-		cy.hash().should('eq', '#/performance');
-		cy
-			.get('.utility-link-Performance')
-			.should('have.class', 'active');
+	it( 'Mobile nav links dispaly and link properly on mobile', () => {
+		cy.get( '#nfd-app-mobile-nav' ).should( 'not.exist' );
+		cy.viewport( 'iphone-x' );
+		cy.get( '#nfd-app-mobile-nav' ).should( 'be.visible' );
 
-		cy
-			.get('.utility-link-Settings').click();
-		cy.wait(500);
-		cy.hash().should('eq', '#/settings');
-		cy
-			.get('.utility-link-Settings')
-			.should('have.class', 'active');
-		cy
-			.get('.utility-link-Performance')
-			.should('not.have.class', 'active');
+		cy.get( appClass + '-app-navitem-Home' ).should( 'not.exist' );
 
-		cy
-			.get('.utility-link-Help').click();
-		cy.wait(500);
-		cy.hash().should('eq', '#/help');
-		cy
-			.get('.utility-link-Help')
-			.should('have.class', 'active');
-		cy
-			.get('.utility-link-Settings')
-			.should('not.have.class', 'active');
-	});
-
-	// no mobile nav, but should probably add
-	it.skip('Mobile nav links dispaly for mobile', () => {
-		cy
-			.get('.mobile-toggle')
-			.should('not.exist');
-
-		cy.viewport('iphone-x');
-		cy
-			.get('.mobile-toggle')
-			.should('be.visible');
-	});
-
-	it.skip('Mobile nav links properly navigates', () => {
-		cy.get('.mobile-link-Home').should('not.exist');
-		cy.viewport('iphone-x');
-		cy.get('.mobile-toggle').click();
-		cy.wait(500);
-		cy.get('.mobile-link-Home').should('be.visible');
-		cy.get('button[aria-label="Close"]').should('be.visible')
-		cy.get('button[aria-label="Close"]').click();
-		cy.get('.mobile-link-Home').should('not.exist');
+		cy.get( '#nfd-app-mobile-nav' ).click();
+		cy.wait( 500 );
+		cy.get( appClass + '-app-navitem-Home' ).should( 'be.visible' );
+		cy.get( 'button.nfd-modal__close-button' ).should( 'be.visible' );
+		cy.get( 'button.nfd-modal__close-button' ).click();
+		cy.get( appClass + '-app-navitem-Home' ).should( 'not.exist' );
 	});
 });
