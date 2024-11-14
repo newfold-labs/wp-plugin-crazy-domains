@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80f72f3f4f233ce93eef7c7a352a33ae",
+    "content-hash": "ed1f5da5b740ef9fa61a8a285649a02d",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1039,16 +1039,16 @@
         },
         {
             "name": "newfold-labs/wp-module-notifications",
-            "version": "1.6.1",
+            "version": "1.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-notifications.git",
-                "reference": "1cf375e3252b935967da00f516ff64098ebd1850"
+                "reference": "a2703f25843168312897ed5cec402a8aea4f53f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/1cf375e3252b935967da00f516ff64098ebd1850",
-                "reference": "1cf375e3252b935967da00f516ff64098ebd1850",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-notifications/zipball/a2703f25843168312897ed5cec402a8aea4f53f1",
+                "reference": "a2703f25843168312897ed5cec402a8aea4f53f1",
                 "shasum": ""
             },
             "require": {
@@ -1077,10 +1077,10 @@
             ],
             "description": "A module for managing Newfold in-site notifications.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.6.1",
+                "source": "https://github.com/newfold-labs/wp-module-notifications/tree/1.6.5",
                 "issues": "https://github.com/newfold-labs/wp-module-notifications/issues"
             },
-            "time": "2024-10-09T19:54:08+00:00"
+            "time": "2024-11-13T21:00:16+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
