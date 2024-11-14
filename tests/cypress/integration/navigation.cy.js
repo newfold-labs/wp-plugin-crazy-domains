@@ -16,7 +16,7 @@ describe('Navigation', { testIsolation: true }, function () {
 	} );
 
 	it('Logo Links to home', () => {
-		cy.get('.' + appId + '-logo-wrap').click();
+		cy.get( appClass + '-logo-wrap').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/home');
 	});
@@ -24,77 +24,77 @@ describe('Navigation', { testIsolation: true }, function () {
 	// test main nav
 	it('Main nav links properly navigates', () => {
 		cy
-			.get('.' + appId + '-app-navitem-Marketplace').
+			.get( appClass + '-app-navitem-Marketplace').
 			should('not.have.class', 'active');
-		cy.get('.' + appId + '-app-navitem-Marketplace').click();
+		cy.get( appClass + '-app-navitem-Marketplace').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/marketplace');
 		cy
-			.get('.' + appId + '-app-navitem-Marketplace')
+			.get( appClass + '-app-navitem-Marketplace')
 			.should('have.class', 'active');
 
-		cy.get('.' + appId + '-app-navitem-Performance').click();
+		cy.get( appClass + '-app-navitem-Performance').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/performance');
 		cy
-			.get('.' + appId + '-app-navitem-Performance')
+			.get( appClass + '-app-navitem-Performance')
 			.should('have.class', 'active');
 		cy
-			.get('.' + appId + '-app-navitem-Marketplace')
+			.get( appClass + '-app-navitem-Marketplace')
 			.should('not.have.class', 'active');
 
-		cy.get('.' + appId + '-app-navitem-Settings').click();
+		cy.get( appClass + '-app-navitem-Settings').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/settings');
 	});
 	
 	it('Subnav links properly navigates', () => {
 		cy
-			.get('.' + appId + '-app-navitem-Marketplace')
+			.get( appClass + '-app-navitem-Marketplace')
 			.scrollIntoView()
 			.should('not.have.class', 'active');
-		cy.get('.' + appId + '-app-navitem-Marketplace').click();
+		cy.get( appClass + '-app-navitem-Marketplace').click();
 
 		cy.wait(500);
 		cy.hash().should('eq', '#/marketplace');
 		cy
-			.get('.' + appId + '-app-navitem-Marketplace')
+			.get( appClass + '-app-navitem-Marketplace')
 			.should('have.class', 'active');
 
-			cy.get('.' + appId + '-app-subnavitem-Services').click();
+			cy.get( appClass + '-app-subnavitem-Services').click();
 			cy.wait(500);
 			cy.hash().should('eq', '#/marketplace/services');
 			cy
-				.get('.' + appId + '-app-subnavitem-Services')
+				.get( appClass + '-app-subnavitem-Services')
 				.should('have.class', 'active');
 			cy
-				.get('.' + appId + '-app-navitem-Marketplace')
+				.get( appClass + '-app-navitem-Marketplace')
 				.should('have.class', 'active');
 		
 
-		cy.get('.' + appId + '-app-subnavitem-SEO').click();
+		cy.get( appClass + '-app-subnavitem-SEO').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/marketplace/seo');
 		cy
-			.get('.' + appId + '-app-subnavitem-SEO')
+			.get( appClass + '-app-subnavitem-SEO')
 			.should('have.class', 'active');
 		cy
-			.get('.' + appId + '-app-subnavitem-Services')
+			.get( appClass + '-app-subnavitem-Services')
 			.should('not.have.class', 'active');
 		cy
-			.get('.' + appId + '-app-navitem-Marketplace')
+			.get( appClass + '-app-navitem-Marketplace')
 			.should('have.class', 'active');
 			
-		cy.get('.' + appId + '-app-navitem-Performance').click();
+		cy.get( appClass + '-app-navitem-Performance').click();
 			cy.wait(500);
 		cy
-			.get('.' + appId + '-app-subnavitem-Services')
+			.get( appClass + '-app-subnavitem-Services')
 			.should('not.have.class', 'active');
 		cy
-			.get('.' + appId + '-app-subnavitem-SEO')
+			.get( appClass + '-app-subnavitem-SEO')
 			.should('not.have.class', 'active');
 		cy
-			.get('.' + appId + '-app-navitem-Marketplace')
+			.get( appClass + '-app-navitem-Marketplace')
 			.should('not.have.class', 'active');
 	});
 
