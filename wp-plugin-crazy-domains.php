@@ -12,10 +12,10 @@
  * Plugin URI:        https://crazydomains.com
  * Update URI:        https://github.com/newfold-labs/wp-plugin-crazy-domains/
  * Description:       WordPress plugin that integrates a WordPress site with the Crazy Domains control panel, including performance, security, and update features.
- * Version:           2.1.4
+ * Version:           2.1.5
  * Requires at least: 6.3
  * Requires PHP:      7.3
- * Tested up to:      6.6.2
+ * Tested up to:      6.7.1
  * Author:            Crazy Domains
  * Author URI:        https://crazydomains.com
  * Text Domain:       wp-plugin-crazy-domains
@@ -32,7 +32,7 @@ if ( defined( 'CRAZYDOMAINS_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'CRAZYDOMAINS_PLUGIN_VERSION', '2.1.4' );
+define( 'CRAZYDOMAINS_PLUGIN_VERSION', '2.1.5' );
 define( 'CRAZYDOMAINS_PLUGIN_FILE', __FILE__ );
 define( 'CRAZYDOMAINS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CRAZYDOMAINS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
