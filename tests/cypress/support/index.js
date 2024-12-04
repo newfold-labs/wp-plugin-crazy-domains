@@ -17,7 +17,7 @@ import 'cypress-axe';
 import './commands';
 
 before(() => {
-	cy.login(Cypress.env('wpUsername'), Cypress.env('wpPassword'));
+	cy.wpLogin();
 });
 
 const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
