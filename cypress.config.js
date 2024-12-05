@@ -65,6 +65,7 @@ module.exports = defineConfig({
 					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Site-Capabilities/**',
 					'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Home/homePageWithWoo.cy.js',
 					'vendor/newfold-labs/wp-module-coming-soon/tests/cypress/integration/coming-soon-woo.cy.js',
+                    'vendor/newfold-labs/wp-module-ecommerce/tests/cypress/integration/Store/**',
 				] );
 			}
 
