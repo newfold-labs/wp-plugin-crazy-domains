@@ -25,9 +25,9 @@
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",
-        "@newfold-labs/wp-module-ecommerce": "^1.4.4",
-        "@newfold-labs/wp-module-facebook": "1.0.9",
-        "@newfold-labs/wp-module-runtime": "^1.0.12",
+        "@newfold/wp-module-ecommerce": "^1.4.7",
+        "@newfold/wp-module-facebook": "1.0.10",
+        "@newfold/wp-module-runtime": "^1.1.0",
         "@newfold/ui-component-library": "^1.1.0",
         "@wordpress/compose": "^7.14.0",
         "@wordpress/dom-ready": "^4.14.0",
@@ -40,7 +40,9 @@
         "react": "^18.3.1",
         "react-error-boundary": "^5.0.0",
         "react-router-dom": "^7.0.2",
-        "react-use": "^17.6.0"
+        "react-use": "^17.6.0",
+        "semver": "^7.6.3",
+        "html-react-parser": "^5.1.18"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.9",
