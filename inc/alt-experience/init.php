@@ -8,10 +8,10 @@ add_action(
 			'manage_options',
 			'crazy-domains',
 			function () {
-				$version = CRAZYDOMAINS_PLUGIN_VERSION;
+				$version   = CRAZYDOMAINS_PLUGIN_VERSION;
 				$asset_file = CRAZYDOMAINS_BUILD_DIR . '/index.asset.php';
 				if ( is_readable( $asset_file ) ) {
-					$asset = include_once $asset_file;
+					$asset   = include_once $asset_file;
 					$version = $asset['version'];
 				}
 
