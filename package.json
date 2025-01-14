@@ -29,7 +29,7 @@
         "@newfold-labs/wp-module-facebook": "1.0.9",
         "@newfold-labs/wp-module-runtime": "^1.0.12",
         "@newfold/ui-component-library": "^1.1.0",
-        "@wordpress/compose": "^7.14.0",
+        "@wordpress/compose": "^7.15.1",
         "@wordpress/dom-ready": "^4.15.0",
         "@wordpress/element": "^6.15.1",
         "@wordpress/i18n": "^5.14.0",
