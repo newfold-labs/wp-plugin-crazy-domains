@@ -1,4 +1,4 @@
-import { OnboardingScreen } from "@newfold-labs/wp-module-ecommerce";
+import { OnboardingScreen } from "@newfold/wp-module-ecommerce";
 import { useUpdateEffect } from "react-use";
 
 import { useNotification } from "../../components/notifications";
