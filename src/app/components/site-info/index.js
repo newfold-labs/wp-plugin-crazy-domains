@@ -1,5 +1,5 @@
 import { LockClosedIcon, LockOpenIcon } from "@heroicons/react/24/outline";
-import { NewfoldRuntime } from "@newfold-labs/wp-module-runtime";
+import { NewfoldRuntime } from "@newfold/wp-module-runtime";
 import { Button } from "@newfold/ui-component-library";
 import { CrazyDomainsIcon, WordPressIcon } from "../icons";
 

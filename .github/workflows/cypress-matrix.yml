@@ -28,9 +28,9 @@ jobs:
           - '8.2'
           - '8.3'
         wpVersion:
-          - '6.4'
           - '6.5'
           - '6.6'
+          - '6.7'
 
     steps:
 
@@ -110,7 +110,11 @@ jobs:
           echo '{"wpVersion": "${{ matrix.wpVersion }}","phpVersion": "${{ matrix.phpVersion }}"}' > cypress.env.json
 
       - name: Install WordPress
-        run: npx wp-env start --debug
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 4
+          max_attempts: 3
+          command: npx wp-env start --debug
 
       - name: Run Cypress Tests
         if: ${{ github.repository != 'newfold-labs/wp-plugin-crazy-domains' || github.actor == 'dependabot[bot]' }}
