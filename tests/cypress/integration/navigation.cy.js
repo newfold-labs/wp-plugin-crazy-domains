@@ -42,7 +42,7 @@ describe('Navigation', { testIsolation: true }, function () {
 			.get( appClass + '-app-navitem-marketplace')
 			.should('not.have.class', 'active');
 
-		cy.get( appClass + '-app-navitem-Settings').click();
+		cy.get( appClass + '-app-navitem-settings').click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/settings');
 	});
