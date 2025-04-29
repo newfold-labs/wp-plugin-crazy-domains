@@ -55,7 +55,7 @@ $crazydomains_module_container->set(
 add_filter(
 	'newfold/coming-soon/filter/args',
 	function ( $args, $default_args ) {
-		
+
 		$args = wp_parse_args(
 			array(
 				'admin_app_url'       => admin_url( 'admin.php?page=crazy-domains#/home' ),
@@ -89,7 +89,7 @@ add_filter(
 			),
 			$default_args
 		);
-		
+
 		return $args;
 	},
 	10,
