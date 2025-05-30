@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45d317e8cd79ad163a8054f43d70582c",
+    "content-hash": "361e42a5c9d5409e424d91975259c150",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1309,23 +1309,23 @@
         },
         {
             "name": "newfold-labs/wp-module-onboarding",
-            "version": "2.5.8",
+            "version": "2.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-onboarding.git",
-                "reference": "e921bae2ab55e5177706d6f6a0f61022eb343882"
+                "reference": "a76045c36a96a021edcab9f0034d88f1f572f691"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/e921bae2ab55e5177706d6f6a0f61022eb343882",
-                "reference": "e921bae2ab55e5177706d6f6a0f61022eb343882",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-onboarding/zipball/a76045c36a96a021edcab9f0034d88f1f572f691",
+                "reference": "a76045c36a96a021edcab9f0034d88f1f572f691",
                 "shasum": ""
             },
             "require": {
                 "mustache/mustache": "^2.14.2",
                 "newfold-labs/wp-module-facebook": "^1.0.9",
                 "newfold-labs/wp-module-migration": "^1.0.12",
-                "newfold-labs/wp-module-onboarding-data": "^1.2.4",
+                "newfold-labs/wp-module-onboarding-data": "^1.2.7",
                 "newfold-labs/wp-module-patterns": "^2.6",
                 "wp-cli/wp-config-transformer": "^1.4.1",
                 "wp-forge/helpers": "^2.0"
@@ -1346,11 +1346,8 @@
                 ]
             },
             "scripts": {
-                "lint": [
-                    "vendor/bin/phpcs . --standard=Newfold"
-                ],
-                "clean": [
-                    "vendor/bin/phpcbf . --standard=Newfold"
+                "fix": [
+                    "vendor/bin/phpcbf . --standard=phpcs.xml"
                 ],
                 "i18n-pot": [
                     "vendor/bin/wp i18n make-pot . ./languages/wp-module-onboarding.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-onboarding/issues\",\"POT-Creation-Date\":\"2024-11-18T07:59:34+00:00\"}' --exclude=assets,tests,src"
@@ -1361,13 +1358,20 @@
                 "i18n-mo": [
                     "vendor/bin/wp i18n make-mo ./languages"
                 ],
+                "i18n-php": [
+                    "vendor/bin/wp i18n make-php ./languages"
+                ],
                 "i18n-json": [
-                    "rm -f languages/*.json && vendor/bin/wp i18n make-json ./languages --no-purge --pretty-print"
+                    "find ./languages -type f -name \"*.po\" -print0 | xargs -0 -I {} sh -c 'name=$(basename \"$1\" .po); npx po2json languages/\"$name\".po languages/\"$name\"-nfd-onboarding.json -f jed1.x' -- {}"
                 ],
                 "i18n": [
                     "@i18n-pot",
                     "@i18n-po",
-                    "@i18n-mo"
+                    "@i18n-php",
+                    "@i18n-json"
+                ],
+                "lint": [
+                    "vendor/bin/phpcs . --standard=phpcs.xml"
                 ]
             },
             "license": [
@@ -1381,10 +1385,10 @@
             ],
             "description": "Next-generation WordPress Onboarding for WordPress sites at Newfold Digital.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.5.8",
+                "source": "https://github.com/newfold-labs/wp-module-onboarding/tree/2.6.5",
                 "issues": "https://github.com/newfold-labs/wp-module-onboarding/issues"
             },
-            "time": "2025-02-14T03:51:14+00:00"
+            "time": "2025-03-28T08:49:22+00:00"
         },
         {
             "name": "newfold-labs/wp-module-onboarding-data",
@@ -1469,16 +1473,16 @@
         },
         {
             "name": "newfold-labs/wp-module-patterns",
-            "version": "2.9.4",
+            "version": "2.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "25a89404b1b9ca9ae7bb120ab7f3dc35c30e99f6"
+                "reference": "37a235472938f33a2ec3efc589b1df696f49e314"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/25a89404b1b9ca9ae7bb120ab7f3dc35c30e99f6",
-                "reference": "25a89404b1b9ca9ae7bb120ab7f3dc35c30e99f6",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/37a235472938f33a2ec3efc589b1df696f49e314",
+                "reference": "37a235472938f33a2ec3efc589b1df696f49e314",
                 "shasum": ""
             },
             "require": {
@@ -1539,10 +1543,10 @@
             ],
             "description": "WordPress Cloud Patterns",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.9.4",
+                "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.9.5",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2025-05-15T19:49:59+00:00"
+            "time": "2025-05-29T17:34:54+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
