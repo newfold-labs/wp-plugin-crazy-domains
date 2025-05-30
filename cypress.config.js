@@ -5,7 +5,7 @@ const wpVersion = /[^/]*$/.exec(core)[0]
 module.exports = defineConfig({
     projectId: "bqvwhq",
     env: {
-        baseUrl: process.env.BASE_URL || 'http://localhost:8882',
+        baseUrl: process.env.BASE_URL || 'http://localhost:8884',
 		wpUsername: process.env.WP_ADMIN_USERNAME || 'admin',
 		wpPassword: process.env.WP_ADMIN_PASSWORD || 'password',
         wpVersion,
