@@ -28,9 +28,9 @@ jobs:
           - '8.2'
           - '8.3'
         wpVersion:
-          - '6.5'
           - '6.6'
           - '6.7'
+          - '6.8'
 
     steps:
 
@@ -132,6 +132,12 @@ jobs:
           path: ./tests/cypress/screenshots
 
       - name: Output debug.log file contents
-        if: ${{ always() }}
+        if: always()
         continue-on-error: true
         run: npx wp-env run wordpress cat /var/www/html/wp-content/debug.log
+
+      - name: Output wordpress docker logs
+        if: always()
+        continue-on-error: true
+        run: |
+          npx wp-env logs --watch=false --debug=true

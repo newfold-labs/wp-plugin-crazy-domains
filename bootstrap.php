@@ -28,16 +28,16 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 /*
  * Initialize coming soon module via container
  */
-$crazydomains_module_container = new Container(
+$nfd_module_container = new Container(
 	array(
 		'cache_types' => array( 'browser', 'file', 'skip404' ),
 	)
 );
 
 // Set plugin to container
-$crazydomains_module_container->set(
+$nfd_module_container->set(
 	'plugin',
-	$crazydomains_module_container->service(
+	$nfd_module_container->service(
 		function () {
 			return new Plugin(
 				array(
@@ -96,7 +96,7 @@ add_filter(
 	2
 );
 
-setContainer( $crazydomains_module_container );
+setContainer( $nfd_module_container );
 
 // Set up the updater endpoint and map values
 $updateurl     = 'https://hiive.cloud/workers/release-api/plugins/newfold-labs/wp-plugin-crazy-domains'; // Custom API GET endpoint
@@ -138,6 +138,7 @@ require CRAZYDOMAINS_PLUGIN_DIR . '/inc/partners.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/RestApi/rest-api.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/settings.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/updates.php';
+require_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/Filters.php';
 
 /* WordPress Admin Page & Features */
 if ( is_admin() ) {
@@ -149,3 +150,43 @@ LoginRedirect::init();
 
 // Instantiate the Features singleton
 Features::getInstance();
+
+
+/**
+ * Handle activation tasks.
+ * TODO: Move this to the activation module
+ *
+ * @return void
+ */
+function on_activate() {
+	// clear transients
+	delete_transient( 'newfold_marketplace' );
+	delete_transient( 'newfold_notifications' );
+	delete_transient( 'newfold_solutions' );
+	delete_transient( 'nfd_site_capabilities' );
+	// Flush rewrite rules
+	flush_rewrite_rules();
+}
+
+/**
+ * Determine if the plugin was freshly activated.
+ *
+ * @return void
+ */
+function load_plugin() {
+	if ( is_admin() && CRAZYDOMAINS_PLUGIN_FILE === get_option( 'nfd_activated_fresh' ) ) {
+		delete_option( 'nfd_activated_fresh' );
+		on_activate();
+	}
+}
+
+// Check for plugin activation
+add_action( 'admin_init', __NAMESPACE__ . '\\load_plugin' );
+
+// Register activation hook to set the activation flag
+register_activation_hook(
+	CRAZYDOMAINS_PLUGIN_FILE,
+	function () {
+		add_option( 'nfd_activated_fresh', CRAZYDOMAINS_PLUGIN_FILE );
+	}
+);

@@ -5,8 +5,9 @@ const wpVersion = /[^/]*$/.exec(core)[0]
 module.exports = defineConfig({
     projectId: "bqvwhq",
     env: {
-        wpUsername: 'admin',
-        wpPassword: 'password',
+        baseUrl: process.env.BASE_URL || 'http://localhost:8882',
+		wpUsername: process.env.WP_ADMIN_USERNAME || 'admin',
+		wpPassword: process.env.WP_ADMIN_PASSWORD || 'password',
         wpVersion,
         phpVersion,
         pluginId: 'crazy-domains',
@@ -28,6 +29,18 @@ module.exports = defineConfig({
     ],
     e2e: {
         setupNodeEvents(on, config) {
+            on( 'task', {
+				log( message ) {
+					// eslint-disable-next-line no-console
+					console.log( message );
+					return null;
+				},
+				table( message ) {
+					// eslint-disable-next-line no-console
+					console.table( message );
+					return null;
+				},
+			} );
 
             // Ensure that the base URL is always properly set.
             if (config.env && config.env.baseUrl) {
@@ -104,7 +117,7 @@ module.exports = defineConfig({
         testIsolation: false,
         experimentalRunAllSpecs: true,
     },
-    retries: 1,
+    retries: 0,
     experimentalMemoryManagement: true,
 })
 
@@ -123,8 +136,19 @@ const supportsWoo = ( env ) => {
 const supportsJetpack = ( env ) => {
 	const semver = require( 'semver' );
 	if (
-		semver.satisfies( env.wpSemverVersion, '>=6.6.0' ) &&
+		semver.satisfies( env.wpSemverVersion, '>=6.7.0' ) &&
 		semver.satisfies( env.phpSemverVersion, '>=7.2.0' )
+	) {
+		return true;
+	}
+	return false;
+};
+// Check against plugin support at https://wordpress.org/plugins/wordpress-seo/
+const supportsYoast = ( env ) => {
+	const semver = require( 'semver' );
+	if (
+		semver.satisfies( env.wpSemverVersion, '>=6.6.0' ) &&
+		semver.satisfies( env.phpSemverVersion, '>=7.4.0' )
 	) {
 		return true;
 	}
