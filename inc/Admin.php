@@ -148,7 +148,7 @@ final class Admin {
 		if ( ! function_exists( 'get_plugin_data' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
-		$plugin_data = get_plugin_data( BLUEHOST_PLUGIN_FILE );
+		$plugin_data = get_plugin_data( CRAZYDOMAINS_PLUGIN_DIR );
 
 		echo '<!-- Crazy Domains -->' . PHP_EOL;
 
@@ -156,7 +156,7 @@ final class Admin {
 			echo '<div id="wppcd-app" class="wppcd wppcd_app"></div>' . PHP_EOL;
 		} else {
 			// fallback messaging for outdated WordPress
-			$appWhenOutdated = BLUEHOST_PLUGIN_DIR . '/inc/AppWhenOutdated.php';
+			$appWhenOutdated = CRAZYDOMAINS_PLUGIN_DIR . '/inc/AppWhenOutdated.php';
 			if ( file_exists( $appWhenOutdated ) ) {
 				include_once $appWhenOutdated;
 			}
