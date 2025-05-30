@@ -187,12 +187,6 @@ final class Admin {
 			true
 		);
 
-		// \wp_add_inline_script(
-		// 	'crazydomains-script',
-		// 	'var WPPCD =' . \wp_json_encode( Data::runtime() ) . ';',
-		// 	'before'
-		// );
-
 		\wp_register_style(
 			'crazydomains-style',
 			CRAZYDOMAINS_BUILD_URL . '/index.css',
