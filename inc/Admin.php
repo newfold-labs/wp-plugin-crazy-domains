@@ -148,7 +148,7 @@ final class Admin {
 		if ( ! function_exists( 'get_plugin_data' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
-		$plugin_data = get_plugin_data( CRAZYDOMAINS_PLUGIN_DIR );
+		$plugin_data = get_plugin_data( CRAZYDOMAINS_PLUGIN_FILE );
 
 		echo '<!-- Crazy Domains -->' . PHP_EOL;
 
