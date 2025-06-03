@@ -125,13 +125,19 @@ jobs:
         run: npm run test:e2e -- --browser chrome --record --key ${{ secrets.CYPRESS_RECORD_KEY }} --tag crazy-domains
 
       - name: Store screenshots of test failures
-        if: ${{ failure() }}
+        if: failure()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: screenshots
           path: ./tests/cypress/screenshots
 
       - name: Output debug.log file contents
-        if: ${{ always() }}
+        if: always()
         continue-on-error: true
-        run: npx wp-env run wordpress "cat /var/www/html/wp-content/debug.log"
+        run: npx wp-env run wordpress cat /var/www/html/wp-content/debug.log
+
+      - name: Output wordpress docker logs
+        if: always()
+        continue-on-error: true
+        run: |
+          npx wp-env logs --watch=false --debug=true

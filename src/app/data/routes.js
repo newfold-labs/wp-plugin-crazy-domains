@@ -1,7 +1,6 @@
 import { 
 	HomeIcon,
 	ShoppingBagIcon,
-	BoltIcon, 
 	AdjustmentsHorizontalIcon,
 	BuildingStorefrontIcon,
 	QuestionMarkCircleIcon } 
@@ -12,7 +11,6 @@ import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/home';
 import Store from '../pages/ecommerce/page';
 import Marketplace from '../pages/marketplace';
-import Performance from '../pages/performance';
 import Settings from '../pages/settings';
 import Help from '../pages/help';
 import Admin from '../pages/admin';
@@ -59,7 +57,6 @@ const topRoutePaths = [
 	'/home',
 	'/store',
 	'/marketplace',
-	'/performance',
 	'/settings',
 ];
 const utilityRoutePaths = [ '/help' ];
@@ -109,13 +106,6 @@ export const routes = [
 		Icon: ShoppingBagIcon,
 		subRoutes: await getMarketplaceSubnavRoutes(),
 		condition: true,
-	},
-	{
-		name: '/performance',
-		title: __( 'Performance', 'wp-plugin-crazy-domains' ),
-		Component: Performance,
-		Icon: BoltIcon,
-		condition: await window.NewfoldFeatures.isEnabled( 'performance' ),
 	},
 	{
 		name: '/settings',
