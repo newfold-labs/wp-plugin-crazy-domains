@@ -53,7 +53,7 @@ export const SiteInfoBar = () => {
                         className="nfd-bg-white nfd-text-[#212936] nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto"
                     >
                         <WordPressIcon />
-                       { (isEcommerce && isStore) ? __("View Store", "wp-plugin-crazy-domains") : __("View Site", "wp-plugin-crazy-domains") }
+                       { __( 'View Site', 'wp-plugin-crazy-domains' ) }
                     </Button>
                 </div>
                 

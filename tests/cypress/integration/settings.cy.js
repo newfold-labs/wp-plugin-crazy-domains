@@ -10,8 +10,10 @@ describe('Settings Page', { testIsolation: true }, function () {
 
 	it('Is Accessible', () => {
 		cy.injectAxe();
-		cy.wait(500);
-		cy.checkA11y( appClass + '-app-body');
+		cy.get( appClass + '-app-settings-page', { timeout: 2000 } ).should(
+			'exist'
+		);
+		cy.a11y( appClass + '-app-body' );
 	});
 
 	it('Has All Sections', () => {

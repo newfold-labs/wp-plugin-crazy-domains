@@ -13,7 +13,6 @@ namespace CrazyDomains;
 function init_rest_api() {
 
 	$controllers = array(
-		__NAMESPACE__ . '\\RestApi\\CachingController',
 		__NAMESPACE__ . '\\RestApi\\SettingsController',
 	);
 

@@ -8,22 +8,11 @@ describe('Home Page', { testIsolation: true }, function () {
 		cy.visit( `/wp-admin/admin.php?page=${ Cypress.env( 'pluginId' ) }#/home` );
 	});
 
-	it('Site Info Exists', () => {
-		cy.window().then((win) => {
-			const siteTitle = win.NewfoldRuntime.siteTitle;
-			cy.get( appClass + '-app-site-info').contains('h3', siteTitle)
-			.scrollIntoView()
-			.should('be.visible');
-		})
-	});
-
-	it('Is Accessible', () => {
+	it('Is Accessible and All Sections Exist', () => {
 		cy.injectAxe();
-		cy.wait(500);
-		cy.checkA11y( appClass + '-app-body');
-	});
+		cy.get( appClass + '-app-home-page', { timeout: 2000 } ).should( 'exist' );
+		cy.a11y( appClass + '-app-body');
 
-	it('All Sections Exist', () => {
 		cy
 			.get( appClass + '-app-home-coming-soon').contains('h3', 'Site Status')
 			.scrollIntoView()

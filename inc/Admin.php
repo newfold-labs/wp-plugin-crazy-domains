@@ -29,6 +29,7 @@ final class Admin {
 		\add_action( 'admin_head', array( __CLASS__, 'admin_nav_style' ) );
 		/* Add runtime for data store */
 		\add_filter( 'newfold_runtime', array( __CLASS__, 'add_to_runtime' ) );
+		\add_action( 'update_option_WPLANG', array( __CLASS__, 'clear_transient_on_language_change' ), 10, 2 );
 	}
 
 	/**
@@ -44,42 +45,53 @@ final class Admin {
 
 	/**
 	 * Subpages to register with add_submenu_page().
+	 * Modules should use `nfd_plugin_subnav` filter to add their own subnav items
 	 *
 	 * Order or array items determines menu order.
 	 *
 	 * @return array
 	 */
-	public static function subpages() {
-		$home        = array(
-			'crazy-domains#/home' => __( 'Home', 'wp-plugin-crazy-domains' ),
+	public static function plugin_subpages() {
+
+		$home     = array(
+			'route'    => 'crazy-domains#/home',
+			'title'    => __( 'Home', 'wp-plugin-crazy-domains' ),
+			'priority' => 1,
 		);
-		$store       = array(
-			'crazy-domains#/store' => __( 'Store', 'wp-plugin-crazy-domains' ),
+		$settings = array(
+			'route'    => 'crazy-domains#/settings',
+			'title'    => __( 'Settings', 'wp-plugin-crazy-domains' ),
+			'priority' => 60,
 		);
-		$marketplace = array(
-			'crazy-domains#/marketplace' => __( 'Marketplace', 'wp-plugin-crazy-domains' ),
-		);
-		// add performance if enabled
-		$performance = isEnabled( 'performance' )
-		? array(
-			'crazy-domains#/performance' => __( 'Performance', 'wp-plugin-crazy-domains' ),
-		)
-		: array();
-		$settings    = array(
-			'crazy-domains#/settings' => __( 'Settings', 'wp-plugin-crazy-domains' ),
-		);
-		$help        = array(
-			'crazy-domains#/help' => __( 'Help', 'wp-plugin-crazy-domains' ),
+		$help     = array(
+			'route'    => 'crazy-domains#/help',
+			'title'    => __( 'Help Resources', 'wp-plugin-crazy-domains' ),
+			'priority' => 70,
 		);
 
-		return array_merge(
-			$home,
-			$store,
-			$marketplace,
-			$performance,
-			$settings,
-			$help,
+		// apply filter to add module subnav items
+		$subnav = apply_filters(
+			'nfd_plugin_subnav', // modules can filter this to add their own subnav items
+			array(
+				$settings,
+				$home,
+				$help,
+			)
 		);
+
+		// sort subnav items by priority
+		usort(
+			$subnav,
+			function ( $a, $b ) {
+				if ( $a['priority'] === $b['priority'] ) {
+					return 0;
+				}
+				return ( $a['priority'] < $b['priority'] ? -1 : 1 );
+			}
+		);
+
+		// return subnav items sorted by priority
+		return $subnav;
 	}
 
 	/**
@@ -113,18 +125,16 @@ final class Admin {
 			0
 		);
 
-		// If we're outside of App, add subpages to App menu
-		if ( false === ( isset( $_GET['page'] ) && strpos( filter_input( INPUT_GET, 'page', FILTER_UNSAFE_RAW ), 'crazy-domains' ) >= 0 ) ) { // phpcs:ignore		
-			foreach ( self::subpages() as $route => $title ) {
-				\add_submenu_page(
-					'crazy-domains',
-					$title,
-					$title,
-					'manage_options',
-					$route,
-					array( __CLASS__, 'render' )
-				);
-			}
+		// Add subpages to menu
+		foreach ( self::plugin_subpages() as $subpage ) {
+			\add_submenu_page(
+				'crazy-domains',
+				$subpage['title'],
+				$subpage['title'],
+				'manage_options',
+				$subpage['route'],
+				array_key_exists( 'callback', $subpage ) ? $subpage['callback'] : array( __CLASS__, 'render' )
+			);
 		}
 	}
 
@@ -135,22 +145,21 @@ final class Admin {
 	 */
 	public static function render() {
 		global $wp_version;
+		if ( ! function_exists( 'get_plugin_data' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+		$plugin_data = get_plugin_data( CRAZYDOMAINS_PLUGIN_FILE );
 
 		echo '<!-- Crazy Domains -->' . PHP_EOL;
 
-		if ( version_compare( $wp_version, '5.4', '>=' ) ) {
+		if ( version_compare( $wp_version, $plugin_data['RequiresWP'], '>=' ) ) {
 			echo '<div id="wppcd-app" class="wppcd wppcd_app"></div>' . PHP_EOL;
 		} else {
-			// fallback messaging for WordPress older than 5.4
-			echo '<div id="wppcd-app" class="wppcd wppcd_app">' . PHP_EOL;
-			echo '<header class="wppcd-header" style="min-height: 90px; padding: 1rem; margin-bottom: 1.5rem;"><div class="wppcd-header-inner"><div class="wppcd-logo-wrap">' . PHP_EOL;
-			echo '<img src="' . esc_url( CRAZYDOMAINS_PLUGIN_URL . 'assets/svg/crazydomains-logo.svg' ) . '" alt="Crazy Domains logo" />' . PHP_EOL;
-			echo '</div></div></header>' . PHP_EOL;
-			echo '<div class="wrap">' . PHP_EOL;
-			echo '<div class="card" style="margin-left: 20px;"><h2 class="title">' . esc_html__( 'Please update to a newer WordPress version.', 'wp-plugin-crazy-domains' ) . '</h2>' . PHP_EOL;
-			echo '<p>' . esc_html__( 'There are new WordPress components which this plugin requires in order to render the interface.', 'wp-plugin-crazy-domains' ) . '</p>' . PHP_EOL;
-			echo '<p><a href="' . esc_url( admin_url( 'update-core.php' ) ) . '" class="button component-button is-primary button-primary" variant="primary">' . esc_html__( 'Please update now', 'wp-plugin-crazy-domains' ) . '</a></p>' . PHP_EOL;
-			echo '</div></div></div>' . PHP_EOL;
+			// fallback messaging for outdated WordPress
+			$appWhenOutdated = CRAZYDOMAINS_PLUGIN_DIR . '/inc/AppWhenOutdated.php';
+			if ( file_exists( $appWhenOutdated ) ) {
+				include_once $appWhenOutdated;
+			}
 		}
 
 		echo '<!-- /Crazy Domains -->' . PHP_EOL;
@@ -176,12 +185,6 @@ final class Admin {
 			array_merge( $asset['dependencies'], array( 'newfold-features', 'nfd-runtime' ) ),
 			$asset['version'],
 			true
-		);
-
-		\wp_add_inline_script(
-			'crazydomains-script',
-			'var WPPCD =' . \wp_json_encode( Data::runtime() ) . ';',
-			'before'
 		);
 
 		\wp_register_style(
@@ -225,5 +228,25 @@ final class Admin {
 	public static function add_brand_to_admin_footer( $footer_text ) {
 		$footer_text = \sprintf( \__( 'Thank you for creating with <a href="https://wordpress.org/">WordPress</a> and <a href="https://crazydomains.com/about">Crazy Domains</a>.', 'wp-plugin-crazy-domains' ) );
 		return $footer_text;
+	}
+
+	/**
+	 * Clears a specific transient when the WordPress admin language setting is changed.
+	 *
+	 * This function hooks into the `update_option_WPLANG` action to detect when
+	 * the site language is updated in the WordPress settings. If a change is detected,
+	 * it deletes the specified transient to ensure fresh data is retrieved.
+	 *
+	 * @param string $old_value The previous language setting (e.g., 'en_US').
+	 * @param string $new_value The new language setting (e.g., 'fr_FR').
+	 */
+	public static function clear_transient_on_language_change( $old_value, $new_value ) {
+		// Check if the language has actually changed
+		if ( $old_value !== $new_value ) {
+			// Delete the transients to refresh cached data
+			delete_transient( 'newfold_marketplace' );
+			delete_transient( 'newfold_notifications' );
+			delete_transient( 'newfold_solutions' );
+		}
 	}
 } // END \CrazyDomains\Admin

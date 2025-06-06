@@ -19,14 +19,14 @@ final class Data {
 	 * @return array
 	 */
 	public static function runtime() {
-		global $crazydomains_module_container;
+		global $nfd_module_container;
 
 		$runtime = array(
 			'plugin' => array(
 				'url'     => CRAZYDOMAINS_BUILD_URL,
 				'version' => CRAZYDOMAINS_PLUGIN_VERSION,
 				'assets'  => CRAZYDOMAINS_PLUGIN_URL . 'assets/',
-				'brand'   => $crazydomains_module_container->plugin()->brand,
+				'brand'   => $nfd_module_container->plugin()->brand,
 			),
 		);
 		return $runtime;

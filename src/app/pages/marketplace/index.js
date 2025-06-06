@@ -1,7 +1,7 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect } from '@wordpress/element';
 import { useLocation, useMatch, useNavigate } from 'react-router-dom';
-import { Container, Page } from '@newfold/ui-component-library';
+import { Page } from '@newfold/ui-component-library';
 import { NewfoldRuntime } from "@newfold/wp-module-runtime";
 // component sourced from marketplace module
 import { default as NewfoldMarketplace } from '@modules/wp-module-marketplace/components/';
@@ -45,14 +45,10 @@ const MarketplacePage = () => {
 
 	return (
         <Page className={"wppcd-app-marketplace-page"}>
-			<Container className={'wppcd-app-marketplace-container nfd-overflow-clip'}>
-
-				<NewfoldMarketplace 
-					methods={moduleMethods}
-					constants={moduleConstants}
-				/>
-
-			</Container>
+			<NewfoldMarketplace 
+				methods={moduleMethods}
+				constants={moduleConstants}
+			/>
 		</Page>
 	);
 };

@@ -8,109 +8,37 @@ describe('Navigation', { testIsolation: true }, function () {
 		cy.visit( `/wp-admin/admin.php?page=${ Cypress.env( 'pluginId' ) }#/home` );
 	});
 
-	it( "Admin submenu shouldn't exist inside app", () => {
-		cy.get( `#adminmenu #toplevel_page_${ Cypress.env( 'pluginId' ) } ul.wp-submenu` ).should(
-			'not.exist'
-		);
-	} );
-
 	it('Logo Links to home', () => {
-		cy.get( appClass + '-logo-wrap').click();
+		cy.get( appClass + '-logo-wrap a' ).click();
 		cy.wait(500);
 		cy.hash().should('eq', '#/home');
 	});
 
 	// test main nav
-	it('Main nav links properly navigates', () => {
-		cy
-			.get( appClass + '-app-navitem-marketplace').
-			should('not.have.class', 'active');
-		cy.get( appClass + '-app-navitem-marketplace').click();
-		cy.wait(500);
-		cy.hash().should('eq', '#/marketplace');
-		cy
-			.get( appClass + '-app-navitem-marketplace')
-			.should('have.class', 'active');
+	it( 'Admin submenu exists', () => {
+		cy.visit( '/wp-admin/index.php' );
+		cy.get( '#adminmenu #toplevel_page_crazy-domains ul.wp-submenu' ).should(
+			'exist'
+		);
+		cy.get(
+			'#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li a[href="admin.php?page=crazy-domains#/home"]'
+		).should( 'exist' );
+		cy.get(
+			'#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li a[href="admin.php?page=crazy-domains#/settings"]'
+		).should( 'exist' );
+		cy.get(
+			'#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li a[href="admin.php?page=crazy-domains#/help"]'
+		).should( 'exist' );
+	} );
 
-		cy.get( appClass + '-app-navitem-performance').click();
-		cy.wait(500);
-		cy.hash().should('eq', '#/performance');
-		cy
-			.get( appClass + '-app-navitem-performance')
-			.should('have.class', 'active');
-		cy
-			.get( appClass + '-app-navitem-marketplace')
-			.should('not.have.class', 'active');
-
-		cy.get( appClass + '-app-navitem-settings').click();
-		cy.wait(500);
-		cy.hash().should('eq', '#/settings');
-	});
-	
-	it('Subnav links properly navigates', () => {
-		cy.exec( 'npx wp-env run cli wp transient delete newfold_marketplace' );
-		cy.reload();
-		cy
-			.get( appClass + '-app-navitem-marketplace')
-			.scrollIntoView()
-			.should('not.have.class', 'active');
-		cy.get( appClass + '-app-navitem-marketplace').click();
-
-		cy.wait(500);
-		cy.hash().should('eq', '#/marketplace');
-		cy
-			.get( appClass + '-app-navitem-marketplace')
-			.should('have.class', 'active');
-
-			cy.get( appClass + '-app-subnavitem-services').click();
-			cy.wait(500);
-			cy.hash().should('eq', '#/marketplace/services');
-			cy
-				.get( appClass + '-app-subnavitem-services')
-				.should('have.class', 'active');
-			cy
-				.get( appClass + '-app-navitem-marketplace')
-				.should('have.class', 'active');
-		
-
-		cy.get( appClass + '-app-subnavitem-seo').click();
-		cy.wait(500);
-		cy.hash().should('eq', '#/marketplace/seo');
-		cy
-			.get( appClass + '-app-subnavitem-seo')
-			.should('have.class', 'active');
-		cy
-			.get( appClass + '-app-subnavitem-services')
-			.should('not.have.class', 'active');
-		cy
-			.get( appClass + '-app-navitem-marketplace')
-			.should('have.class', 'active');
-			
-		cy.get( appClass + '-app-navitem-performance').click();
-			cy.wait(500);
-		cy
-			.get( appClass + '-app-subnavitem-services')
-			.should('not.have.class', 'active');
-		cy
-			.get( appClass + '-app-subnavitem-seo')
-			.should('not.have.class', 'active');
-		cy
-			.get( appClass + '-app-navitem-marketplace')
-			.should('not.have.class', 'active');
-	});
-
-	it( 'Mobile nav links dispaly and link properly on mobile', () => {
-		cy.get( '#nfd-app-mobile-nav' ).should( 'not.exist' );
-		cy.viewport( 'iphone-x' );
-		cy.get( '#nfd-app-mobile-nav' ).should( 'be.visible' );
-
-		cy.get( appClass + '-app-navitem-home' ).should( 'not.exist' );
-
-		cy.get( '#nfd-app-mobile-nav' ).click();
+	// test main nav
+	it( 'Settings link properly navigates', () => {
+		cy.visit( '/wp-admin/index.php' );
+		cy.get(
+			'#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li a[href="admin.php?page=crazy-domains#/settings"]'
+		).click( { force: true } );
 		cy.wait( 500 );
-		cy.get( appClass + '-app-navitem-home' ).should( 'be.visible' );
-		cy.get( 'button.nfd-modal__close-button' ).should( 'be.visible' );
-		cy.get( 'button.nfd-modal__close-button' ).click();
-		cy.get( appClass + '-app-navitem-home' ).should( 'not.exist' );
-	});
+		cy.hash().should( 'eq', '#/settings' );
+	} );
+
 });

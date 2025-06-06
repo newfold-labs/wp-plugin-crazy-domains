@@ -8,13 +8,11 @@ describe('Help Page', { testIsolation: true }, () => {
 		cy.visit( `/wp-admin/admin.php?page=${ Cypress.env( 'pluginId' ) }#/help` );
 	});
 	
-	it('Is Accessible', () => {
+	it('Is Accessible and Cards Each Exist', () => {
 		cy.injectAxe();
-		cy.wait(1000);
+		cy.get( appClass + '-app-help-page', { timeout: 2000 } ).should( 'exist' );
 		cy.a11y( appClass + '-app-body');
-	});
 
-	it('Each Card Exists', () => {
 		cy.get('.card-help-ticket').contains('h3', 'Email')
 			.scrollIntoView()
 			.should('be.visible');

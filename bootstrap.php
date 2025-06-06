@@ -28,16 +28,16 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 /*
  * Initialize coming soon module via container
  */
-$crazydomains_module_container = new Container(
+$nfd_module_container = new Container(
 	array(
 		'cache_types' => array( 'browser', 'file', 'skip404' ),
 	)
 );
 
 // Set plugin to container
-$crazydomains_module_container->set(
+$nfd_module_container->set(
 	'plugin',
-	$crazydomains_module_container->service(
+	$nfd_module_container->service(
 		function () {
 			return new Plugin(
 				array(
@@ -52,40 +52,51 @@ $crazydomains_module_container->set(
 );
 
 // Set coming soon values
-$crazydomains_module_container->set(
-	'comingsoon',
-	array(
-		'admin_app_url'       => admin_url( 'admin.php?page=crazy-domains#/home' ),
-		'template_h1'         => __( 'Coming Soon!', 'wp-plugin-crazy-domains' ),
-		'template_h2'         => __( 'A New WordPress Site', 'wp-plugin-crazy-domains' ),
-		'template_footer_t'   => sprintf(
-			/* translators: %1$s is replaced with opening link tag taking you to crazydomains.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.crazydomains.com, %6$s is replaced with closing link tag */
-			esc_html__( 'A %1$sCrazy Domains%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sCrazy Domains%6$s.', 'wp-plugin-crazy-domains' ) . '&nbsp;',
-			'<a href="' . esc_url( 'https://www.crazydomains.com/websites/wordpress' ) . '" target="_blank" rel="noopener noreferrer nofollow">',
-			'</a>',
-			'<a href="' . esc_url( wp_login_url() ) . '">',
-			'</a>',
-			'<a href="' . esc_url( 'https://www.crazydomains.com/my-account/account-center/login' ) . '" target="_blank" rel="noopener noreferrer nofollow">',
-			'</a>'
-		),
-		'template_page_title' => sprintf(
-			/* translators: %s: Blog name */
-			__( '%s &mdash; Coming Soon', 'wp-plugin-crazy-domains' ),
-			esc_html( get_option( 'blogname' ) )
-		),
-		'admin_bar_text'      => '<div style="background-color: #FEC101; color: #000; padding: 0 1rem;">' . __( 'Coming Soon Active', 'wp-plugin-crazy-domains' ) . '</div>',
-		'admin_notice_text'   => sprintf(
-			/* translators: %1$s is replaced with the opening link tag to preview the page, and %2$s is replaced with the closing link tag, %3$s is the opening link tag, %4$s is the closing link tag. */
-			__( 'Your site is currently displaying a %1$scoming soon page%2$s. Once you are ready, %3$slaunch your site%4$s.', 'wp-plugin-crazy-domains' ),
-			'<a href="' . get_home_url() . '?preview=coming_soon" title="' . __( 'Preview the coming soon landing page', 'wp-plugin-crazy-domains' ) . '">',
-			'</a>',
-			'<a href="' . esc_url( admin_url( 'admin.php?page=crazy-domains#/home' ) ) . '">',
-			'</a>'
-		),
-		'template_styles'     => esc_url( CRAZYDOMAINS_PLUGIN_URL . 'assets/styles/coming-soon.css' ),
-	)
+add_filter(
+	'newfold/coming-soon/filter/args',
+	function ( $args, $default_args ) {
+
+		$args = wp_parse_args(
+			array(
+				'admin_app_url'       => admin_url( 'admin.php?page=crazy-domains#/home' ),
+				'template_h1'         => __( 'Coming Soon!', 'wp-plugin-crazy-domains' ),
+				'template_h2'         => __( 'A New WordPress Site', 'wp-plugin-crazy-domains' ),
+				'template_footer_t'   => sprintf(
+				/* translators: %1$s is replaced with opening link tag taking you to crazydomains.com/wordpress, %2$s is replaced with closing link tag, %3$s is replaced with opening link tag taking you to login page, %4$s is replaced with closing link tag, %5$s is replaced with opening link tag taking you to my.crazydomains.com, %6$s is replaced with closing link tag */
+					esc_html__( 'A %1$sCrazy Domains%2$s powered website. Is this your website? Log in to %3$sWordPress%4$s or %5$sCrazy Domains%6$s.', 'wp-plugin-crazy-domains' ) . '&nbsp;',
+					'<a href="' . esc_url( 'https://www.crazydomains.com/websites/wordpress' ) . '" target="_blank" rel="noopener noreferrer nofollow">',
+					'</a>',
+					'<a href="' . esc_url( wp_login_url() ) . '">',
+					'</a>',
+					'<a href="' . esc_url( 'https://www.crazydomains.com/my-account/account-center/login' ) . '" target="_blank" rel="noopener noreferrer nofollow">',
+					'</a>'
+				),
+				'template_page_title' => sprintf(
+				/* translators: %s: Blog name */
+					__( '%s &mdash; Coming Soon', 'wp-plugin-crazy-domains' ),
+					esc_html( get_option( 'blogname' ) )
+				),
+				'admin_bar_text'      => '<div style="background-color: #FEC101; color: #000; padding: 0 1rem;">' . __( 'Coming Soon Active', 'wp-plugin-crazy-domains' ) . '</div>',
+				'admin_notice_text'   => sprintf(
+				/* translators: %1$s is replaced with the opening link tag to preview the page, and %2$s is replaced with the closing link tag, %3$s is the opening link tag, %4$s is the closing link tag. */
+					__( 'Your site is currently displaying a %1$scoming soon page%2$s. Once you are ready, %3$slaunch your site%4$s.', 'wp-plugin-crazy-domains' ),
+					'<a href="' . get_home_url() . '?preview=coming_soon" title="' . __( 'Preview the coming soon landing page', 'wp-plugin-crazy-domains' ) . '">',
+					'</a>',
+					'<a href="' . esc_url( admin_url( 'admin.php?page=crazy-domains#/home' ) ) . '">',
+					'</a>'
+				),
+				'template_styles'     => esc_url( CRAZYDOMAINS_PLUGIN_URL . 'assets/styles/coming-soon.css' ),
+			),
+			$default_args
+		);
+
+		return $args;
+	},
+	10,
+	2
 );
-setContainer( $crazydomains_module_container );
+
+setContainer( $nfd_module_container );
 
 // Set up the updater endpoint and map values
 $updateurl     = 'https://hiive.cloud/workers/release-api/plugins/newfold-labs/wp-plugin-crazy-domains'; // Custom API GET endpoint
@@ -127,6 +138,7 @@ require CRAZYDOMAINS_PLUGIN_DIR . '/inc/partners.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/RestApi/rest-api.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/settings.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/updates.php';
+require_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/Filters.php';
 
 /* WordPress Admin Page & Features */
 if ( is_admin() ) {
@@ -138,3 +150,43 @@ LoginRedirect::init();
 
 // Instantiate the Features singleton
 Features::getInstance();
+
+
+/**
+ * Handle activation tasks.
+ * TODO: Move this to the activation module
+ *
+ * @return void
+ */
+function on_activate() {
+	// clear transients
+	delete_transient( 'newfold_marketplace' );
+	delete_transient( 'newfold_notifications' );
+	delete_transient( 'newfold_solutions' );
+	delete_transient( 'nfd_site_capabilities' );
+	// Flush rewrite rules
+	flush_rewrite_rules();
+}
+
+/**
+ * Determine if the plugin was freshly activated.
+ *
+ * @return void
+ */
+function load_plugin() {
+	if ( is_admin() && CRAZYDOMAINS_PLUGIN_FILE === get_option( 'nfd_activated_fresh' ) ) {
+		delete_option( 'nfd_activated_fresh' );
+		on_activate();
+	}
+}
+
+// Check for plugin activation
+add_action( 'admin_init', __NAMESPACE__ . '\\load_plugin' );
+
+// Register activation hook to set the activation flag
+register_activation_hook(
+	CRAZYDOMAINS_PLUGIN_FILE,
+	function () {
+		add_option( 'nfd_activated_fresh', CRAZYDOMAINS_PLUGIN_FILE );
+	}
+);
