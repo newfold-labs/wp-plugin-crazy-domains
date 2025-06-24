@@ -3,7 +3,7 @@ import { useEffect } from '@wordpress/element';
 /**
  * Staging page component that redirects to the WordPress admin staging page.
  * This component immediately redirects users to the nfd-staging admin page
- * when they access the /staging route in the Bluehost plugin interface.
+ * when they access the /staging route in the plugin interface.
  *
  * @return {null} Returns null as no UI is needed during redirect
  */
