@@ -5,7 +5,7 @@ import {
 	BuildingStorefrontIcon,
 	QuestionMarkCircleIcon } 
 from '@heroicons/react/24/outline';
-import { NewfoldRuntime } from "@newfold/wp-module-runtime";
+import { NewfoldRuntime } from '@newfold/wp-module-runtime';
 import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/home';
@@ -14,6 +14,7 @@ import Marketplace from '../pages/marketplace';
 import Settings from '../pages/settings';
 import Help from '../pages/help';
 import Admin from '../pages/admin';
+import Staging from '../pages/staging';
 
 const addPartialMatch = ( prefix, path ) =>
 	prefix === path ? `${ prefix }/*` : path;
@@ -58,6 +59,7 @@ const topRoutePaths = [
 	'/store',
 	'/marketplace',
 	'/settings',
+	'/staging',
 ];
 const utilityRoutePaths = [ '/help' ];
 
@@ -112,6 +114,12 @@ export const routes = [
 		title: __( 'Settings', 'wp-plugin-crazy-domains' ),
 		Component: Settings,
 		Icon: AdjustmentsHorizontalIcon,
+		condition: true,
+	},
+	{
+		name: '/staging',
+		title: __( 'Staging', 'wp-plugin-crazy-domains' ),
+		Component: Staging,
 		condition: true,
 	},
 	{
