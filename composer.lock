@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23900294b8474c9d57fd10c8384dfe81",
+    "content-hash": "8dfe68289f2811e99fcb2e9b68325c44",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1607,16 +1607,16 @@
         },
         {
             "name": "newfold-labs/wp-module-performance",
-            "version": "3.2.4",
+            "version": "3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-performance.git",
-                "reference": "80c14076fb272d4add28fc5229a713befa122f58"
+                "reference": "1b4b4a70a50e113174352a015fec575a5bb49f9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/80c14076fb272d4add28fc5229a713befa122f58",
-                "reference": "80c14076fb272d4add28fc5229a713befa122f58",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/1b4b4a70a50e113174352a015fec575a5bb49f9c",
+                "reference": "1b4b4a70a50e113174352a015fec575a5bb49f9c",
                 "shasum": ""
             },
             "require": {
@@ -1629,7 +1629,7 @@
             },
             "require-dev": {
                 "10up/wp_mock": "^0.5.0|^1.0.0",
-                "johnpbloch/wordpress": "6.8.1",
+                "johnpbloch/wordpress": "6.1.7",
                 "lucatume/wp-browser": "*",
                 "newfold-labs/wp-php-standards": "^1.2",
                 "phpunit/phpcov": "*",
@@ -1697,10 +1697,10 @@
             ],
             "description": "A module for managing caching functionality.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-performance/tree/3.2.4",
+                "source": "https://github.com/newfold-labs/wp-module-performance/tree/3.1.6",
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
-            "time": "2025-06-30T11:54:06+00:00"
+            "time": "2025-06-11T15:06:03+00:00"
         },
         {
             "name": "newfold-labs/wp-module-pls",
