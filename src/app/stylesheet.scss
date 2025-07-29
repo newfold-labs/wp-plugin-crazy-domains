@@ -40,7 +40,32 @@ body.toplevel_page_crazy-domains {
     --wp-admin-theme-color-darker-20: var(--color-title);
     --wp-admin-border-width-focus: 2px;
     --crazydomainsbrand-focus: inset 0 0 0 1px var(--color-white),0 0 0 var(--wp-admin-border-width-focus) var(--color-primary);
-    
+
+    .nfd-brand-logo {
+        height: 34px;
+        width: 190px;
+        display: block;
+
+        &:not(.nfd-brand-logo--rendered) {
+            background : url("../../assets/svg/crazydomains-logo.svg") no-repeat;
+        }
+
+        &.nfd-size-sm{
+            height: 21px;
+            width: 118px;
+        }
+
+        &.nfd-size-lg{
+            height: 55px;
+            width: 308px;
+        }
+
+        &.nfd-size-xl{
+            height: 89px;
+            width: 498px;
+        }
+    }
+
     a {
         color: var(--color-link);
     }
