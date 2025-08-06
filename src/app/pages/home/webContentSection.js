@@ -11,7 +11,7 @@ const WebContentSection = () => {
 				<ActionField
 					label={__("Blog", "wp-plugin-crazy-domains")}
 					buttonLabel={__("New Post", "wp-plugin-crazy-domains")}
-					href={window.NewfoldRuntime.admin_url + 'post-new.php'}
+					href={window.NewfoldRuntime.linkTracker.addUtmParams(window.NewfoldRuntime.admin_url + 'post-new.php')}
 					className={"wppcd-app-home-blog-action"}
 				>
 					{__('Write a new blog post.', 'wp-plugin-crazy-domains')}
@@ -20,7 +20,7 @@ const WebContentSection = () => {
 				<ActionField
 					label={__("Pages", "wp-plugin-crazy-domains")}
 					buttonLabel={__("New Page", "wp-plugin-crazy-domains")}
-					href={window.NewfoldRuntime.admin_url + 'post-new.php?post_type=page'}
+					href={window.NewfoldRuntime.linkTracker.addUtmParams(window.NewfoldRuntime.admin_url + 'post-new.php?post_type=page')}
 					className={"wppcd-app-home-pages-action"}
 				>
 					{__('Add fresh pages to your website.', 'wp-plugin-crazy-domains')}
@@ -29,7 +29,7 @@ const WebContentSection = () => {
 				<ActionField
 					label={__("Categories", "wp-plugin-crazy-domains")}
 					buttonLabel={__("Manage Categories", "wp-plugin-crazy-domains")}
-					href={window.NewfoldRuntime.admin_url + 'edit-tags.php?taxonomy=category'}
+					href={window.NewfoldRuntime.linkTracker.addUtmParams(window.NewfoldRuntime.admin_url + 'edit-tags.php?taxonomy=category')}
 					className={"wppcd-app-home-categories-action"}
 				>
 					{__('Organize existing content into categories.', 'wp-plugin-crazy-domains')}

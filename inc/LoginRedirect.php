@@ -118,7 +118,6 @@ class LoginRedirect {
 	 * @return string
 	 */
 	public static function get_crazydomains_dashboard_url() {
-		return admin_url( 'admin.php?page=crazy-domains#/home' );
+		return apply_filters( 'nfd_build_url', admin_url( 'admin.php?page=crazy-domains#/home' ) );
 	}
-
 }
