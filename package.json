@@ -33,7 +33,7 @@
         "@wordpress/dom-ready": "^4.26.0",
         "@wordpress/element": "^6.26.0",
         "@wordpress/i18n": "^5.26.0",
-        "@wordpress/icons": "^10.26.0",
+        "@wordpress/icons": "^10.29.0",
         "classnames": "^2.5.1",
         "html-react-parser": "^5.2.5",
         "jquery": "^3.7.1",
