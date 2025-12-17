@@ -13,14 +13,14 @@ const Mark = () => {
 		}, 500 );
 	};
 	return (
-		<a
-			className="logo-mark"
-			style={ { display: 'block', width: '160px', height: 'auto' } }
+		<Button
+			icon={ <Brand className="wppcd-logo" /> }
+			style={ { width: '190px', height: 'auto' } }
 			onMouseUp={ defocus }
+			className="logo-mark nfd-p-0"
 			href="#/home"
-		>
-			<Brand className="wppw-logo" />
-		</a>
+			aria-label="Crazy Domains"
+		/>
 	);
 };
 
