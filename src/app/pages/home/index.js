@@ -6,6 +6,7 @@ import WebHostingSection from './webHostingSection';
 import WelcomeSection from './welcomeSection';
 
 const Home = () => {
+	console.log("Check Tests");
 	return (
 		<Page title="Settings" className={"wppcd-app-home-page wppcd-home"}>
 			<WelcomeSection />
