@@ -9,7 +9,7 @@ import { useEffect } from '@wordpress/element';
  */
 const Staging = () => {
 	useEffect( () => {
-		window.location.href = `${ window.NewfoldRuntime.adminUrl }admin.php?page=nfd-staging`;
+		window.location.href = `${ window.NewfoldRuntime.admin_url }admin.php?page=nfd-staging`;
 	}, [] );
 
 	return null; // No UI needed as we're redirecting
