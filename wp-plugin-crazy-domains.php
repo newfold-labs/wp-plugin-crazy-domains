@@ -15,7 +15,7 @@
  * Version:           2.3.4
  * Requires PHP:      7.3
  * Requires at least: 6.6
- * Tested up to:      6.9
+ * Tested up to:      6.8.2
  * Author:            Crazy Domains
  * Author URI:        https://crazydomains.com
  * Text Domain:       wp-plugin-crazy-domains
