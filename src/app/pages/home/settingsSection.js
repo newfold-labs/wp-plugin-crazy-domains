@@ -20,7 +20,7 @@ const SettingsSection = () => {
 				<ActionField
 					label={__("Performance", "wp-plugin-crazy-domains")}
 					buttonLabel={__("Performance", "wp-plugin-crazy-domains")}
-					href={window.NewfoldRuntime.linkTracker.addUtmParams(window.NewfoldRuntime.admin_url + 'tools.php?page=nfd-performance')}
+					href={window.NewfoldRuntime.linkTracker.addUtmParams(window.NewfoldRuntime.adminUrl + 'tools.php?page=nfd-performance')}
 					className={"wppcd-app-home-performance-action"}
 				>
 					{__('Manage site performance and caching settings as well as clear the site cache.', 'wp-plugin-crazy-domains')}
