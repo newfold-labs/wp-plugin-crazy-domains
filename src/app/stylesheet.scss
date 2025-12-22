@@ -25,7 +25,36 @@
    --color-warning-contrast: #FFE3C6;
    --color-error-contrast: #F6D3D3;
    --color-canvas: #F5F6F8;
+
+    // NFD Module Overrides (wp-module-performance, etc.)
+    --nfd-color-primary: #548224;
+    --nfd-color-primary-dark: #44691D;
+    --nfd-color-primary-light: #D3F0B5;
+    --nfd-color-primary-lighter: #E6F6D6;
+    --nfd-color-secondary: #576164;
+    --nfd-color-secondary-dark: #4F595C;
+    --nfd-color-secondary-light: #949C9E;
+    --nfd-color-secondary-lighter: #C7CCCF;
+    --nfd-color-title: #484848;
+    --nfd-color-body: #4F595C;
 }
+
+// Crazy Domains Brand Override - Higher specificity to override module styles
+.nfd-root,
+.nfd-brand--crazy-domains,
+body .nfd-root {
+    --nfd-color-primary: #548224;
+    --nfd-color-primary-dark: #44691D;
+    --nfd-color-primary-light: #D3F0B5;
+    --nfd-color-primary-lighter: #E6F6D6;
+    --nfd-color-secondary: #576164;
+    --nfd-color-secondary-dark: #4F595C;
+    --nfd-color-secondary-light: #949C9E;
+    --nfd-color-secondary-lighter: #C7CCCF;
+    --nfd-color-title: #484848;
+    --nfd-color-body: #4F595C;
+}
+
 
 html {
     @media screen and (min-width: 782px) {
