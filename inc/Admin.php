@@ -53,45 +53,12 @@ final class Admin {
 	 */
 	public static function plugin_subpages() {
 
-		$home     = array(
-			'route'    => 'crazy-domains#/home',
-			'title'    => __( 'Home', 'wp-plugin-crazy-domains' ),
-			'priority' => 1,
+		return array(
+			'crazy-domains#/home'        => __( 'Home', 'wp-plugin-crazy-domains' ),
+			'crazy-domains#/marketplace' => __( 'Marketplace', 'wp-plugin-crazy-domains' ),
+			'crazy-domains#/settings'    => __( 'Settings', 'wp-plugin-crazy-domains' ),
+			'crazy-domains#/help'        => __( 'Help', 'wp-plugin-crazy-domains' ),
 		);
-		$settings = array(
-			'route'    => 'crazy-domains#/settings',
-			'title'    => __( 'Settings', 'wp-plugin-crazy-domains' ),
-			'priority' => 60,
-		);
-		$help     = array(
-			'route'    => 'crazy-domains#/help',
-			'title'    => __( 'Help Resources', 'wp-plugin-crazy-domains' ),
-			'priority' => 70,
-		);
-
-		// apply filter to add module subnav items
-		$subnav = apply_filters(
-			'nfd_plugin_subnav', // modules can filter this to add their own subnav items
-			array(
-				$settings,
-				$home,
-				$help,
-			)
-		);
-
-		// sort subnav items by priority
-		usort(
-			$subnav,
-			function ( $a, $b ) {
-				if ( $a['priority'] === $b['priority'] ) {
-					return 0;
-				}
-				return ( $a['priority'] < $b['priority'] ? -1 : 1 );
-			}
-		);
-
-		// return subnav items sorted by priority
-		return $subnav;
 	}
 
 	/**
@@ -126,14 +93,14 @@ final class Admin {
 		);
 
 		// Add subpages to menu
-		foreach ( self::plugin_subpages() as $subpage ) {
+		foreach ( self::plugin_subpages() as $route => $title ) {
 			\add_submenu_page(
 				'crazy-domains',
-				$subpage['title'],
-				$subpage['title'],
+				$title,
+				$title,
 				'manage_options',
-				$subpage['route'],
-				array_key_exists( 'callback', $subpage ) ? $subpage['callback'] : array( __CLASS__, 'render' )
+				$route,
+				array( __CLASS__, 'render' )
 			);
 		}
 	}
@@ -152,15 +119,31 @@ final class Admin {
 
 		echo '<!-- Crazy Domains -->' . PHP_EOL;
 
-		if ( version_compare( $wp_version, $plugin_data['RequiresWP'], '>=' ) ) {
+		if ( version_compare( $wp_version, '5.4', '>=' ) ) {
 			echo '<div id="wppcd-app" class="wppcd wppcd_app"></div>' . PHP_EOL;
-		} else {
-			// fallback messaging for outdated WordPress
-			$appWhenOutdated = CRAZYDOMAINS_PLUGIN_DIR . '/inc/AppWhenOutdated.php';
-			if ( file_exists( $appWhenOutdated ) ) {
-				include_once $appWhenOutdated;
+			// Render bootstrap containers for modules that need portals
+			// Only enabled features get their containers rendered
+			$features_with_portals = array( 'performance' );
+			foreach ( $features_with_portals as $feature ) {
+				if ( function_exists( 'NewfoldLabs\WP\Module\Features\isEnabled' ) &&
+					\NewfoldLabs\WP\Module\Features\isEnabled( $feature ) ) {
+					$portal_id = 'nfd-' . $feature . '-portal';
+					echo '<div id="' . esc_attr( $portal_id ) . '" style="display:none"></div>' . PHP_EOL;
+				}
 			}
+		} else {
+			// fallback messaging for WordPress older than 5.4.
+			echo '<div id="wppcd-app" class="wppcd wppcd_app">' . PHP_EOL;
+			echo '<header class="wppcd-header" style="min-height: 90px; padding: 1rem; margin-bottom: 1.5rem;"><div class="wppcd-header-inner"><div class="wppcd-logo-wrap">' . PHP_EOL;
+			echo '<img src="' . esc_url( CRAZYDOMAINS_PLUGIN_URL . 'assets/svg/crazydomains-logo.svg' ) . '" alt="Crazy Domains logo" />' . PHP_EOL;
+			echo '</div></div></header>' . PHP_EOL;
+			echo '<div class="wrap">' . PHP_EOL;
+			echo '<div class="card" style="margin-left: 20px;"><h2 class="title">' . esc_html__( 'Please update to a newer WordPress version.', 'wp-plugin-crazy-domains' ) . '</h2>' . PHP_EOL;
+			echo '<p>' . esc_html__( 'There are new WordPress components which this plugin requires in order to render the interface.', 'wp-plugin-crazy-domains' ) . '</p>' . PHP_EOL;
+			echo '<p><a href="' . esc_url( admin_url( 'update-core.php' ) ) . '" class="button component-button is-primary button-primary" variant="primary">' . esc_html__( 'Please update now', 'wp-plugin-crazy-domains' ) . '</a></p>' . PHP_EOL;
+			echo '</div></div></div>' . PHP_EOL;
 		}
+		
 
 		echo '<!-- /Crazy Domains -->' . PHP_EOL;
 	}
@@ -230,7 +213,7 @@ final class Admin {
 		$wordpress_url = '<a href="' . apply_filters( 'nfd_build_url', 'https://wordpress.org/', array( 'source' => 'crazy_admin_footer' ) ) . '">WordPress</a>';
 		$crazy_url     = '<a href="' . apply_filters( 'nfd_build_url', 'https://crazydomains.com/about', array( 'source' => 'crazy_admin_footer' ) ) . '">Crazy Domains</a>';
 
-		// translators: %1$s is the WordPress URL, %2$s is the Web.com URL.
+		// translators: %1$s is the WordPress URL, %2$s is the Crazy domains URL.
 		$footer_text = sprintf( \__( 'Thank you for creating with %1$s and %2$s.', 'wp-plugin-crazy-domains' ), $wordpress_url, $crazy_url );
 		return $footer_text;
 	}

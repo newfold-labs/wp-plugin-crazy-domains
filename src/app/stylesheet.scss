@@ -243,3 +243,40 @@ body.toplevel_page_crazy-domains {
     opacity: .5;
     pointer-events: none;
 }
+
+.nfd-root .nfd-details {
+
+    summary {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        padding: 2rem;
+    }
+
+    .nfd-details-icon {
+        flex-shrink: 0;
+        font-size: 2rem;
+        transform: rotate(180deg);
+        width: 2rem;
+        transition: color 0.25s ease;
+    }
+
+    &[open] {
+        .nfd-details-icon {
+            transform: rotate(0deg);
+        }
+    }
+
+    &:hover,
+    &[open] {
+        .nfd-details-icon {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.performance-fill .nfd-page > div:first-child {
+    display: none;
+}
