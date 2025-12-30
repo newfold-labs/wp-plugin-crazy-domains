@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14a473ec05c0090ee02ee84a3a5b2596",
+    "content-hash": "f00efa8e87512153f19988df36553f84",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -371,16 +371,16 @@
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
-            "version": "1.6.3",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-coming-soon.git",
-                "reference": "1387d7939343cefde556d175e49b82097e518abc"
+                "reference": "e9f8f45821a149227ce2cd4033d87a0fc79bc073"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/1387d7939343cefde556d175e49b82097e518abc",
-                "reference": "1387d7939343cefde556d175e49b82097e518abc",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-coming-soon/zipball/e9f8f45821a149227ce2cd4033d87a0fc79bc073",
+                "reference": "e9f8f45821a149227ce2cd4033d87a0fc79bc073",
                 "shasum": ""
             },
             "require": {
@@ -413,6 +413,14 @@
                     "@i18n-php",
                     "@i18n-json"
                 ],
+                "i18n-ci-pre": [
+                    "@i18n-pot",
+                    "@i18n-po"
+                ],
+                "i18n-ci-post": [
+                    "@i18n-json",
+                    "@i18n-php"
+                ],
                 "i18n-json": [
                     "find ./languages -name \"*.json\" -exec rm {} \\; && vendor/bin/wp i18n make-json ./languages --no-purge --pretty-print"
                 ],
@@ -426,7 +434,7 @@
                     "vendor/bin/wp i18n update-po ./languages/wp-module-coming-soon.pot ./languages"
                 ],
                 "i18n-pot": [
-                    "vendor/bin/wp i18n make-pot . ./languages/wp-module-coming-soon.pot --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-coming-soon/issues\",\"POT-Creation-Date\":\"2025-02-13T09:55:55+00:00\"}' --exclude=wordpress,assets,tests,src"
+                    "vendor/bin/wp i18n make-pot . ./languages/wp-module-coming-soon.pot --domain=wp-module-coming-soon --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-coming-soon/issues\",\"POT-Creation-Date\":\"2025-02-13T09:55:55+00:00\"}' --exclude=wordpress,assets,tests,src"
                 ],
                 "lint": [
                     "vendor/bin/phpcs . --standard=phpcs.xml -s"
@@ -451,10 +459,10 @@
             ],
             "description": "Coming Soon module for WordPress sites.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/1.6.3",
+                "source": "https://github.com/newfold-labs/wp-module-coming-soon/tree/2.1.2",
                 "issues": "https://github.com/newfold-labs/wp-module-coming-soon/issues"
             },
-            "time": "2025-07-22T15:30:03+00:00"
+            "time": "2025-09-29T14:59:51+00:00"
         },
         {
             "name": "newfold-labs/wp-module-context",
@@ -3475,12 +3483,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "11f7ca6b5f4e115b64cf9aa8af60c2211bfadf56"
+                "reference": "0f8a43cc36fa8ab38f3a305f9390fb7782f93a26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/11f7ca6b5f4e115b64cf9aa8af60c2211bfadf56",
-                "reference": "11f7ca6b5f4e115b64cf9aa8af60c2211bfadf56",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0f8a43cc36fa8ab38f3a305f9390fb7782f93a26",
+                "reference": "0f8a43cc36fa8ab38f3a305f9390fb7782f93a26",
                 "shasum": ""
             },
             "conflict": {
@@ -3617,7 +3625,7 @@
                 "cosenary/instagram": "<=2.3",
                 "couleurcitron/tarteaucitron-wp": "<0.3",
                 "craftcms/cms": "<=4.16.5|>=5,<=5.8.6",
-                "croogo/croogo": "<4",
+                "croogo/croogo": "<=4.0.7",
                 "cuyz/valinor": "<0.12",
                 "czim/file-handling": "<1.5|>=2,<2.3",
                 "czproject/git-php": "<4.0.3",
@@ -4279,7 +4287,7 @@
                 "thelia/thelia": ">=2.1,<2.1.3",
                 "theonedemon/phpwhois": "<=4.2.5",
                 "thinkcmf/thinkcmf": "<6.0.8",
-                "thorsten/phpmyfaq": "<=4.0.13",
+                "thorsten/phpmyfaq": "<=4.0.13|>=4.0.14,<4.0.16",
                 "tikiwiki/tiki-manager": "<=17.1",
                 "timber/timber": ">=0.16.6,<1.23.1|>=1.24,<1.24.1|>=2,<2.1",
                 "tinymce/tinymce": "<7.2",
@@ -4473,7 +4481,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-23T20:06:05+00:00"
+            "time": "2025-12-29T23:05:42+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -4481,12 +4489,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "67dec559307b8209e3f86e9cfe9bd3114071fd45"
+                "reference": "432e00cb44ff26fda995bb237a9acc51ea459c98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/67dec559307b8209e3f86e9cfe9bd3114071fd45",
-                "reference": "67dec559307b8209e3f86e9cfe9bd3114071fd45",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/432e00cb44ff26fda995bb237a9acc51ea459c98",
+                "reference": "432e00cb44ff26fda995bb237a9acc51ea459c98",
                 "shasum": ""
             },
             "require": {
@@ -4552,7 +4560,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-12-21T14:31:39+00:00"
+            "time": "2025-12-24T21:51:44+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
