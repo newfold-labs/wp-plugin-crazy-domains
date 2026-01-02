@@ -88,7 +88,7 @@ export const SideNavMenu = () => {
 	return (
 		<div className="nfd-px-0.5 nfd-space-y-6">
 			{primaryMenu()}
-			{secondaryMenu()}
+			{/* {secondaryMenu()} */}
 		</div>
 	);
 }
@@ -99,7 +99,7 @@ export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, action, 
 			<NavLink
 				onClick={(action && action instanceof Function) ? action : null}
 				to={path}
-				className={`wppcd-app-navitem wppcd-app-navitem-${ cleanForSlug( label ) } nfd-flex nfd-items-center nfd-gap-3 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E2E8F0]`}
+				className={`wppcd-app-navitem wppcd-app-navitem-${ cleanForSlug( label ) } nfd-flex nfd-items-center nfd-gap-3 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2]`}
 			>
 				{Icon &&
 					<Icon className="nfd-flex-shrink-0 nfd--ml-1 nfd-h-6 nfd-w-6" />
@@ -130,7 +130,7 @@ export const SideNavMenuSubItem = ({ label, name, path, action }) => {
 			<NavLink
 				onClick={(action && action instanceof Function) ? action : null}
 				to={path} 
-				className={`wppcd-app-subnavitem wppcd-app-subnavitem-${ cleanForSlug( label ) } nfd-flex nfd-items-center nfd-gap-3 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-body leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E2E8F0] [&.active]:nfd-text-title`}
+				className={`wppcd-app-subnavitem wppcd-app-subnavitem-${ cleanForSlug( label ) } nfd-flex nfd-items-center nfd-gap-3 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-body leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2] [&.active]:nfd-text-title`}
 			>
 				{label}
 			</NavLink>
@@ -232,7 +232,7 @@ export const TopBarNav = () => {
 					
 					{/* Desktop Navigation - Horizontal Menu */}
 					{isLargeViewport && (
-						<nav className="nfd-hidden min-[783px]:nfd-flex nfd-items-center nfd-gap-1">
+						<nav className=" min-[783px]:nfd-flex nfd-items-center nfd-gap-1">
 							{topRoutes.map(
 								(page) => (
 									true === page.condition && (
@@ -240,24 +240,12 @@ export const TopBarNav = () => {
 											key={page.name}
 											onClick={(page.action && page.action instanceof Function) ? page.action : null}
 											to={page.name}
-											className={`wppw-app-navitem wppw-app-navitem-${page.title} nfd-flex nfd-items-center nfd-gap-2 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E2E8F0] nfd-transition-colors`}
+											className={`wppw-app-navitem wppw-app-navitem-${page.title} nfd-flex nfd-items-center nfd-gap-2 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2] nfd-transition-colors`}
 										>
 											{page.Icon && <page.Icon className="nfd-w-5 nfd-h-5" />}
 											{page.title}
 										</NavLink>
 									)
-							))}
-							<div className="nfd-h-6 nfd-w-px nfd-bg-[#D8DEE4] nfd-mx-2"></div>
-							{utilityRoutes.map((page) => (
-								<NavLink
-									key={page.name}
-									onClick={(page.action && page.action instanceof Function) ? page.action : null}
-									to={page.name}
-									className={`wppw-app-navitem wppw-app-navitem-${page.title} nfd-flex nfd-items-center nfd-gap-2 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E2E8F0] nfd-transition-colors`}
-								>
-									{page.Icon && <page.Icon className="nfd-w-5 nfd-h-5" />}
-									{page.title}
-								</NavLink>
 							))}
 						</nav>
 					)}
