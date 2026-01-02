@@ -15,7 +15,7 @@ const Mark = () => {
 	return (
 		<Button
 			icon={ <Brand className="wppcd-logo" /> }
-			style={ { width: '190px', height: 'auto' } }
+			style={ { display: 'block', width: '160px', height: 'auto' } }
 			onMouseUp={ defocus }
 			className="logo-mark nfd-p-0"
 			href="#/home"

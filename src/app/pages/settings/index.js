@@ -82,7 +82,7 @@ const Settings = () => {
 							<Title as={ 'h1' } className={ 'nfd-mb-2' }>
 								{ __(
 									'General Settings',
-									'wp-plugin-bluehost'
+									'wp-plugin-crazy-domains'
 								) }
 							</Title>
 							<Title
@@ -91,7 +91,7 @@ const Settings = () => {
 							>
 								{ __(
 									'Manage common settings for your website',
-									'wp-plugin-bluehost'
+									'wp-plugin-crazy-domains'
 								) }
 							</Title>
 						</div>
