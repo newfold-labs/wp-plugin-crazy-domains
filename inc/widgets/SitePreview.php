@@ -7,31 +7,31 @@
 
 namespace CrazyDomains;
 
-class SitePreview {
-    /**
+class SitePreview{
+	/**
 	 * The id of this widget.
 	 */
 	const ID = 'site_preview_widget';
 
-    public function __construct(){
-        add_action( 'wp_dashboard_setup', array( __CLASS__, 'init' ), 1 );
-    }
+	public function __construct() {
+		add_action( 'wp_dashboard_setup', array( __CLASS__, 'init' ), 1 );
+	}
 
-    public static function init(){
-        wp_add_dashboard_widget(
-		self::ID,                          // Widget slug.
-		__( 'Site Preview', 'wp-plugin-crazy-domains' ),
-		array( __CLASS__, 'widget_render' ),
-        null,
-        null,
-        'normal',
-        'high'
-	); 
+	public static function init() {
+		wp_add_dashboard_widget(
+			self::ID,                          // Widget slug.
+			__( 'Site Preview', 'wp-plugin-crazy-domains' ),
+			array( __CLASS__, 'widget_render' ),
+			null,
+			null,
+			'normal',
+			'high'
+		);
 
-    \add_action( 'admin_enqueue_scripts', array( __CLASS__, 'assets' ) );
-    }
+		\add_action( 'admin_enqueue_scripts', array( __CLASS__, 'assets' ) );
+	}
 
-    /**
+	/**
 	 * Render the widget
 	 */
 	public static function widget_render() {
