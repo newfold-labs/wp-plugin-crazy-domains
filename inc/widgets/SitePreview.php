@@ -5,7 +5,7 @@
  * @package WPPluginCrazyDomains
  */
 
-namespace CrazyDomains;
+namespace CrazyDomains\Widgets;
 
 class SitePreview{
 	/**

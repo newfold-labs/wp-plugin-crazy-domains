@@ -5,7 +5,9 @@
  * @package WPPluginCrazyDomains
  */
 
-namespace CrazyDomains;
+namespace CrazyDomains\Widgets;
+
+use CrazyDomains\Widgets\SitePreview;
 
 require_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/widgets/SitePreview.php';
 
