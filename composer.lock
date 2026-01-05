@@ -3483,12 +3483,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "412d91dc6342787fd733523797d9c9faf2ad3ea5"
+                "reference": "5ba14c800ff89c74333c22d56ca1c1f35c424805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/412d91dc6342787fd733523797d9c9faf2ad3ea5",
-                "reference": "412d91dc6342787fd733523797d9c9faf2ad3ea5",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/5ba14c800ff89c74333c22d56ca1c1f35c424805",
+                "reference": "5ba14c800ff89c74333c22d56ca1c1f35c424805",
                 "shasum": ""
             },
             "conflict": {
@@ -3549,7 +3549,7 @@
                 "backpack/filemanager": "<2.0.2|>=3,<3.0.9",
                 "bacula-web/bacula-web": "<9.7.1",
                 "badaso/core": "<=2.9.11",
-                "bagisto/bagisto": "<=2.3.7",
+                "bagisto/bagisto": "<2.3.10",
                 "barrelstrength/sprout-base-email": "<1.2.7",
                 "barrelstrength/sprout-forms": "<3.9",
                 "barryvdh/laravel-translation-manager": "<0.6.8",
@@ -4482,7 +4482,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-30T23:05:26+00:00"
+            "time": "2026-01-02T22:05:49+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -4490,12 +4490,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "432e00cb44ff26fda995bb237a9acc51ea459c98"
+                "reference": "bc37991ce495831a35c3f9e07f2e12801b2a19b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/432e00cb44ff26fda995bb237a9acc51ea459c98",
-                "reference": "432e00cb44ff26fda995bb237a9acc51ea459c98",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/bc37991ce495831a35c3f9e07f2e12801b2a19b4",
+                "reference": "bc37991ce495831a35c3f9e07f2e12801b2a19b4",
                 "shasum": ""
             },
             "require": {
@@ -4561,7 +4561,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-12-24T21:51:44+00:00"
+            "time": "2026-01-01T02:41:53+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
