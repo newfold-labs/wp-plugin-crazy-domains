@@ -25,7 +25,7 @@ class SitePreview {
 
 	/**
 	 * Add sitepreview widgets
-	 * 
+	 *
 	 * @return void
 	 */
 	public static function init() {
