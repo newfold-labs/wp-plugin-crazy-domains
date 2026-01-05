@@ -7,16 +7,26 @@
 
 namespace CrazyDomains\Widgets;
 
-class SitePreview{
+/**
+ * SitePreview Class
+ */
+class SitePreview {
 	/**
 	 * The id of this widget.
 	 */
 	const ID = 'site_preview_widget';
 
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
 		add_action( 'wp_dashboard_setup', array( __CLASS__, 'init' ), 1 );
 	}
 
+	/**
+	 * Add sitepreview widgets
+	 * @return void
+	 */
 	public static function init() {
 		wp_add_dashboard_widget(
 			self::ID,                          // Widget slug.
