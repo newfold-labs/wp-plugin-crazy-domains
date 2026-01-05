@@ -178,7 +178,7 @@ final class Admin {
 		);
 
 		$screen = get_current_screen();
-		if ( false !== strpos( $screen->id, 'crazy-domains' ) ) {
+		if ( isset( $screen->id ) && false !== strpos( $screen->id, 'crazy-domains' ) ) {
 			\wp_enqueue_script( 'crazydomains-script' );
 			\wp_enqueue_style( 'crazydomains-style' );
 		}
@@ -214,7 +214,7 @@ final class Admin {
 		$crazy_url     = '<a href="' . apply_filters( 'nfd_build_url', 'https://crazydomains.com/about', array( 'source' => 'crazy_admin_footer' ) ) . '">Crazy Domains</a>';
 
 		// translators: %1$s is the WordPress URL, %2$s is the Crazy domains URL.
-		$footer_text = sprintf( \__( 'Thank you for creating with %1$s and %2$s.', 'wp-plugin-crazy-domains' ), $wordpress_url, $crazy_url );
+		$footer_text = sprintf( \__( '<span class="nfd-text-gray-700">text</span>Thank you for creating with %1$s and %2$s.', 'wp-plugin-crazy-domains' ), $wordpress_url, $crazy_url );
 		return $footer_text;
 	}
 
