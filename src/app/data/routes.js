@@ -3,7 +3,8 @@ import {
 	ShoppingBagIcon,
 	AdjustmentsHorizontalIcon,
 	BuildingStorefrontIcon,
-	QuestionMarkCircleIcon } 
+	QuestionMarkCircleIcon, 
+	BoltIcon} 
 from '@heroicons/react/24/outline';
 import { NewfoldRuntime } from '@newfold/wp-module-runtime';
 import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
@@ -74,6 +75,13 @@ export const routes = [
 		Icon: ShoppingBagIcon,
 		subRoutes: await getMarketplaceSubnavRoutes(),
 		condition: true,
+	},
+	{
+		name: '/settings/performance',
+		title: __( 'Performance', 'wp-plugin-crazy-domains' ),
+		Component: Settings,
+		Icon: BoltIcon,
+		condition: await window.NewfoldFeatures.isEnabled( 'performance' ),
 	},
 	{
 		name: '/settings',

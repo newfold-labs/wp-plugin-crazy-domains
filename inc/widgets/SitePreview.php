@@ -60,3 +60,4 @@ class SitePreview {
 		\wp_enqueue_style( 'crazydomains-style' );
 	}
 }
+

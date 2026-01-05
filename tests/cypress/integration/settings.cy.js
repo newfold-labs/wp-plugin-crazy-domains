@@ -7,7 +7,7 @@ describe('Settings Page', { testIsolation: true }, function () {
 		cy.wpLogin();
 		cy.visit( `/wp-admin/admin.php?page=${ Cypress.env( 'pluginId' ) }#/settings` );
 		// Ensure the general settings accordion is open
-		cy.get('.nfd-settings-app-wrapper details.settings-details').then(($details) => {
+		cy.get('.settings-app-wrapper.settings-details').then(($details) => {
 			if (!$details.prop('open')) {
 				cy.wrap($details).find('summary').click();
 			}

@@ -31,6 +31,31 @@ const Settings = () => {
 		};
 	}, [] );
 
+	// Auto-open accordion sections based on URL hash
+	useEffect( () => {
+		const path = location.pathname;
+
+		// Close all accordion sections first
+		const allDetails = document.querySelectorAll( '.nfd-details' );
+		allDetails.forEach( ( details ) => {
+			details.removeAttribute( 'open' );
+		} );
+
+		// Map URL paths to accordion selectors
+		const accordionMap = {
+			'/settings/performance': '.performance-details',
+			'/settings': '.settings-details',
+		};
+
+		// Open the appropriate accordion section
+		const targetSelector = accordionMap[ path ];
+		if ( targetSelector ) {
+			const targetDetails = document.querySelector( targetSelector );
+			if ( targetDetails ) {
+				targetDetails.setAttribute( 'open', 'true' );
+			}
+		}
+	}, [ location.pathname ] );
 	return (
 		<Page title="Settings" className={"wppcd-app-settings-page"}>
 			<div
@@ -48,7 +73,7 @@ const Settings = () => {
 				</Title>
 			</div>
 			<Container className={'wppcd-app-settings-container'}>
-				<details className="nfd-details nfd-settings-app-wrapper nfd-settings-details">
+				<details className="nfd-details settings-app-wrapper settings-details">
 					<summary>
 						<div
 							id={ 'settings-header' }
