@@ -4,6 +4,7 @@
  *
  * @package WPPluginCrazyDomains
  */
+
 namespace CrazyDomains;
 
 class SitePreview {
@@ -47,6 +48,5 @@ class SitePreview {
 		// enqueue the crazydomains-style stylesheet
 		// this is registered in Admin.php > assets()
 		\wp_enqueue_style( 'crazydomains-style' );
-		error_log("testingg");
 	}
 }

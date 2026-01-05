@@ -152,7 +152,6 @@ LoginRedirect::init();
 // Instantiate the Features singleton
 Features::getInstance();
 
-
 /**
  * Handle activation tasks.
  * TODO: Move this to the activation module
