@@ -21,6 +21,7 @@ if (typeof window !== 'undefined') {
 				'marketplace/ecommerce': 'crazy-domains#/marketplace',
 				'marketplace/seo': 'crazy-domains#/marketplace',
 				'marketplace/themes': 'crazy-domains#/marketplace',
+				'marketplace/security': 'crazy-domains#/marketplace',
 				'marketplace/all': 'crazy-domains#/marketplace',
 				'/settings': 'crazy-domains#/settings',
 				'/settings/performance': 'crazy-domains#/settings',
