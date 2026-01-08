@@ -50,6 +50,18 @@ if (typeof window !== 'undefined') {
 				setTimeout(updateActiveMenuItem, 100);
 			});
 		});
+
+		// pushState / replaceState (SPA)
+		['pushState', 'replaceState'].forEach(method => {
+			const original = history[method];
+			history[method] = function () {
+				const result = original.apply(this, arguments);
+				window.dispatchEvent(new Event('routechange'));
+				return result;
+			};
+		});
+
+		window.addEventListener('routechange', updateActiveMenuItem);
 	});
 }
 
