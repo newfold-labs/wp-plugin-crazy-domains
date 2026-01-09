@@ -46,7 +46,7 @@ class SitePreview {
 	 * Render the widget
 	 */
 	public static function widget_render() {
-		$view_file = CRAZYDOMAINS_PLUGIN_DIR . '/inc/widgets/views/site-preview.php';
+		$view_file = CRAZYDOMAINS_PLUGIN_DIR . '/inc/Widgets/views/site-preview.php';
 		include $view_file;
 	}
 
