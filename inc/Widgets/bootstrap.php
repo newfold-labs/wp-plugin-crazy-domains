@@ -9,7 +9,7 @@ namespace CrazyDomains\Widgets;
 
 use CrazyDomains\Widgets\SitePreview;
 
-require_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/widgets/SitePreview.php';
+require_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/Widgets/SitePreview.php';
 
 /* Start up the Dashboards */
 if ( is_admin() ) {
