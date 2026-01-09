@@ -143,7 +143,6 @@ final class Admin {
 			echo '<p><a href="' . esc_url( admin_url( 'update-core.php' ) ) . '" class="button component-button is-primary button-primary" variant="primary">' . esc_html__( 'Please update now', 'wp-plugin-crazy-domains' ) . '</a></p>' . PHP_EOL;
 			echo '</div></div></div>' . PHP_EOL;
 		}
-		
 
 		echo '<!-- /Crazy Domains -->' . PHP_EOL;
 	}
