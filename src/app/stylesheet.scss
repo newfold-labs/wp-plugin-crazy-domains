@@ -25,6 +25,34 @@
    --color-warning-contrast: #FFE3C6;
    --color-error-contrast: #F6D3D3;
    --color-canvas: #F5F6F8;
+
+     // NFD Module Overrides (wp-module-performance, etc.)
+    --nfd-color-primary: #548224;
+    --nfd-color-primary-dark: #44691D;
+    --nfd-color-primary-light: #D3F0B5;
+    --nfd-color-primary-lighter: #E6F6D6;
+    --nfd-color-secondary: #576164;
+    --nfd-color-secondary-dark: #4F595C;
+    --nfd-color-secondary-light: #949C9E;
+    --nfd-color-secondary-lighter: #C7CCCF;
+    --nfd-color-title: #484848;
+    --nfd-color-body: #4F595C;
+}
+
+// Crazy Domains Brand Override - Higher specificity to override module styles
+.nfd-root,
+.nfd-brand--crazy-domains,
+body .nfd-root {
+    --nfd-color-primary: #548224;
+    --nfd-color-primary-dark: #44691D;
+    --nfd-color-primary-light: #D3F0B5;
+    --nfd-color-primary-lighter: #E6F6D6;
+    --nfd-color-secondary: #576164;
+    --nfd-color-secondary-dark: #4F595C;
+    --nfd-color-secondary-light: #949C9E;
+    --nfd-color-secondary-lighter: #C7CCCF;
+    --nfd-color-title: #484848;
+    --nfd-color-body: #4F595C;
 }
 
 html {
@@ -242,4 +270,62 @@ body.toplevel_page_crazy-domains {
 .nfd-disabled {
     opacity: .5;
     pointer-events: none;
+}
+
+.nfd-root .nfd-details {
+
+    summary {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        padding: 2rem;
+    }
+
+    .nfd-details-icon {
+        flex-shrink: 0;
+        font-size: 2rem;
+        transform: rotate(180deg);
+        width: 2rem;
+        transition: color 0.25s ease;
+    }
+
+    &[open] {
+        .nfd-details-icon {
+            transform: rotate(0deg);
+        }
+    }
+
+    &:hover,
+    &[open] {
+        .nfd-details-icon {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.performance-fill .nfd-page > div:first-child {
+    display: none;
+}
+
+#coming-soon-portal{
+    .nfd-coming-soon-content.md\:nfd-flex-row-reverse .nfd-flex.nfd-flex-col.nfd-gap-2.nfd-w-full.md\:nfd-w-1\/2 {
+        justify-content: center;
+    }
+}
+
+.wppcd-app-body-inner {
+    max-width: 1290px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.wppcd-app-body {
+    padding: 2rem 24px 1rem;
+}
+
+.wppcd-logo-wrap svg {
+    width: 190px;
 }
