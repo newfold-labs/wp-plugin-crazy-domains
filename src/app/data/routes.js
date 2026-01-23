@@ -17,6 +17,19 @@ import Help from '../pages/help';
 const addPartialMatch = ( prefix, path ) =>
 	prefix === path ? `${ prefix }/*` : path;
 
+/**
+ * Redirect component for staging route.
+ * Redirects users to the nfd-staging page.
+ *
+ * @return {null} Returns null as this component only handles redirection.
+ */
+const StagingRedirect = () => {
+	// Redirect to the nfd-staging page.
+	window.location.href =
+		window.NewfoldRuntime.adminUrl + 'admin.php?page=nfd-staging';
+	return null;
+};
+
 export const AppRoutes = () => {
 	return (
 		<Routes>
@@ -35,6 +48,7 @@ export const AppRoutes = () => {
 					)
 			) }
 			<Route path="/" element={ <Home /> } />
+			<Route path="/staging" element={ <StagingRedirect /> } />
 			<Route
 				path="*"
 				element={
@@ -90,12 +104,13 @@ export const routes = [
 		Icon: AdjustmentsHorizontalIcon,
 		condition: true,
 	},
-	// {
-	// 	name: '/staging',
-	// 	title: __( 'Staging', 'wp-plugin-crazy-domains' ),
-	// 	Component: Staging,
-	// 	condition: true,
-	// },
+	{
+		name: '/settings/staging',
+		title: __( 'Staging', 'wp-plugin-crazy-domains' ),
+		Component: Settings,
+		Icon: AdjustmentsHorizontalIcon,
+		condition: true,
+	},
 	{
 		name: '/help',
 		title: __( 'Help', 'wp-plugin-crazy-domains' ),
