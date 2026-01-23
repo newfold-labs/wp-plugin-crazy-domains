@@ -104,3 +104,4 @@ jobs:
         with:
           name: ${{ steps.workflow.outputs.PACKAGE }}
           path: ${{ steps.workflow.outputs.DIST }}
+          include-hidden-files: true
