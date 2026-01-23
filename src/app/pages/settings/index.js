@@ -88,7 +88,7 @@ const Settings = () => {
 					<summary>
 						<div
 							id={ 'settings-header' }
-							className={ 'wppbh-app-settings-header' }
+							className={ 'wppcd-app-settings-header' }
 						>
 							<Title as={ 'h1' } className={ 'nfd-mb-2' }>
 								{ __(
