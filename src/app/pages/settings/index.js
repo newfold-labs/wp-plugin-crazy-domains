@@ -11,23 +11,33 @@ import { ChevronUpIcon } from '@heroicons/react/24/outline';
 const Settings = () => {
 	const isPerformanceEnabled =
 		window.NewfoldFeatures.features.performance === true;
+	const isStagingEnabled =
+		window.NewfoldFeatures.features.staging === true;
 
-	const location = useLocation();
+		const location = useLocation();
 
 		useEffect( () => {
 		// run when mounts
 		const performancePortal =
 			document.getElementById( 'performance-portal' );
+		const stagingPortal =
+			document.getElementById( 'staging-portal' );
 		if ( performancePortal ) {
 			window.NFDPortalRegistry.registerPortal(
 				'performance',
 				performancePortal
 			);
 		}
-
+		if ( stagingPortal ) {
+			window.NFDPortalRegistry.registerPortal(
+				'staging',
+				stagingPortal
+			);
+		}
 		// run when unmounts
 		return () => {
 			window.NFDPortalRegistry.unregisterPortal( 'performance' );
+			window.NFDPortalRegistry.unregisterPortal( 'staging' );
 		};
 	}, [] );
 
@@ -43,6 +53,7 @@ const Settings = () => {
 
 		// Map URL paths to accordion selectors
 		const accordionMap = {
+			'/settings/staging': '.staging-details',
 			'/settings/performance': '.performance-details',
 			'/settings': '.settings-details',
 		};
@@ -77,7 +88,7 @@ const Settings = () => {
 					<summary>
 						<div
 							id={ 'settings-header' }
-							className={ 'wppbh-app-settings-header' }
+							className={ 'wppcd-app-settings-header' }
 						>
 							<Title as={ 'h1' } className={ 'nfd-mb-2' }>
 								{ __(
@@ -160,6 +171,44 @@ const Settings = () => {
 						</summary>
 						<div id="nfd-performance-portal-wrapper">
 							<div id="performance-portal"></div>
+						</div>
+					</details>
+				</Container>
+			) }
+
+			{ isStagingEnabled && (
+				<Container
+					id="nfd-staging"
+					className={ 'nfd-settings-app-wrapper nfd-staging' }
+				>
+					<details className="nfd-details settings-app-wrapper staging-details">
+						<summary>
+							<div
+								id={ 'staging-header' }
+								className={ 'wppcd-app-staging-header' }
+							>
+								<Title as={ 'h1' } className={ 'nfd-mb-2' }>
+									{ __(
+										'Staging',
+										'wp-plugin-crazy-domains'
+									) }
+								</Title>
+								<Title
+									as={ 'h2' }
+									className="nfd-font-normal nfd-text-[13px]"
+								>
+									{ __(
+										'A staging site is a duplicate of your live site, offering a secure environment to experiment, test updates, and deploy when ready.',
+										'wp-plugin-crazy-domains'
+									) }
+								</Title>
+							</div>
+							<span className="nfd-details-icon">
+								<ChevronUpIcon />
+							</span>
+						</summary>
+						<div id="nfd-staging-portal-wrapper">
+							<div id="staging-portal"></div>
 						</div>
 					</details>
 				</Container>
