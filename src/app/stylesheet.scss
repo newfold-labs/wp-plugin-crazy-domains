@@ -305,7 +305,8 @@ body.toplevel_page_crazy-domains {
     }
 }
 
-.performance-fill .nfd-page > div:first-child {
+.performance-fill .nfd-page > div:first-child,
+.staging-fill .nfd-container__header.newfold-staging-header {
     display: none;
 }
 
