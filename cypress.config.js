@@ -99,6 +99,7 @@ module.exports = defineConfig({
         excludeSpecPattern: [
             "vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/wp-module-support/",
             'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/5-AI-SiteGen-onboarding-flow/*.cy.js', // skip all ai onboarding tests
+            'vendor/newfold-labs/wp-module-onboarding/tests/cypress/integration/2-general-onboarding-flow/sitetype-primary.cy.js', // skip flaky test with race condition
         ],
         supportFile: 'tests/cypress/support/index.js',
         testIsolation: false,

@@ -14,7 +14,7 @@ import { store as noticesStore } from '@wordpress/notices';
 import { kebabCase, filter } from 'lodash';
 import { useHandlePageLoad } from './util/hooks';
 import { Root } from "@newfold/ui-component-library";
-import Logo from './components/app-nav/logo';
+import { AppNav } from 'App/components/app-nav';
 import { NotificationFeed } from 'App/components/notifications';
 
 // component sourced from module
@@ -75,9 +75,6 @@ const AppBody = (props) => {
 				}}
 			/>
 			<div className="wppcd-app-body">
-				<header className="nfd-mb-6">
-					<Logo />
-				</header>
 				<div className="wppcd-app-body-inner">
 					<ErrorBoundary FallbackComponent={<ErrorCard />}>
 						{hasError && <ErrorCard error={hasError} />}
@@ -99,7 +96,8 @@ export const App = () => (
 		<Root context={{ isRtl: false }}>
 			<NotificationFeed>
 				<Router>
-					<div className="wppcd-app-container min-[783px]:nfd-p-8 min-[783px]:nfd-flex nfd-gap-6 nfd-max-w-full xl:nfd-max-w-screen-xl 2xl:nfd-max-w-screen-2xl nfd-my-0">
+					<div className="wppcd-app-container nfd-flex nfd-flex-col">
+						<AppNav />
 						<AppBody />
 					</div>
 				</Router>
