@@ -139,6 +139,7 @@ require CRAZYDOMAINS_PLUGIN_DIR . '/inc/RestApi/rest-api.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/settings.php';
 require CRAZYDOMAINS_PLUGIN_DIR . '/inc/updates.php';
 require_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/Filters.php';
+require CRAZYDOMAINS_PLUGIN_DIR . '/inc/Widgets/bootstrap.php';
 
 /* WordPress Admin Page & Features */
 if ( is_admin() ) {
@@ -150,7 +151,6 @@ LoginRedirect::init();
 
 // Instantiate the Features singleton
 Features::getInstance();
-
 
 /**
  * Handle activation tasks.

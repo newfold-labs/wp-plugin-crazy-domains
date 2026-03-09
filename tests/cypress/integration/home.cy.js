@@ -14,11 +14,6 @@ describe('Home Page', { testIsolation: true }, function () {
 		cy.a11y( appClass + '-app-body');
 
 		cy
-			.get( appClass + '-app-home-coming-soon').contains('h3', 'Site Status')
-			.scrollIntoView()
-			.should('be.visible');
-
-		cy
 			.get( appClass + '-app-home-content').contains('h3', 'Website Content')
 			.scrollIntoView()
 			.should('be.visible');

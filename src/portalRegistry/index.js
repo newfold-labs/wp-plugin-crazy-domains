@@ -119,7 +119,7 @@
  * Gets the current portal element if available.
  * - `name` (string): Portal identifier
  * - Returns: HTMLElement or null
- *
+ * 
  * ## Best Practices
  *
  * 1. **Unique Names**: Use descriptive, unique portal names (e.g., 'performance', 'marketplace')
