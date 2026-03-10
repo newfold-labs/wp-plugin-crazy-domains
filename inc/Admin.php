@@ -40,6 +40,7 @@ final class Admin {
 	 * @return array
 	 */
 	public static function add_to_runtime( $sdk ) {
+		include_once WEB_PLUGIN_DIR . '/inc/Data.php';
 		return array_merge( $sdk, Data::runtime() );
 	}
 
