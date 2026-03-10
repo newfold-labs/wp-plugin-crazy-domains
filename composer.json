@@ -92,7 +92,7 @@
         "newfold-labs/wp-module-marketplace": "^3.1.2",
         "newfold-labs/wp-module-migration": "^1.5.6",
         "newfold-labs/wp-module-notifications": "^1.7.0",
-        "newfold-labs/wp-module-onboarding": "3.3.5",
+        "newfold-labs/wp-module-onboarding": "^3.3.5",
         "newfold-labs/wp-module-onboarding-data": "^1.2.23",
         "newfold-labs/wp-module-patterns": "^2.11.1",
         "newfold-labs/wp-module-performance": "^3.5.6",
