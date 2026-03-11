@@ -99,7 +99,7 @@ add_filter(
 setContainer( $nfd_module_container );
 
 // Load Data class for AI SiteGen brand mapping
-require_once WEB_PLUGIN_DIR . '/inc/Data.php';
+require_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/Data.php';
 
 /**
  * Sub-brands like 'web', 'vodien', and 'crazy-domains' should use 'networksolutions'
