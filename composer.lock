@@ -5294,12 +5294,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/i18n-command.git",
-                "reference": "19d98031ffc7efa5fdd3e78eb05d9a75ac4b05c3"
+                "reference": "c3ba046cab4e7e3e7d3d34a8937eb95e131bde21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/i18n-command/zipball/19d98031ffc7efa5fdd3e78eb05d9a75ac4b05c3",
-                "reference": "19d98031ffc7efa5fdd3e78eb05d9a75ac4b05c3",
+                "url": "https://api.github.com/repos/wp-cli/i18n-command/zipball/c3ba046cab4e7e3e7d3d34a8937eb95e131bde21",
+                "reference": "c3ba046cab4e7e3e7d3d34a8937eb95e131bde21",
                 "shasum": ""
             },
             "require": {
@@ -5357,7 +5357,7 @@
                 "issues": "https://github.com/wp-cli/i18n-command/issues",
                 "source": "https://github.com/wp-cli/i18n-command/tree/main"
             },
-            "time": "2026-03-11T13:51:33+00:00"
+            "time": "2026-03-11T14:01:30+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
