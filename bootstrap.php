@@ -109,8 +109,8 @@ add_filter(
 	'newfold_ai_sitegen_brand',
 	function ( $brand ) {
 		// Check if this plugin's Data class has the get_ai_sitegen_brand method
-		if ( method_exists( \Web\Data::class, 'get_ai_sitegen_brand' ) ) {
-			return \Web\Data::get_ai_sitegen_brand();
+		if ( method_exists( \CrazyDomains\Data::class, 'get_ai_sitegen_brand' ) ) {
+			return \CrazyDomains\Data::get_ai_sitegen_brand();
 		}
 		return $brand;
 	}
