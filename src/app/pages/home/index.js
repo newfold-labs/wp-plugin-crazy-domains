@@ -2,6 +2,8 @@ import { Page, Container } from "@newfold/ui-component-library";
 import SettingsSection from './settingsSection';
 import WebContentSection from './webContentSection';
 import WebHostingSection from './webHostingSection';
+import NextSteps from "./nextSteps";
+import StoreDetails from "./storeDetails";
 
 const Home = () => {
 
@@ -25,10 +27,12 @@ const Home = () => {
 
 	return (
 		<Page title="Settings" className={"wppcd-app-home-page wppcd-home"}>
+			<StoreDetails />
 			{/* <WelcomeSection /> */}
 			<Container className="nfd-max-w-full nfd-p-8 nfd-shadow-none nfd-rounded-xl nfd-border nfd-border-[#D5D5D5]">
 				<div id="coming-soon-portal" />
 			</Container>
+			<NextSteps />
 			<Container className={'wppcd-app-home-container'}>
 				<Container.Header
 					title={__('More', 'wp-plugin-carzy-domains')}
