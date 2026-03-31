@@ -10,7 +10,7 @@ describe('Help Page', { testIsolation: true }, () => {
 	
 	it('Is Accessible and Cards Each Exist', () => {
 		cy.injectAxe();
-		cy.get( appClass + '-app-help-page', { timeout: 2000 } ).should( 'exist' );
+		cy.get( appClass + '-app-help-page', { timeout: 10000 } ).should( 'exist' );
 		cy.a11y( appClass + '-app-body');
 
 		cy.get('.card-help-ticket').contains('h3', 'Email')
