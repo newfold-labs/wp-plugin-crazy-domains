@@ -22,7 +22,7 @@ final class Admin {
 		/* Add Page to WordPress Admin Menu. */
 		\add_action( 'admin_menu', array( __CLASS__, 'page' ) );
 		/* Load Page Scripts & Styles. */
-		\add_action( 'admin_enqueue_scripts', array( __CLASS__, 'assets' ) );
+		\add_action( 'admin_enqueue_scripts', array( __CLASS__, 'assets' ), 1 );
 		/* Add Links to WordPress Plugins list item. */
 		\add_filter( 'plugin_action_links_wp-plugin-crazy-domains/wp-plugin-crazy-domains.php', array( __CLASS__, 'actions' ) );
 		/* Add inline style to hide subnav link */
@@ -40,6 +40,7 @@ final class Admin {
 	 * @return array
 	 */
 	public static function add_to_runtime( $sdk ) {
+		include_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/Data.php';
 		return array_merge( $sdk, Data::runtime() );
 	}
 
@@ -121,6 +122,7 @@ final class Admin {
 
 		if ( version_compare( $wp_version, '5.4', '>=' ) ) {
 			echo '<div id="wppcd-app" class="wppcd wppcd_app"></div>' . PHP_EOL;
+			echo '<div id="nfd-next-steps-portal" style="display:none"></div>' . PHP_EOL;
 			// Render bootstrap containers for modules that need portals
 			// Only enabled features get their containers rendered
 			$features_with_portals = array( 'performance', 'coming-soon', 'staging' );
@@ -162,15 +164,23 @@ final class Admin {
 		}
 
 		\wp_register_script(
-			'crazydomains-script',
+			'nfd-portal-registry',
+			CRAZYDOMAINS_BUILD_URL . '/portal-registry.js',
+			array( 'wp-components', 'wp-element' ),
+			$asset['version'],
+			true
+		);
+
+		\wp_register_script(
+			'crazy-domains-script',
 			CRAZYDOMAINS_BUILD_URL . '/index.js',
-			array_merge( $asset['dependencies'], array( 'newfold-features', 'nfd-runtime' ) ),
+			array_merge( $asset['dependencies'], array( 'newfold-features', 'nfd-runtime', 'nfd-portal-registry' ) ),
 			$asset['version'],
 			true
 		);
 
 		\wp_register_style(
-			'crazydomains-style',
+			'crazy-domains-style',
 			CRAZYDOMAINS_BUILD_URL . '/index.css',
 			array( 'wp-components' ),
 			$asset['version']
@@ -178,8 +188,8 @@ final class Admin {
 
 		$screen = get_current_screen();
 		if ( isset( $screen->id ) && false !== strpos( $screen->id, 'crazy-domains' ) ) {
-			\wp_enqueue_script( 'crazydomains-script' );
-			\wp_enqueue_style( 'crazydomains-style' );
+			\wp_enqueue_script( 'crazy-domains-script' );
+			\wp_enqueue_style( 'crazy-domains-style' );
 		}
 
 		\add_action( 'admin_footer_text', array( __CLASS__, 'add_brand_to_admin_footer' ) );
