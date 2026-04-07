@@ -10,9 +10,9 @@ test.describe('Dashboard Widgets', () => {
     await newfold.clearCapabilities();
   });
 
-  test('Network solutions Widgets are all Accessible', async ({ page }) => {
+  test('Crazy Domains Widgets are all Accessible', async ({ page }, testInfo) => {
     // Wait for dashboard widgets to load with longer timeout
-    await expect(page).toHaveURL('http://localhost:8886/wp-admin/index.php');
+    await expect(page).toHaveURL(new URL('/wp-admin/index.php', testInfo.project.use.baseURL).toString());
     
     try {
       await newfold.waitForDashboardWidgets(page, 15000);

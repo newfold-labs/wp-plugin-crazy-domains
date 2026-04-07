@@ -58,7 +58,7 @@ function generateProjects() {
   console.log('🔍 Playwright Projects Discovery:');
   const projects = [
     {
-      name: 'newfold-labs/wp-plugin-web',
+      name: 'newfold-labs/wp-plugin-crazy-domains',
       testDir: './tests/playwright/specs',
       testMatch: '**/*.spec.js',
     }

@@ -2094,12 +2094,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-patterns.git",
-                "reference": "9d228320be05da0e4acf4b176503619bf887c998"
+                "reference": "2d154e7d0caef10e6eba4ab92526b38012171abe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/9d228320be05da0e4acf4b176503619bf887c998",
-                "reference": "9d228320be05da0e4acf4b176503619bf887c998",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-patterns/zipball/2d154e7d0caef10e6eba4ab92526b38012171abe",
+                "reference": "2d154e7d0caef10e6eba4ab92526b38012171abe",
                 "shasum": ""
             },
             "require": {
@@ -2136,14 +2136,11 @@
                 "i18n-po": [
                     "vendor/bin/wp i18n update-po ./languages/nfd-wonder-blocks.pot ./languages"
                 ],
-                "i18n-mo": [
-                    "vendor/bin/wp i18n make-mo ./languages"
-                ],
                 "i18n-php": [
-                    "vendor/bin/wp i18n make-php ./languages"
+                    "vendor/bin/wp i18n make-php ./languages  --pretty-print"
                 ],
                 "i18n-json": [
-                    "find ./languages -name \"*.json\" -exec rm {} \\; && vendor/bin/wp i18n make-json ./languages --no-purge --pretty-print"
+                    "find ./languages -name \"*.json\" -exec rm {} \\; && vendor/bin/wp i18n make-json ./languages --pretty-print"
                 ],
                 "i18n": [
                     "@i18n-pot",
@@ -2182,20 +2179,20 @@
                 "source": "https://github.com/newfold-labs/wp-module-patterns/tree/2.12.2",
                 "issues": "https://github.com/newfold-labs/wp-module-patterns/issues"
             },
-            "time": "2026-03-24T18:56:32+00:00"
+            "time": "2026-04-03T17:45:53+00:00"
         },
         {
             "name": "newfold-labs/wp-module-performance",
-            "version": "3.7.6",
+            "version": "3.7.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-performance.git",
-                "reference": "87d8d8a077cd5fa3f4e30e6480e071f2550d0ee1"
+                "reference": "ef590de7cf145cd68d12ca5cc3745bc4a9f9af46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/87d8d8a077cd5fa3f4e30e6480e071f2550d0ee1",
-                "reference": "87d8d8a077cd5fa3f4e30e6480e071f2550d0ee1",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/ef590de7cf145cd68d12ca5cc3745bc4a9f9af46",
+                "reference": "ef590de7cf145cd68d12ca5cc3745bc4a9f9af46",
                 "shasum": ""
             },
             "require": {
@@ -2262,7 +2259,7 @@
                     "vendor/bin/wp i18n update-po ./languages/wp-module-performance.pot ./languages"
                 ],
                 "i18n-pot": [
-                    "vendor/bin/wp i18n make-pot . ./languages/wp-module-performance.pot --domain=wp-module-performance --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-performance/issues\",\"POT-Creation-Date\":null}' --exclude=src,tests,assets,wordpress --include=build/*.min.js"
+                    "vendor/bin/wp i18n make-pot . ./languages/wp-module-performance.pot --domain=wp-module-performance --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/newfold-labs/wp-module-performance/issues\",\"POT-Creation-Date\":null}' --exclude=src,tests,assets,wordpress --include=includes/*,build/*.min.js"
                 ],
                 "test": [
                     "phpunit --bootstrap tests/phpunit/bootstrap.php",
@@ -2285,10 +2282,10 @@
             ],
             "description": "A module for managing caching functionality.",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-performance/tree/3.7.6",
+                "source": "https://github.com/newfold-labs/wp-module-performance/tree/3.7.8",
                 "issues": "https://github.com/newfold-labs/wp-module-performance/issues"
             },
-            "time": "2026-03-31T12:44:35+00:00"
+            "time": "2026-04-03T12:32:54+00:00"
         },
         {
             "name": "newfold-labs/wp-module-pls",
@@ -3670,12 +3667,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/composer-installer.git",
-                "reference": "7e6a7a39bd34cae8596828a014a5f38bccf918fb"
+                "reference": "467286b0a2e73bf68dac19feb98643d9cac01e5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/composer-installer/zipball/7e6a7a39bd34cae8596828a014a5f38bccf918fb",
-                "reference": "7e6a7a39bd34cae8596828a014a5f38bccf918fb",
+                "url": "https://api.github.com/repos/PHPCSStandards/composer-installer/zipball/467286b0a2e73bf68dac19feb98643d9cac01e5e",
+                "reference": "467286b0a2e73bf68dac19feb98643d9cac01e5e",
                 "shasum": ""
             },
             "require": {
@@ -3759,7 +3756,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2026-02-13T20:47:53+00:00"
+            "time": "2026-03-31T19:49:25+00:00"
         },
         {
             "name": "eftec/bladeone",
@@ -4286,18 +4283,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "fdacac838472c18285bb944d528690f0fab9986f"
+                "reference": "db78064456eb735e368677828095fb7fe5aeda6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/fdacac838472c18285bb944d528690f0fab9986f",
-                "reference": "fdacac838472c18285bb944d528690f0fab9986f",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/db78064456eb735e368677828095fb7fe5aeda6f",
+                "reference": "db78064456eb735e368677828095fb7fe5aeda6f",
                 "shasum": ""
             },
             "conflict": {
                 "3f/pygmentize": "<1.2",
                 "adaptcms/adaptcms": "<=1.3",
-                "admidio/admidio": "<=5.0.6",
+                "admidio/admidio": "<5.0.8",
                 "adodb/adodb-php": "<=5.22.9",
                 "aheinze/cockpit": "<2.2",
                 "aimeos/ai-admin-graphql": ">=2022.04.1,<2022.10.10|>=2023.04.1,<2023.10.6|>=2024.04.1,<2024.07.2",
@@ -4341,10 +4338,10 @@
                 "athlon1600/youtube-downloader": "<=4",
                 "aureuserp/aureuserp": "<1.3.0.0-beta1",
                 "austintoddj/canvas": "<=3.4.2",
-                "auth0/auth0-php": ">=3.3,<8.18",
-                "auth0/login": "<7.20",
-                "auth0/symfony": "<=5.5",
-                "auth0/wordpress": "<=5.4",
+                "auth0/auth0-php": ">=3.3,<=8.18",
+                "auth0/login": "<=7.20",
+                "auth0/symfony": "<=5.7",
+                "auth0/wordpress": "<=5.5",
                 "automad/automad": "<2.0.0.0-alpha5",
                 "automattic/jetpack": "<9.8",
                 "avideo/avideo": "<=26",
@@ -4363,7 +4360,7 @@
                 "barrelstrength/sprout-forms": "<3.9",
                 "barryvdh/laravel-translation-manager": "<0.6.8",
                 "barzahlen/barzahlen-php": "<2.0.1",
-                "baserproject/basercms": "<=5.1.1",
+                "baserproject/basercms": "<=5.2.2",
                 "bassjobsen/bootstrap-3-typeahead": ">4.0.2",
                 "bbpress/bbpress": "<2.6.5",
                 "bcit-ci/codeigniter": "<3.1.3",
@@ -4462,7 +4459,7 @@
                 "derhansen/sf_event_mgt": "<4.3.1|>=5,<5.1.1|>=7,<7.4",
                 "desperado/xml-bundle": "<=0.1.7",
                 "dev-lancer/minecraft-motd-parser": "<=1.0.5",
-                "devcode-it/openstamanager": "<=2.9.8",
+                "devcode-it/openstamanager": "<=2.10.1",
                 "devgroup/dotplant": "<2020.09.14-dev",
                 "digimix/wp-svg-upload": "<=1",
                 "directmailteam/direct-mail": "<6.0.3|>=7,<7.0.3|>=8,<9.5.2",
@@ -4674,6 +4671,7 @@
                 "islandora/crayfish": "<4.1",
                 "islandora/islandora": ">=2,<2.4.1",
                 "ivankristianto/phpwhois": "<=4.3",
+                "j0k3r/graby": "<=2.5",
                 "jackalope/jackalope-doctrine-dbal": "<1.7.4",
                 "jambagecom/div2007": "<0.10.2",
                 "james-heinrich/getid3": "<1.9.21",
@@ -4711,7 +4709,7 @@
                 "knplabs/knp-snappy": "<=1.4.2",
                 "kohana/core": "<3.3.3",
                 "koillection/koillection": "<1.6.12",
-                "krayin/laravel-crm": "<=1.3",
+                "krayin/laravel-crm": "<=2.2",
                 "kreait/firebase-php": ">=3.2,<3.8.1",
                 "kumbiaphp/kumbiapp": "<=1.1.1",
                 "la-haute-societe/tcpdf": "<6.2.22",
@@ -4897,7 +4895,7 @@
                 "phpmailer/phpmailer": "<6.5",
                 "phpmussel/phpmussel": ">=1,<1.6",
                 "phpmyadmin/phpmyadmin": "<5.2.2",
-                "phpmyfaq/phpmyfaq": "<=4.0.16",
+                "phpmyfaq/phpmyfaq": "<=4.1",
                 "phpoffice/common": "<0.2.9",
                 "phpoffice/math": "<=0.2",
                 "phpoffice/phpexcel": "<=1.8.2",
@@ -4974,7 +4972,7 @@
                 "roadiz/documents": "<2.3.42|>=2.4,<2.5.44|>=2.6,<2.6.28|>=2.7,<2.7.9",
                 "robrichards/xmlseclibs": "<3.1.5",
                 "roots/soil": "<4.1",
-                "roundcube/roundcubemail": "<1.5.10|>=1.6,<1.6.11",
+                "roundcube/roundcubemail": "<1.5.10|>=1.6,<1.6.11|>=1.7.0.0-beta,<1.7.0.0-RC5-dev",
                 "rudloff/alltube": "<3.0.3",
                 "rudloff/rtmpdump-bin": "<=2.3.1",
                 "s-cart/core": "<=9.0.5",
@@ -5126,7 +5124,7 @@
                 "thelia/thelia": ">=2.1,<2.1.3",
                 "theonedemon/phpwhois": "<=4.2.5",
                 "thinkcmf/thinkcmf": "<6.0.8",
-                "thorsten/phpmyfaq": "<4.0.18|>=4.1.0.0-alpha,<=4.1.0.0-beta2",
+                "thorsten/phpmyfaq": "<4.1.1",
                 "tikiwiki/tiki-manager": "<=17.1",
                 "timber/timber": ">=0.16.6,<1.23.1|>=1.24,<1.24.1|>=2,<2.1",
                 "tinymce/tinymce": "<7.2",
@@ -5232,7 +5230,7 @@
                 "xpressengine/xpressengine": "<3.0.15",
                 "yab/quarx": "<2.4.5",
                 "yansongda/pay": "<=3.7.19",
-                "yeswiki/yeswiki": "<=4.5.4",
+                "yeswiki/yeswiki": "<4.6",
                 "yetiforce/yetiforce-crm": "<6.5",
                 "yidashi/yii2cmf": "<=2",
                 "yii2mod/yii2-cms": "<1.9.2",
@@ -5327,7 +5325,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-30T18:22:46+00:00"
+            "time": "2026-04-04T07:24:55+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -5335,12 +5333,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "f303f02c5b522e983b9c03b6c1401d46b1fc6a38"
+                "reference": "42687919b65b7542282d315c451702639d58bb72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/f303f02c5b522e983b9c03b6c1401d46b1fc6a38",
-                "reference": "f303f02c5b522e983b9c03b6c1401d46b1fc6a38",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/42687919b65b7542282d315c451702639d58bb72",
+                "reference": "42687919b65b7542282d315c451702639d58bb72",
                 "shasum": ""
             },
             "require": {
@@ -5406,7 +5404,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2026-03-21T01:20:08+00:00"
+            "time": "2026-04-06T01:04:07+00:00"
         },
         {
             "name": "wp-cli/i18n-command",

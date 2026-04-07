@@ -28,26 +28,28 @@ test.describe('Help Page', () => {
     });
 
     // Navigate to help page
-    await auth.navigateToAdminPage(page, 'admin.php?page=web#/help');
+    await auth.navigateToAdminPage(page, 'admin.php?page=crazy-domains#/help');
   });
 
   test('A11y and Cards Each Exist', async ({ page }) => {
     // Wait for the main app container to be rendered
-    await page.waitForSelector('#wppw-app-rendered', { timeout: 10000 });
+    await page.waitForSelector('#wppcd-app-rendered', { timeout: 10000 });
     
     // Wait for the app body to be visible
-    await page.waitForSelector('.wppw-app-body', { timeout: 10000 });
+    await page.waitForSelector('.wppcd-app-body', { timeout: 10000 });
     
     // Run accessibility test with WCAG 2.1 AA standards (includes color contrast)
-    await a11y.checkA11y(page, '.wppw-app-body');
+    await a11y.checkA11y(page, '.wppcd-app-body');
 
     // Verify all help cards exist and are visible
     const helpCards = [
+      { selector: '.card-help-ticket', title: 'Email Us' },
       { selector: '.card-help-phone', title: 'Phone' },
       { selector: '.card-help-chat', title: 'Chat' },
       { selector: '.card-help-twitter', title: 'Tweet' },
       { selector: '.card-help-video', title: 'Video Tutorials' },
-      { selector: '.card-help-kb', title: 'Knowledge Base' },
+      { selector: '.card-help-academy', title: 'Online Academy' },
+      { selector: '.card-help-help',  title: 'Online Support' },
       { selector: '.card-help-blog', title: 'Blog' },
     ];
 

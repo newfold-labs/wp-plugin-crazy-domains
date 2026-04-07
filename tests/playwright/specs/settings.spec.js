@@ -5,29 +5,29 @@ test.describe('Settings Page', () => {
 
   test.beforeEach(async ({ page }) => {
     // Navigate to settings page
-    await auth.navigateToAdminPage(page, 'admin.php?page=web#/settings');
+    await auth.navigateToAdminPage(page, 'admin.php?page=crazy-domains#/settings');
   });
 
   test('Is Accessible', async ({ page }) => {
     // Wait for the main app container to be rendered
-    await page.waitForSelector('#wppw-app-rendered', { timeout: 10000 });
+    await page.waitForSelector('#wppcd-app-rendered', { timeout: 10000 });
     
     // Wait for the app body to be visible
-    await page.waitForSelector('.wppw-app-body', { timeout: 10000 });
+    await page.waitForSelector('.wppcd-app-body', { timeout: 10000 });
     
     // Run accessibility test with WCAG 2.1 AA standards (includes color contrast)
-    await a11y.checkA11y(page, '.wppw-app-body');
+    await a11y.checkA11y(page, '.wppcd-app-body');
   });
 
   test('Has Coming Soon Section', async ({ page }) => {
-    const comingSoonSection = page.locator('.wppw-app-settings-coming-soon');
+    const comingSoonSection = page.locator('.wppcd-app-settings-coming-soon');
     await utils.scrollIntoView(comingSoonSection);
     await expect(comingSoonSection).toBeVisible();
     // further tests exist in coming soon module
   });
 
   test('Autoupdate Toggles function properly', async ({ page }) => {
-    const updatesSection = page.locator('.wppw-app-settings-update');
+    const updatesSection = page.locator('.wppcd-app-settings-update');
     await utils.scrollIntoView(updatesSection);
     await expect(updatesSection).toBeVisible();
 
@@ -147,7 +147,7 @@ test.describe('Settings Page', () => {
   });
 
 test('Comment Settings Work', async ({ page }) => {
-    const commentsSection = page.locator('.wppw-app-settings-comments');
+    const commentsSection = page.locator('.wppcd-app-settings-comments');
     await utils.scrollIntoView(commentsSection);
     await expect(commentsSection).toBeVisible();
 

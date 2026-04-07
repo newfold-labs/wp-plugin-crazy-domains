@@ -4,11 +4,11 @@ import { auth } from '../helpers';
 test.describe('Navigation', () => {
   test.beforeEach(async ({ page }) => {
     // Use shared authentication helper
-    await auth.navigateToAdminPage(page, 'admin.php?page=web');
+    await auth.navigateToAdminPage(page, 'admin.php?page=crazy-domains');
   });
 
   test('Logo Links to home', async ({ page }) => {
-    await page.click('.wppw-logo-wrap a');
+    await page.click('.wppcd-logo-wrap a');
     await page.waitForTimeout(500);
     
     // Check if the hash is #/home
@@ -24,24 +24,24 @@ test.describe('Navigation', () => {
     await admin.visitAdminPage('index.php');
     
     // Check if the admin submenu exists
-    await expect(page.locator('#adminmenu #toplevel_page_web ul.wp-submenu')).toBeVisible();
+    await expect(page.locator('#adminmenu #toplevel_page_crazy-domains ul.wp-submenu')).toBeVisible();
     
     // Check for specific submenu items
-    await expect(page.locator('#adminmenu #toplevel_page_web ul.wp-submenu li a[href="admin.php?page=web#/home"]')).toBeVisible();
-    await expect(page.locator('#adminmenu #toplevel_page_web ul.wp-submenu li a[href="admin.php?page=web#/settings"]')).toBeVisible();
-    await expect(page.locator('#adminmenu #toplevel_page_web ul.wp-submenu li a[href="admin.php?page=web#/help"]')).toBeVisible();
+    await expect(page.locator('#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li a[href="admin.php?page=crazy-domains#/home"]')).toBeVisible();
+    await expect(page.locator('#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li a[href="admin.php?page=crazy-domains#/settings"]')).toBeVisible();
+    await expect(page.locator('#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li a[href="admin.php?page=crazy-domains#/help"]')).toBeVisible();
   });
 
   test('Settings link properly navigates', async ({ page }) => {
     // Navigate to the web admin page first
-    await auth.navigateToAdminPage(page, 'admin.php?page=web');
+    await auth.navigateToAdminPage(page, 'admin.php?page=crazy-domains');
     
     // First hover over the main web menu to make submenu visible
-    await page.hover('#adminmenu #toplevel_page_web');
+    await page.hover('#adminmenu #toplevel_page_crazy-domains');
     await page.waitForTimeout(100);
     
     // Click the settings link with force option
-    await page.click('#adminmenu #toplevel_page_web ul.wp-submenu li a[href="admin.php?page=web#/settings"]', { force: true });
+    await page.click('#adminmenu #toplevel_page_crazy-domains ul.wp-submenu li a[href="admin.php?page=crazy-domains#/settings"]', { force: true });
     await page.waitForTimeout(500);
     
     // Check if the hash is #/settings
