@@ -11,7 +11,7 @@
 import { test, expect } from '@playwright/test';
 import { auth } from '../helpers';
 
-const pluginId = process.env.PLUGIN_ID || 'web';
+const pluginId = process.env.PLUGIN_ID || 'crazy-domains';
 const paths = [
     'wp-admin/index.php',
     'wp-admin/admin.php?page=' + pluginId + '#/home',
