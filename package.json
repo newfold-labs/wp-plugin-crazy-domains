@@ -2,7 +2,7 @@
     "name": "wp-plugin-crazy-domains",
     "description": "WordPress plugin that integrates your WordPress site with the Crazy Domains control panel, including performance, security, and update features.",
     "license": "GPL-2.0-or-later",
-    "version": "2.5.1",
+    "version": "2.5.2",
     "private": true,
     "repository": {
         "type": "git",
@@ -30,10 +30,10 @@
         "@newfold/wp-module-facebook": "1.2.1",
         "@newfold/wp-module-runtime": "^1.2.2",
         "@wordpress/compose": "^7.28.0",
-        "@wordpress/dom-ready": "^4.26.0",
+        "@wordpress/dom-ready": "^4.43.0",
         "@wordpress/element": "^6.26.0",
         "@wordpress/i18n": "^6.13.0",
-        "@wordpress/icons": "^11.6.0",
+        "@wordpress/icons": "^12.1.0",
         "classnames": "^2.5.1",
         "html-react-parser": "^5.2.17",
         "jquery": "^3.7.1",
@@ -45,13 +45,12 @@
         "semver": "^7.7.4"
     },
     "devDependencies": {
+        "@axe-core/playwright": "^4.11.0",
+		"@playwright/test": "^1.58.1",
         "@tailwindcss/forms": "^0.5.10",
-        "@testing-library/cypress": "^10.0.3",
         "@wordpress/env": "^11.2.0",
-        "@wordpress/scripts": "^30.19.0",
-        "axe-core": "^4.11.1",
-        "cypress": "^14.5.4",
-        "cypress-axe": "^1.6.0",
+        "@wordpress/scripts": "^31.8.0",
+        "axe-core": "^4.11.3",
         "node-fetch": "^3.3.2",
         "tailwindcss": "^3.4.18",
         "yaml-lint": "^1.7.0",
@@ -63,7 +62,6 @@
         "check-licenses": "wp-scripts check-licenses --production",
         "create:dist": "rsync -r --include-from=.distinclude --exclude-from=.distignore . ./wp-plugin-crazy-domains",
         "create:zip": "cd ./wp-plugin-crazy-domains && zip -r -9 ../wp-plugin-crazy-domains.zip . && ls -lh ../wp-plugin-crazy-domains.zip",
-        "cypress": "npm cypress open",
         "develop": "npm run start",
         "develop:analyzer": "npm run start:analyzer",
         "i18n": "wpi18n addtextdomain && composer run i18n",
@@ -85,7 +83,10 @@
         "start:analyzer": "npm run start --webpack-bundle-analyzer",
         "storybook:dev": "start-storybook -c ./storybook",
         "storybook:build": "build-storybook -c ./storybook -o ./.docs",
-        "test:e2e": "npx cypress run",
-        "test:unit": "wp-scripts test-unit-js"
+        "test:e2e": "npm run test:playwright",
+        "test:unit": "wp-scripts test-unit-js",
+		"test:playwright": "npx playwright test",
+		"test:playwright:update-projects": "node .github/scripts/generate-playwright-projects.mjs",
+		"test:clean-module": "bash ./.github/scripts/test-clean-module"
     }
 }
