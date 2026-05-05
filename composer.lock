@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aae4fae7445a71039665085b26cf3fb2",
+    "content-hash": "45753811cff0100e00a02125d6477351",
     "packages": [
         {
             "name": "colinmollenhour/credis",
@@ -706,28 +706,29 @@
         },
         {
             "name": "newfold-labs/wp-module-deactivation",
-            "version": "1.6.1",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-deactivation.git",
-                "reference": "c280d20c6ba44434e42e52791f581bc95ddcd41a"
+                "reference": "3368a655385d3ced6bbf251a17fc6933cb455add"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-deactivation/zipball/c280d20c6ba44434e42e52791f581bc95ddcd41a",
-                "reference": "c280d20c6ba44434e42e52791f581bc95ddcd41a",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-deactivation/zipball/3368a655385d3ced6bbf251a17fc6933cb455add",
+                "reference": "3368a655385d3ced6bbf251a17fc6933cb455add",
                 "shasum": ""
             },
             "require": {
-                "newfold-labs/wp-module-data": "^2.9.2"
+                "newfold-labs/wp-module-data": "^2.9.3"
             },
             "require-dev": {
                 "johnpbloch/wordpress": "@stable",
                 "lucatume/wp-browser": "*",
                 "newfold-labs/wp-php-standards": "^1.2",
                 "phpunit/phpcov": "*",
-                "wp-cli/i18n-command": "^2.6"
+                "wp-cli/i18n-command": "^2.7"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -801,10 +802,10 @@
             ],
             "description": "A Module for handling WordPress brand plugins and modules deactivations",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-deactivation/tree/1.6.1",
+                "source": "https://github.com/newfold-labs/wp-module-deactivation/tree/auto-translate/main",
                 "issues": "https://github.com/newfold-labs/wp-module-deactivation/issues"
             },
-            "time": "2026-02-06T13:33:31+00:00"
+            "time": "2026-04-17T21:07:25+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ecommerce",
@@ -5588,6 +5589,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "newfold-labs/wp-module-deactivation": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
@@ -5597,5 +5599,5 @@
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
