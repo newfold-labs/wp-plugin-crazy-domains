@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aae4fae7445a71039665085b26cf3fb2",
+    "content-hash": "6ce1b2d4d931c6829ffc22505ff68245",
     "packages": [
         {
             "name": "colinmollenhour/credis",
@@ -1383,16 +1383,16 @@
         },
         {
             "name": "newfold-labs/wp-module-link-tracker",
-            "version": "1.1.5",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-link-tracker.git",
-                "reference": "0433d841d90fb43dc528949c34d774d210124581"
+                "reference": "a29ba54ffa7ef7d54355ba1df8a139e39a1669aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-link-tracker/zipball/0433d841d90fb43dc528949c34d774d210124581",
-                "reference": "0433d841d90fb43dc528949c34d774d210124581",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-link-tracker/zipball/a29ba54ffa7ef7d54355ba1df8a139e39a1669aa",
+                "reference": "a29ba54ffa7ef7d54355ba1df8a139e39a1669aa",
                 "shasum": ""
             },
             "require-dev": {
@@ -1402,8 +1402,9 @@
                 "newfold-labs/wp-module-loader": "^1.1",
                 "newfold-labs/wp-php-standards": "^1.2.5",
                 "phpunit/phpcov": "*",
-                "wp-cli/i18n-command": "^2.6.6"
+                "wp-cli/i18n-command": "^2.7.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1460,10 +1461,10 @@
             ],
             "description": "A WordPress module that adds tracking params",
             "support": {
-                "source": "https://github.com/newfold-labs/wp-module-link-tracker/tree/1.1.5",
+                "source": "https://github.com/newfold-labs/wp-module-link-tracker/tree/main",
                 "issues": "https://github.com/newfold-labs/wp-module-link-tracker/issues"
             },
-            "time": "2026-02-06T15:55:17+00:00"
+            "time": "2026-04-20T18:39:33+00:00"
         },
         {
             "name": "newfold-labs/wp-module-loader",
@@ -5588,6 +5589,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "newfold-labs/wp-module-link-tracker": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
@@ -5597,5 +5599,5 @@
     "platform-overrides": {
         "php": "7.3.0"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
