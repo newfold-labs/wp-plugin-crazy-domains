@@ -21,6 +21,7 @@ jobs:
   build:
     name: On Release
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: write # Required to checkout and upload assets to this release via the GitHub Releases API (upload-release-asset).
     steps:

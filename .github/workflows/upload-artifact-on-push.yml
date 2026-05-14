@@ -24,8 +24,8 @@ jobs:
   build:
     name: On Push
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
-      actions: write   # Required to upload workflow artifacts (actions/upload-artifact).
       contents: read   # Required to clone the repo.
     steps:
 

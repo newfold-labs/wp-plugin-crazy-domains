@@ -15,6 +15,7 @@ jobs:
   clear-cache:
     name: Clear the Cloudflare cache
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions: {} # External Cloudflare API only; no GitHub token usage.
     steps:
       - name: Clear cache for release API
