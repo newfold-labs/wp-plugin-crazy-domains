@@ -20,7 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     permissions:
-      actions: write  # Required to upload Playwright report artifacts after the job runs.
       contents: read  # Required to clone the repo.
 
     steps:

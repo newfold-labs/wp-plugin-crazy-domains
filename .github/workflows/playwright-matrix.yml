@@ -21,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     permissions:
-      actions: write  # Required to upload Playwright report artifacts after the matrix run.
       contents: read  # Required to clone the repo.
     strategy:
       fail-fast: false
