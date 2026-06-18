@@ -176,15 +176,17 @@ jobs:
       - name: Install WordPress
         uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60  # v4.0.0
         with:
-          timeout_minutes: 4
+          timeout_minutes: 10
           max_attempts: 3
           command: npx wp-env start --debug
 
       - name: Verify WordPress is ready
         run: |
-          echo "Verifying WordPress is ready..."
-          npx wp-env run cli wp core version
-          echo "WordPress is ready!"
+          npx wp-env run cli wp core version || {
+          echo "=== wp-env logs ==="
+          npx wp-env logs
+          exit 1
+          }
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
