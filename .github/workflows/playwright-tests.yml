@@ -180,6 +180,29 @@ jobs:
           max_attempts: 3
           command: npx wp-env start --debug
 
+      - name: Install WordPress
+        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60  # v4.0.0
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          command: npx wp-env start --debug
+        env:
+          COMPOSER_PROCESS_TIMEOUT: 0
+          COMPOSER_NO_INTERACTION: 1
+          COMPOSER_NO_AUDIT: 1
+
+      - name: Debug wp-env state
+        if: always()   # runs even if previous step failed
+        run: |
+          echo "=== Docker containers ==="
+          docker ps -a
+          echo "=== Docker images ==="
+          docker images
+          echo "=== wp-env .wp-env folder ==="
+          cat ~/.wp-env/*/docker-compose.yml 2>/dev/null || echo "No wp-env config found"
+          echo "=== wp-env start output (direct run) ==="
+          npx wp-env start --debug 2>&1 || true
+
       - name: Verify WordPress is ready
         run: |
           npx wp-env run cli wp core version || {
