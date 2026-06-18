@@ -13,7 +13,7 @@
  * Update URI:        https://github.com/newfold-labs/wp-plugin-crazy-domains/
  * Description:       WordPress plugin that integrates a WordPress site with the Crazy Domains control panel, including performance, security, and update features.
  * Version:           2.5.2
- * Requires PHP:      7.3
+ * Requires PHP:      7.4
  * Requires at least: 6.6
  * Tested up to:      7.0
  * Author:            Crazy Domains
@@ -50,7 +50,7 @@ if ( 'plugins.php' === $pagenow ) {
 
 	$plugin_check = new Plugin_PHP_Compat_Check( __FILE__ );
 
-	$plugin_check->min_php_version = '7.3';
+	$plugin_check->min_php_version = '7.4';
 	$plugin_check->min_wp_version  = '6.6';
 
 	$plugin_check->check_plugin_requirements();
