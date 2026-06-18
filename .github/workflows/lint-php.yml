@@ -24,13 +24,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
 
-      # User PHP 7.4 here for compatibility with the WordPress codesniffer rules.
+      # Use PHP 8.1 to match the Composer platform and local wp-env baseline.
       - name: Setup PHP
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2.37.2
         with:
-          php-version: '7.4'
+          php-version: '8.1'
           coverage: none
           tools: composer, cs2pr
+          composer-version: '2.8'
 
       - uses: technote-space/get-diff-action@f27caffdd0fb9b13f4fc191c016bb4e0632844af # v6.1.2
         with:
