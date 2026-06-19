@@ -30,12 +30,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
         with:
           persist-credentials: false
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240  # v2.37.2
+        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc  # v2.37.1
         with:
           php-version: '8.3'
           coverage: none
@@ -54,7 +54,7 @@ jobs:
       - name: Use Node.js 24.x
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e  # v6.4.0
         with:
-          node-version: 24.x
+          node-version: 24.15.0
           cache: 'npm'
 
       - name: Get Composer cache directory
@@ -116,12 +116,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
         with:
           persist-credentials: false
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240  # v2.37.2
+        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc  # v2.37.1
         with:
           php-version: '8.3'
           coverage: none
@@ -130,7 +130,7 @@ jobs:
       - name: Use Node.js 24.x
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e  # v6.4.0
         with:
-          node-version: 24.x
+          node-version: 24.15.0
           cache: 'npm'
 
       - name: Get Composer cache directory
@@ -145,9 +145,6 @@ jobs:
 
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-source
-
-      - name: Clear npm cache
-        run: npm cache clean --force
 
       - name: NPM Install
         run: npm install --legacy-peer-deps
@@ -172,57 +169,26 @@ jobs:
           DIST: ${{ steps.workflow.outputs.DIST }}
           PACKAGE: ${{ needs.build.outputs.package }}
         run: |
-          echo "Plugin path: $DIST/$PACKAGE"
-          echo "Current directory: $(pwd)"
-          echo "Build artifact contents:"
-          ls -la "$DIST/$PACKAGE"
-          
-          # Copy the plugin from dist to the current directory workspace
-          rm -rf ./$PACKAGE || true
-          cp -r "$DIST/$PACKAGE" ./
-          
-          echo "Verifying plugin copied:"
-          ls -la ./$PACKAGE
-
-      - name: Verify .wp-env.override.json
-        run: |
-          cat .wp-env.override.json
-          ls -la .wp-env.override.json
+          jq -n \
+            --arg plugin "$DIST/$PACKAGE" \
+            '{plugins: [$plugin]}' > .wp-env.override.json
 
       - name: Install WordPress
-        shell: bash
-        run: |
-          for attempt in {1..3}; do
-            echo "Attempt $attempt/3: Starting WordPress environment..."
-            if npx wp-env start --debug 2>&1; then
-              echo "✓ WordPress started successfully"
-              exit 0
-            fi
-
-            if [ $attempt -lt 3 ]; then
-              echo "✗ Attempt $attempt failed, showing logs and cleaning up..."
-              npx wp-env logs --watch=false --debug=true || true
-              npx wp-env destroy || true
-              echo "Waiting 30 seconds before retry..."
-              sleep 30
-            fi
-          done
-
-          echo "✗ All 3 attempts failed"
-          npx wp-env logs --watch=false --debug=true || true
-          exit 1
-
-      - name: Diagnose wp-env installation
-        if: always()
-        continue-on-error: true
-        run: |
-          echo "Checking wp-env status..."
-          npx wp-env logs --watch=false --debug=true || true
-          docker ps -a || true
+        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60  # v4.0.0
+        with:
+          timeout_minutes: 4
+          max_attempts: 3
+          command: |
+            pwd
+            ls -la .wp-env*
+            npx wp-env start --debug
+            npx wp-env run cli wp core version
 
       - name: Verify WordPress is ready
         run: |
           echo "Verifying WordPress is ready..."
+          pwd
+          ls -la .wp-env*
           npx wp-env run cli wp core version
           echo "WordPress is ready!"
 
