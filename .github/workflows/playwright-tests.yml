@@ -146,6 +146,9 @@ jobs:
       - name: Install PHP Dependencies
         run: composer install --no-progress --no-dev --optimize-autoloader --prefer-source
 
+      - name: Clear npm cache
+        run: npm cache clean --force
+
       - name: NPM Install
         run: npm install --legacy-peer-deps
 
@@ -173,12 +176,26 @@ jobs:
             --arg plugin "$DIST/$PACKAGE" \
             '{plugins: [$plugin]}' > .wp-env.override.json
 
+      - name: Verify .wp-env.override.json
+        run: |
+          cat .wp-env.override.json
+          ls -la .wp-env.override.json
+
       - name: Install WordPress
         uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60  # v4.0.0
         with:
-          timeout_minutes: 4
+          timeout_minutes: 10
           max_attempts: 3
-          command: npx wp-env start --debug
+          retry_wait_seconds: 30
+          command: npx wp-env start --debug 2>&1 || (npx wp-env logs --watch=false && exit 1)
+
+      - name: Diagnose wp-env installation
+        if: always()
+        continue-on-error: true
+        run: |
+          echo "Checking wp-env status..."
+          npx wp-env logs --watch=false --debug=true || true
+          docker ps -a || true
 
       - name: Verify WordPress is ready
         run: |
