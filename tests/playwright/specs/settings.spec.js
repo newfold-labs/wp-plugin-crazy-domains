@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { auth, a11y, utils } from '../helpers';
+import { auth, a11y, utils, wordpress } from '../helpers';
 
 test.describe('Settings Page', () => {
 
@@ -27,23 +27,34 @@ test.describe('Settings Page', () => {
   });
 
   test('Autoupdate Toggles function properly', async ({ page }) => {
+    await wordpress.resetAutoUpdateSettings();
+    await auth.navigateToAdminPage(page, 'admin.php?page=crazy-domains#/settings');
+
+    await page.waitForSelector('#wppcd-app-rendered', { timeout: 10000 });
+
+    const settingsAccordion = page.locator('.settings-app-wrapper.settings-details');
+    if (!(await settingsAccordion.getAttribute('open'))) {
+      await settingsAccordion.locator('summary').click();
+    }
+
     const updatesSection = page.locator('.wppcd-app-settings-update');
     await utils.scrollIntoView(updatesSection);
     await expect(updatesSection).toBeVisible();
 
-    // On load update all is checked, which forces other updates to check and disabled state
     const allToggle = page.locator('[data-id="autoupdate-all-toggle"]');
-    await expect(allToggle).toHaveAttribute('aria-checked', 'true');
-
     const coreToggle = page.locator('[data-id="autoupdate-core-toggle"]');
+    const pluginsToggle = page.locator('[data-id="autoupdate-plugins-toggle"]');
+    const themesToggle = page.locator('[data-id="autoupdate-themes-toggle"]');
+
+    await expect(allToggle).toHaveAttribute('aria-checked', 'true', { timeout: 10000 });
+
+    // On load update all is checked, which forces other updates to check and disabled state
     await expect(coreToggle).toBeDisabled();
     await expect(coreToggle).toHaveAttribute('aria-checked', 'true');
 
-    const pluginsToggle = page.locator('[data-id="autoupdate-plugins-toggle"]');
     await expect(pluginsToggle).toBeDisabled();
     await expect(pluginsToggle).toHaveAttribute('aria-checked', 'true');
 
-    const themesToggle = page.locator('[data-id="autoupdate-themes-toggle"]');
     await expect(themesToggle).toBeDisabled();
     await expect(themesToggle).toHaveAttribute('aria-checked', 'true');
 
