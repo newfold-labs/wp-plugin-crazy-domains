@@ -190,7 +190,7 @@ jobs:
               echo "✓ WordPress started successfully"
               exit 0
             fi
-            
+
             if [ $attempt -lt 3 ]; then
               echo "✗ Attempt $attempt failed, showing logs and cleaning up..."
               npx wp-env logs --watch=false --debug=true || true
@@ -199,7 +199,7 @@ jobs:
               sleep 30
             fi
           done
-          
+
           echo "✗ All 3 attempts failed"
           npx wp-env logs --watch=false --debug=true || true
           exit 1
