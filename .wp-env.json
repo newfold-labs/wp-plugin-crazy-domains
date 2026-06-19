@@ -1,10 +1,12 @@
 {
-  "core": "WordPress/WordPress#tags/6.9.4",
+  "core": "WordPress/WordPress#tags/7.0",
   "config": {
     "WP_DEBUG": true,
     "WP_DEBUG_LOG": true,
     "WP_DEBUG_DISPLAY": false,
-    "FS_METHOD": "direct"
+    "WP_ENVIRONMENT_TYPE": "local",
+    "FS_METHOD": "direct",
+    "AUTOMATIC_UPDATER_DISABLED": true
   },
   "phpVersion": "8.1",
   "plugins": [
@@ -22,7 +24,8 @@
         "WP_TESTS_DOMAIN": "localhost:8885",
         "WP_TESTS_TITLE": "Crazy Domains WordPress Plugin",
         "WP_TESTS_BINARY": "php"
-      }
+      },
+      "mysqlPort": 33306
     }
   }
 }
