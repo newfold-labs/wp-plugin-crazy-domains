@@ -45,6 +45,13 @@
             "only": [
                 "instawp/*"
             ]
+        },
+        "wp-module-facebook": {
+            "type": "vcs",
+            "url": "https://github.com/newfold-labs/wp-module-facebook.git",
+            "only": [
+                "newfold-labs/wp-module-facebook"
+            ]
         }
     },
     "scripts": {
