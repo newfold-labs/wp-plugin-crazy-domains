@@ -182,12 +182,27 @@ jobs:
           ls -la .wp-env.override.json
 
       - name: Install WordPress
-        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60  # v4.0.0
-        with:
-          timeout_minutes: 10
-          max_attempts: 3
-          retry_wait_seconds: 30
-          command: npx wp-env start --debug 2>&1 || (npx wp-env logs --watch=false && exit 1)
+        shell: bash
+        run: |
+          for attempt in {1..3}; do
+            echo "Attempt $attempt/3: Starting WordPress environment..."
+            if npx wp-env start --debug 2>&1; then
+              echo "✓ WordPress started successfully"
+              exit 0
+            fi
+            
+            if [ $attempt -lt 3 ]; then
+              echo "✗ Attempt $attempt failed, showing logs and cleaning up..."
+              npx wp-env logs --watch=false --debug=true || true
+              npx wp-env destroy || true
+              echo "Waiting 30 seconds before retry..."
+              sleep 30
+            fi
+          done
+          
+          echo "✗ All 3 attempts failed"
+          npx wp-env logs --watch=false --debug=true || true
+          exit 1
 
       - name: Diagnose wp-env installation
         if: always()
