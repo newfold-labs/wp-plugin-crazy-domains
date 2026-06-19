@@ -172,9 +172,17 @@ jobs:
           DIST: ${{ steps.workflow.outputs.DIST }}
           PACKAGE: ${{ needs.build.outputs.package }}
         run: |
-          jq -n \
-            --arg plugin "$DIST/$PACKAGE" \
-            '{plugins: [$plugin]}' > .wp-env.override.json
+          echo "Plugin path: $DIST/$PACKAGE"
+          echo "Current directory: $(pwd)"
+          echo "Build artifact contents:"
+          ls -la "$DIST/$PACKAGE"
+          
+          # Copy the plugin from dist to the current directory workspace
+          rm -rf ./$PACKAGE || true
+          cp -r "$DIST/$PACKAGE" ./
+          
+          echo "Verifying plugin copied:"
+          ls -la ./$PACKAGE
 
       - name: Verify .wp-env.override.json
         run: |
