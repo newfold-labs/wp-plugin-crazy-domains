@@ -15,7 +15,7 @@
  * Version:           2.5.2
  * Requires PHP:      7.3
  * Requires at least: 6.6
- * Tested up to:      6.9.4
+ * Tested up to:      7.0
  * Author:            Crazy Domains
  * Author URI:        https://crazydomains.com
  * Text Domain:       wp-plugin-crazy-domains
@@ -68,7 +68,7 @@ $nfd_plugins_check->legacy_plugins = array(
 	'The MOJO Marketplace' => 'mojo-marketplace-wp-plugin/mojo-marketplace.php',
 	'The MOJO Plugin'      => 'wp-plugin-mojo/wp-plugin-mojo.php',
 	'The HostGator Plugin' => 'wp-plugin-hostgator/wp-plugin-hostgator.php',
-	'The Web.com Plugin'   => 'wp-plugin-web/wp-plugin-web.php',
+	'The Network Solutions Plugin'   => 'wp-plugin-web/wp-plugin-web.php',
 );
 $pass_nfd_check                    = $nfd_plugins_check->check_plugin_requirements();
 
