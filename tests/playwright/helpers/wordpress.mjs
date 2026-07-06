@@ -97,6 +97,21 @@ async function setOption(option, value) {
   return await wpCli(command);
 }
 
+/**
+ * Reset auto-update settings to the default all-enabled state.
+ *
+ * @returns {Promise<void>}
+ */
+async function resetAutoUpdateSettings() {
+  utils.fancyLog('⚙️  Resetting auto-update settings to defaults');
+  await Promise.all([
+    setOption('allow_major_auto_core_updates', 'true'),
+    setOption('auto_update_core_major', 'enabled'),
+    setOption('auto_update_plugin', 'true'),
+    setOption('auto_update_theme', 'true'),
+  ]);
+}
+
 // Track if permalink structure has been set to prevent duplicate calls
 let permalinkStructureSet = false;
 
@@ -153,5 +168,6 @@ export default {
   // WordPress CLI and options
   wpCli,
   setOption,
+  resetAutoUpdateSettings,
   setPermalinkStructure,
 };

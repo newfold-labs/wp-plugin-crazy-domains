@@ -20,6 +20,24 @@ async function globalSetup(config) {
       stdio: 'inherit',
       encoding: 'utf-8',
     });
+
+    utils.fancyLog('Resetting auto-update settings...', 55, 'gray', '');
+    execSync('npx wp-env run cli -- wp option update allow_major_auto_core_updates true', {
+      stdio: 'inherit',
+      encoding: 'utf-8',
+    });
+    execSync('npx wp-env run cli -- wp option update auto_update_core_major enabled', {
+      stdio: 'inherit',
+      encoding: 'utf-8',
+    });
+    execSync('npx wp-env run cli -- wp option update auto_update_plugin true', {
+      stdio: 'inherit',
+      encoding: 'utf-8',
+    });
+    execSync('npx wp-env run cli -- wp option update auto_update_theme true', {
+      stdio: 'inherit',
+      encoding: 'utf-8',
+    });
     
     utils.fancyLog('✔ Global setup completed successfully', 55, 'green', '');
   } catch (error) {

@@ -51,6 +51,27 @@ async function isLoggedIn(page) {
 }
 
 /**
+ * Dismiss the WordPress administration email verification form when shown after login.
+ *
+ * @param {import('@playwright/test').Page} page - Playwright page object
+ * @returns {Promise<void>}
+ */
+async function dismissAdminEmailVerificationIfShown(page) {
+  const form = page.locator('form.admin-email-confirm-form');
+  const isFormVisible = await form.isVisible({ timeout: 5000 }).catch(() => false);
+
+  if (!isFormVisible) {
+    return;
+  }
+
+  await page.getByRole('link', { name: 'Remind me later' }).click();
+  await page.waitForURL(
+    (url) => !url.search.includes('confirm_admin_email'),
+    { timeout: 10000, waitUntil: 'domcontentloaded' }
+  );
+}
+
+/**
  * Manual WordPress login method (reliable with wp-env)
  * 
  * @param {import('@playwright/test').Page} page - Playwright page object
@@ -75,9 +96,15 @@ async function loginToWordPress(page, options = {}) {
   await page.fill('#user_login', username);
   await page.fill('#user_pass', password);
   await page.press('#user_pass', 'Enter');
-  
+  await page.waitForLoadState('domcontentloaded').catch(() => {});
+
+  await dismissAdminEmailVerificationIfShown(page);
+
   // Wait for successful login (redirect away from login page)
-  await page.waitForURL(url => !url.pathname.includes('/wp-login.php'), { timeout: 10000 });
+  await page.waitForURL(
+    (url) => !url.pathname.includes('/wp-login.php'),
+    { timeout: 10000, waitUntil: 'domcontentloaded' }
+  );
 }
 
 /**
@@ -124,7 +151,9 @@ async function navigateToAdminPage(page, adminPage, options = {}) {
   }
   
   // Navigate to the admin page
-  const response = await page.goto(`/wp-admin/${adminPage}`, { waitUntil: 'domcontentloaded' });
+  await page.goto(`/wp-admin/${adminPage}`, { waitUntil: 'domcontentloaded' });
+
+  await dismissAdminEmailVerificationIfShown(page);
   
   // Check if we were redirected to login (session expired)
   const currentUrl = page.url();

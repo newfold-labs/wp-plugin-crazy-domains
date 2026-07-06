@@ -5,8 +5,7 @@
     "WP_DEBUG_LOG": true,
     "WP_DEBUG_DISPLAY": false,
     "WP_ENVIRONMENT_TYPE": "local",
-    "FS_METHOD": "direct",
-    "AUTOMATIC_UPDATER_DISABLED": true
+    "FS_METHOD": "direct"
   },
   "phpVersion": "8.1",
   "plugins": [
