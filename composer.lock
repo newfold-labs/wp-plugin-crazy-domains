@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "80f8bcd0e22203435883eec20d3ffdf1",
+    "content-hash": "9b6c1f266519f0d38d82d3e91a3c840a",
     "packages": [
         {
             "name": "colinmollenhour/credis",
@@ -376,16 +376,16 @@
         },
         {
             "name": "newfold-labs/wp-module-atomic",
-            "version": "1.4.1",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-atomic.git",
-                "reference": "e09b1e735462b10d4eb84563ffae8affe898e32f"
+                "reference": "7c88487c209d4223540924b5900cfc0e814fe5f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-atomic/zipball/e09b1e735462b10d4eb84563ffae8affe898e32f",
-                "reference": "e09b1e735462b10d4eb84563ffae8affe898e32f",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-atomic/zipball/7c88487c209d4223540924b5900cfc0e814fe5f1",
+                "reference": "7c88487c209d4223540924b5900cfc0e814fe5f1",
                 "shasum": ""
             },
             "require": {
@@ -397,6 +397,7 @@
                 "newfold-labs/wp-php-standards": "^1.2.3",
                 "phpunit/phpcov": "*"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -432,11 +433,7 @@
                 }
             ],
             "description": "A module to customize a brand plugin for wp cloud environments.",
-            "support": {
-                "source": "https://github.com/newfold-labs/wp-module-atomic/tree/1.4.1",
-                "issues": "https://github.com/newfold-labs/wp-module-atomic/issues"
-            },
-            "time": "2026-02-05T07:11:06+00:00"
+            "time": "2026-06-16T19:47:26+00:00"
         },
         {
             "name": "newfold-labs/wp-module-coming-soon",
@@ -592,10 +589,6 @@
                 }
             ],
             "description": "Newfold module to determine context for various brands and platforms.",
-            "support": {
-                "source": "https://github.com/newfold-labs/wp-module-context/tree/1.0.3",
-                "issues": "https://github.com/newfold-labs/wp-module-context/issues"
-            },
             "time": "2026-02-06T13:36:08+00:00"
         },
         {
@@ -5615,6 +5608,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "newfold-labs/wp-module-atomic": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
