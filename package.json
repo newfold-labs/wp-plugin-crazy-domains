@@ -2,7 +2,7 @@
     "name": "wp-plugin-crazy-domains",
     "description": "WordPress plugin that integrates your WordPress site with the Crazy Domains control panel, including performance, security, and update features.",
     "license": "GPL-2.0-or-later",
-    "version": "2.5.2",
+    "version": "2.5.3",
     "private": true,
     "repository": {
         "type": "git",
@@ -46,7 +46,7 @@
     },
     "devDependencies": {
         "@axe-core/playwright": "^4.11.0",
-		"@playwright/test": "^1.58.1",
+        "@playwright/test": "^1.58.1",
         "@tailwindcss/forms": "^0.5.10",
         "@wordpress/env": "^11.2.0",
         "@wordpress/scripts": "^31.8.0",
@@ -85,8 +85,8 @@
         "storybook:build": "build-storybook -c ./storybook -o ./.docs",
         "test:e2e": "npm run test:playwright",
         "test:unit": "wp-scripts test-unit-js",
-		"test:playwright": "npx playwright test",
-		"test:playwright:update-projects": "node .github/scripts/generate-playwright-projects.mjs",
-		"test:clean-module": "bash ./.github/scripts/test-clean-module"
+        "test:playwright": "npx playwright test",
+        "test:playwright:update-projects": "node .github/scripts/generate-playwright-projects.mjs",
+        "test:clean-module": "bash ./.github/scripts/test-clean-module"
     }
 }
