@@ -76,7 +76,7 @@
         "i18n-json": "Generate new language .json files."
     },
     "require-dev": {
-        "newfold-labs/wp-php-standards": "^1.2.5",
+        "newfold-labs/wp-php-standards": "2.0.0",
         "roave/security-advisories": "dev-latest",
         "wp-cli/i18n-command": "^2.6.5",
         "wp-phpunit/wp-phpunit": "^7.0.0"
