@@ -12,10 +12,10 @@
  * Plugin URI:        https://crazydomains.com
  * Update URI:        https://github.com/newfold-labs/wp-plugin-crazy-domains/
  * Description:       WordPress plugin that integrates a WordPress site with the Crazy Domains control panel, including performance, security, and update features.
- * Version:           2.5.2
+ * Version:           2.5.3
  * Requires PHP:      7.3
  * Requires at least: 6.6
- * Tested up to:      6.9.4
+ * Tested up to:      7.1
  * Author:            Crazy Domains
  * Author URI:        https://crazydomains.com
  * Text Domain:       wp-plugin-crazy-domains
@@ -32,7 +32,7 @@ if ( defined( 'CRAZYDOMAINS_PLUGIN_VERSION' ) ) {
 }
 
 // Define constants
-define( 'CRAZYDOMAINS_PLUGIN_VERSION', '2.5.2' );
+define( 'CRAZYDOMAINS_PLUGIN_VERSION', '2.5.3' );
 define( 'CRAZYDOMAINS_PLUGIN_FILE', __FILE__ );
 define( 'CRAZYDOMAINS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CRAZYDOMAINS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -68,7 +68,7 @@ $nfd_plugins_check->legacy_plugins = array(
 	'The MOJO Marketplace' => 'mojo-marketplace-wp-plugin/mojo-marketplace.php',
 	'The MOJO Plugin'      => 'wp-plugin-mojo/wp-plugin-mojo.php',
 	'The HostGator Plugin' => 'wp-plugin-hostgator/wp-plugin-hostgator.php',
-	'The Web.com Plugin'   => 'wp-plugin-web/wp-plugin-web.php',
+	'The Network Solutions Plugin'   => 'wp-plugin-web/wp-plugin-web.php',
 );
 $pass_nfd_check                    = $nfd_plugins_check->check_plugin_requirements();
 

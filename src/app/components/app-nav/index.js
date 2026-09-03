@@ -223,7 +223,7 @@ export const TopBarNav = () => {
 	}, [location]);
 
 	return (
-		<header className="wppw-app-topbar nfd-border-b nfd-border-line nfd-bg-white nfd-shadow-sm">
+		<header className="wppcd-app-topbar nfd-border-b nfd-border-line nfd-bg-white nfd-shadow-sm">
 			<div className="nfd-flex nfd-justify-between nfd-items-center nfd-px-4 nfd-min-h-16">
 				<div className="nfd-flex nfd-items-center nfd-gap-8">
 					<div className="nfd-shrink-0">
@@ -240,7 +240,7 @@ export const TopBarNav = () => {
 											key={page.name}
 											onClick={(page.action && page.action instanceof Function) ? page.action : null}
 											to={page.name}
-											className={`wppw-app-navitem wppw-app-navitem-${page.title} nfd-flex nfd-items-center nfd-gap-2 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2] nfd-transition-colors`}
+											className={`wppcd-app-navitem wppcd-app-navitem-${page.title} nfd-flex nfd-items-center nfd-gap-2 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2] nfd-transition-colors`}
 										>
 											{page.Icon && <page.Icon className="nfd-w-5 nfd-h-5" />}
 											{page.title}
@@ -268,11 +268,11 @@ export const TopBarNav = () => {
 				<Modal
 					isOpen={isOpen}
 					onClose={() => setIsOpen(false)}
-					className="wppw-app-sidenav-mobile nfd-z-40"
+					className="wppcd-app-sidenav-mobile nfd-z-40"
 					initialFocus
 				>
 					<Modal.Panel className="nfd-p-0 nfd-overflow-visible">
-						<div className="wppw-app-sidenav nfd-p-5 nfd-max-h-[70vh] nfd-overflow-y-auto">
+						<div className="wppcd-app-sidenav nfd-p-5 nfd-max-h-[70vh] nfd-overflow-y-auto">
 							<SideNavMenu />
 						</div>
 					</Modal.Panel>
