@@ -204,8 +204,8 @@ final class Admin {
 	public static function actions( $actions ) {
 		return array_merge(
 			array(
-				'overview' => '<a href="' . \apply_filters( 'nfd_build_url', admin_url( 'admin.php?page=crazy-domains#/home' ) ) . '">' . __( 'Home', 'wp-plugin-crazy-domains' ) . '</a>',
-				'settings' => '<a href="' . \apply_filters( 'nfd_build_url', admin_url( 'admin.php?page=crazy-domains#/settings' ) ) . '">' . __( 'Settings', 'wp-plugin-crazy-domains' ) . '</a>',
+				'overview' => '<a href="' . esc_url( \apply_filters( 'nfd_build_url', admin_url( 'admin.php?page=crazy-domains#/home' ) ) ) . '">' . __( 'Home', 'wp-plugin-crazy-domains' ) . '</a>',
+				'settings' => '<a href="' . esc_url( \apply_filters( 'nfd_build_url', admin_url( 'admin.php?page=crazy-domains#/settings' ) ) ) . '">' . __( 'Settings', 'wp-plugin-crazy-domains' ) . '</a>',
 			),
 			$actions
 		);
@@ -219,8 +219,8 @@ final class Admin {
 	 */
 	public static function add_brand_to_admin_footer( $footer_text ) {
 
-		$wordpress_url = '<a href="' . apply_filters( 'nfd_build_url', 'https://wordpress.org/', array( 'source' => 'crazy_admin_footer' ) ) . '">WordPress</a>';
-		$crazy_url     = '<a href="' . apply_filters( 'nfd_build_url', 'https://crazydomains.com/about', array( 'source' => 'crazy_admin_footer' ) ) . '">Crazy Domains</a>';
+		$wordpress_url = '<a href="' . esc_url( apply_filters( 'nfd_build_url', 'https://wordpress.org/', array( 'source' => 'crazy_admin_footer' ) ) ) . '">WordPress</a>';
+		$crazy_url     = '<a href="' . esc_url( apply_filters( 'nfd_build_url', 'https://crazydomains.com/about', array( 'source' => 'crazy_admin_footer' ) ) ) . '">Crazy Domains</a>';
 
 		// translators: %1$s is the WordPress URL, %2$s is the Crazy domains URL.
 		$footer_text = sprintf( \__( 'Thank you for creating with %1$s and %2$s.', 'wp-plugin-crazy-domains' ), $wordpress_url, $crazy_url );
