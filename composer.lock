@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93a9d5def084742621f5f512a1076fdf",
+    "content-hash": "a2d3189a4c37cc6de992c9e18cdab499",
     "packages": [
         {
             "name": "colinmollenhour/credis",
@@ -208,16 +208,16 @@
         },
         {
             "name": "newfold-labs/wp-module-activation",
-            "version": "1.0.16",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-activation.git",
-                "reference": "a2dd9a0d096899594ca8a02615d771839e711424"
+                "reference": "14d8fedf1a1bf9fccef386cc5662e721d53e0df9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-activation/zipball/a2dd9a0d096899594ca8a02615d771839e711424",
-                "reference": "a2dd9a0d096899594ca8a02615d771839e711424",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-activation/zipball/14d8fedf1a1bf9fccef386cc5662e721d53e0df9",
+                "reference": "14d8fedf1a1bf9fccef386cc5662e721d53e0df9",
                 "shasum": ""
             },
             "require-dev": {
@@ -226,6 +226,7 @@
                 "newfold-labs/wp-php-standards": "^1.2",
                 "phpunit/phpcov": "*"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -269,7 +270,7 @@
                 }
             ],
             "description": "A Module for handling WordPress brand plugins activations",
-            "time": "2026-07-20T15:13:47+00:00"
+            "time": "2026-08-17T18:21:06+00:00"
         },
         {
             "name": "newfold-labs/wp-module-ai",
@@ -5831,6 +5832,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "newfold-labs/wp-module-activation": 20,
         "newfold-labs/wp-module-onboarding": 20,
         "roave/security-advisories": 20
     },
