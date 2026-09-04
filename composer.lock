@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93a9d5def084742621f5f512a1076fdf",
+    "content-hash": "724ee3a30b94208fb043d065b4a8938f",
     "packages": [
         {
             "name": "colinmollenhour/credis",
@@ -3967,7 +3967,7 @@
         },
         {
             "name": "newfold-labs/wp-php-standards",
-            "version": "2.0.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-php-standards.git",
@@ -3989,6 +3989,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.6"
             },
+            "default-branch": true,
             "type": "phpcodesniffer-standard",
             "autoload": {
                 "psr-4": {
@@ -5832,6 +5833,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "newfold-labs/wp-module-onboarding": 20,
+        "newfold-labs/wp-php-standards": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
