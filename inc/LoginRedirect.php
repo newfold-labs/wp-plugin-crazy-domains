@@ -15,8 +15,8 @@ class LoginRedirect {
 	public static function init() {
 		add_action( 'login_redirect', array( __CLASS__, 'on_login_redirect' ), 10, 3 );
 		add_action( 'login_init', array( __CLASS__, 'on_login_init' ), 10, 3 );
-		add_filter( 'login_form_defaults', array( __CLASS__, 'filter_login_form_defaults' ) );
-		add_filter( 'newfold_sso_success_url_default', array( __CLASS__, 'get_default_redirect_url' ) );
+		\add_filter( 'login_form_defaults', array( __CLASS__, 'filter_login_form_defaults' ) );
+		\add_filter( 'newfold_sso_success_url_default', array( __CLASS__, 'get_default_redirect_url' ) );
 	}
 
 	/**

@@ -3,12 +3,15 @@ import apiFetch from '@wordpress/api-fetch';
 import { useViewportMatch } from '@wordpress/compose';
 import { addQueryArgs, cleanForSlug } from '@wordpress/url';
 import { filter } from 'lodash';
-import { Modal, SidebarNavigation } from '@newfold/ui-component-library';
+import { Button, Modal, SidebarNavigation } from '@newfold/ui-component-library';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { topRoutes, utilityRoutes } from 'App/data/routes';
 import Logo from './logo';
 import { default as NewfoldNotifications } from '@modules/wp-module-notifications/assets/js/components/notifications/';
+import { WordPressIcon } from '../icons';
+import { ReactComponent as CrazyDomainsIconWhite } from '../../../../assets/svg/crazydomains-icon.svg';
+import { NewfoldRuntime } from '@newfold/wp-module-runtime';
 
 export const SideNavHeader = () => {
 	return (
@@ -216,7 +219,10 @@ export const TopBarNav = () => {
 	const isLargeViewport = useViewportMatch('medium');
 	let location = useLocation();
 	const hashedPath = '#' + location.pathname;
-	
+	const { url } = NewfoldRuntime.siteDetails;
+	const isEcommerce = NewfoldRuntime.hasCapability('isEcommerce');
+	const isStore = window.location.href?.includes('store');
+
 	// Close mobile nav when location changes
 	useEffect(() => {
 		setIsOpen(false);
@@ -251,6 +257,33 @@ export const TopBarNav = () => {
 					)}
 				</div>
 
+				{/* Action Buttons */}
+				{isLargeViewport && (
+					<div className="nfd-flex nfd-items-center nfd-gap-3">
+						 <Button
+							as="a"
+							id="site_info_portal_button"
+							href= { window.NewfoldRuntime.linkTracker.addUtmParams( 'https://www.crazydomains.com/login/' ) }
+							target="_blank"
+							variant="primary" 
+							className="nfd-bg-[#548224] nfd-text-white nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto hover:nfd-bg-[#548224]">
+							<CrazyDomainsIconWhite />
+							{ __("CD Account", "wp-plugin-crazy-domains") }
+						</Button>
+						<Button 
+							as="a" 
+							id="site_info_site_button"
+							href={(isEcommerce && isStore) ? window.NewfoldRuntime.linkTracker.addUtmParams(`${url}/shop`) : window.NewfoldRuntime.linkTracker.addUtmParams( url )}
+							target="_blank" 
+							variant="secondary" 
+							className="nfd-bg-white nfd-text-slate-900 nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto nfd-border-slate-300 hover:nfd-bg-slate-50"
+						>
+							<WordPressIcon />
+						{ (isEcommerce && isStore) ? __("View Store", "wp-plugin-crazy-domains") : __("View Site", "wp-plugin-crazy-domains") }
+						</Button>
+					</div>
+				)}
+				
 				{/* Mobile Menu Button */}
 				{!isLargeViewport && (
 					<button
