@@ -13,7 +13,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { store as noticesStore } from '@wordpress/notices';
 import { kebabCase, filter } from 'lodash';
 import { useHandlePageLoad } from './util/hooks';
-import { Root } from "@newfold/ui-component-library";
+import { Root } from '@newfold/ui-component-library';
 import { AppNav } from 'App/components/app-nav';
 import { NotificationFeed } from 'App/components/notifications';
 
@@ -43,49 +43,49 @@ const Notices = () => {
 	);
 };
 
-const AppBody = (props) => {
+const AppBody = ( props ) => {
 	const location = useLocation();
 	const hashedPath = '#' + location.pathname;
-	const { booted, hasError } = useContext(AppStore);
+	const { booted, hasError } = useContext( AppStore );
 
 	useHandlePageLoad();
 
 	return (
 		<main
 			id="wppcd-app-rendered"
-			className={classNames(
+			className={ classNames(
 				'wpadmin-brand-crazydomains',
-				`wppcd-wp-${NewfoldRuntime.wpversion}`,
-				`wppcd-page-${kebabCase(location.pathname)}`,
+				`wppcd-wp-${ NewfoldRuntime.wpversion }`,
+				`wppcd-page-${ kebabCase( location.pathname ) }`,
 				props.className,
 				'nfd-w-full nfd-p-4 min-[783px]:nfd-p-0'
-			)}
+			) }
 		>
 			<NewfoldNotifications
-				constants={{
+				constants={ {
 					context: 'crazy-domains-plugin',
-					page: hashedPath
-				}}
-				methods={{
+					page: hashedPath,
+				} }
+				methods={ {
 					apiFetch,
 					addQueryArgs,
 					filter,
 					useState,
-					useEffect
-				}}
+					useEffect,
+				} }
 			/>
 			<div className="wppcd-app-body">
 				<div className="wppcd-app-body-inner">
-					<ErrorBoundary FallbackComponent={<ErrorCard />}>
-						{hasError && <ErrorCard error={hasError} />}
-						{(true === booted && <AppRoutes />) ||
-							(!hasError && <Spinner />)}
+					<ErrorBoundary FallbackComponent={ <ErrorCard /> }>
+						{ hasError && <ErrorCard error={ hasError } /> }
+						{ ( true === booted && <AppRoutes /> ) ||
+							( ! hasError && <Spinner /> ) }
 					</ErrorBoundary>
 				</div>
 			</div>
 
 			<div className="wppcd-app-snackbar">
-			{ 'undefined' !== typeof noticesStore && <Notices /> }
+				{ 'undefined' !== typeof noticesStore && <Notices /> }
 			</div>
 		</main>
 	);
@@ -93,7 +93,7 @@ const AppBody = (props) => {
 
 export const App = () => (
 	<AppStoreProvider>
-		<Root context={{ isRtl: false }}>
+		<Root context={ { isRtl: false } }>
 			<NotificationFeed>
 				<Router>
 					<div className="wppcd-app-container nfd-flex nfd-flex-col">

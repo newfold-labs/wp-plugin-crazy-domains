@@ -81,7 +81,11 @@ export const updateUI = (
  * @param {Function} thenCallback method to call in promise then
  * @return {Promise} apiFetch promise with attached then and catch callbacks
  */
-export const crazydomainsSettingsApiFetch = ( data, passError, thenCallback ) => {
+export const crazydomainsSettingsApiFetch = (
+	data,
+	passError,
+	thenCallback
+) => {
 	return apiFetch( {
 		// path: 'crazydomains/v1/settings', //  can't use path bacause it breaks on temp domains
 		url: NewfoldRuntime.createApiUrl( '/crazy-domains/v1/settings' ),
@@ -99,12 +103,16 @@ export const crazydomainsSettingsApiFetch = ( data, passError, thenCallback ) =>
 /**
  * Wrapper method to post request to crazydomains cache endpoint
  *
- * @param {*} data object of data
- * @param passError setter for the error in component
- * @param thenCallback method to call in promise then
+ * @param {*} data         object of data
+ * @param     passError    setter for the error in component
+ * @param     thenCallback method to call in promise then
  * @return apiFetch promise
  */
-export const crazydomainsPurgeCacheApiFetch = ( data, passError, thenCallback ) => {
+export const crazydomainsPurgeCacheApiFetch = (
+	data,
+	passError,
+	thenCallback
+) => {
 	return apiFetch( {
 		url: NewfoldRuntime.createApiUrl( '/crazy-domains/v1/caching' ),
 		method: 'DELETE',
@@ -120,6 +128,7 @@ export const crazydomainsPurgeCacheApiFetch = ( data, passError, thenCallback ) 
 
 /**
  * Coming soon admin bar
+ * @param comingSoon
  */
 export const comingSoonAdminbarToggle = ( comingSoon ) => {
 	window.NewfoldRuntime.comingSoon.toggleAdminBarSiteStatus( comingSoon );

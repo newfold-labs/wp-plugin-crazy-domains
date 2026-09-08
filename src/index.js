@@ -10,13 +10,13 @@ import App from './app';
 
 const WP_ADM_PAGE_ROOT_ELEMENT = 'wppcd-app';
 const W_ASCI = `Welcome to Crazy Domains!`;
-console.log(W_ASCI);
+console.log( W_ASCI );
 
 const WPPCDRender = () => {
-	const DOM_ELEMENT = document.getElementById(WP_ADM_PAGE_ROOT_ELEMENT);
-	if (null !== DOM_ELEMENT) {
-		createRoot(DOM_ELEMENT).render(<App />);
+	const DOM_ELEMENT = document.getElementById( WP_ADM_PAGE_ROOT_ELEMENT );
+	if ( null !== DOM_ELEMENT ) {
+		createRoot( DOM_ELEMENT ).render( <App /> );
 	}
 };
 
-domReady(WPPCDRender);
+domReady( WPPCDRender );

@@ -48,7 +48,10 @@ const WonderBlocksSettings = () => {
 
 	const notifyError = () => {
 		notify.push( 'feature-toggle-notice', {
-			title: __( 'Sorry, that is not allowed.', 'wp-plugin-crazy-domains' ),
+			title: __(
+				'Sorry, that is not allowed.',
+				'wp-plugin-crazy-domains'
+			),
 			description: __(
 				'This feature cannot currently be modified.',
 				'wp-plugin-crazy-domains'

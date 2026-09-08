@@ -3,7 +3,11 @@ import apiFetch from '@wordpress/api-fetch';
 import { useViewportMatch } from '@wordpress/compose';
 import { addQueryArgs, cleanForSlug } from '@wordpress/url';
 import { filter } from 'lodash';
-import { Button, Modal, SidebarNavigation } from '@newfold/ui-component-library';
+import {
+	Button,
+	Modal,
+	SidebarNavigation,
+} from '@newfold/ui-component-library';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { topRoutes, utilityRoutes } from 'App/data/routes';
@@ -19,7 +23,7 @@ export const SideNavHeader = () => {
 			<Logo />
 		</header>
 	);
-}
+};
 
 export const SideNavMenu = () => {
 	const location = useLocation();
@@ -27,122 +31,137 @@ export const SideNavMenu = () => {
 	const primaryMenu = () => {
 		return (
 			<ul className="nfd-flex nfd-flex-col nfd-gap-1.5">
-				{topRoutes.map(
-					(page) => (
+				{ topRoutes.map(
+					( page ) =>
 						true === page.condition && (
 							<SideNavMenuItem
-								key={page.name}
-								label={page.title}
-								name={page.name}
-								icon={page.Icon}
-								path={page.name}
-								action={page.action}
-								subItems={page.subRoutes}
+								key={ page.name }
+								label={ page.title }
+								name={ page.name }
+								icon={ page.Icon }
+								path={ page.name }
+								action={ page.action }
+								subItems={ page.subRoutes }
 							/>
 						)
-				))}
+				) }
 			</ul>
 		);
-	}
+	};
 
 	const secondaryMenu = () => {
 		return (
 			<ul className="nfd-flex nfd-flex-col nfd-gap-1.5 nfd-mt-4 nfd-pt-4 nfd-border-t nfd-border-[#D8DEE4]">
-				{utilityRoutes.map((page) => (
-
+				{ utilityRoutes.map( ( page ) => (
 					<SideNavMenuItem
-						key={page.name}
-						label={page.title}
-						name={page.name}
-						icon={page.Icon}
-						path={page.name}
-						action={page.action}
-						subItems={page.subRoutes}
+						key={ page.name }
+						label={ page.title }
+						name={ page.name }
+						icon={ page.Icon }
+						path={ page.name }
+						action={ page.action }
+						subItems={ page.subRoutes }
 					/>
-
-				))}
+				) ) }
 			</ul>
 		);
-	}
+	};
 
 	const SubMenusManager = () => {
 		// close any open submenus
-		const subMenus = document.querySelectorAll('.wppcd-app-navitem-submenu');
-		subMenus.forEach((subMenu) => {
-			subMenu.classList.add('nfd-hidden');
-		});
+		const subMenus = document.querySelectorAll(
+			'.wppcd-app-navitem-submenu'
+		);
+		subMenus.forEach( ( subMenu ) => {
+			subMenu.classList.add( 'nfd-hidden' );
+		} );
 
 		// open active's submenu if it exists
-		const activeMenu = document.querySelector('.wppcd-app-sidenav .active');
+		const activeMenu = document.querySelector(
+			'.wppcd-app-sidenav .active'
+		);
 		if (
-			activeMenu && 
-			null !== activeMenu.nextSibling && 
-			activeMenu.nextSibling.classList.contains('wppcd-app-navitem-submenu')
+			activeMenu &&
+			null !== activeMenu.nextSibling &&
+			activeMenu.nextSibling.classList.contains(
+				'wppcd-app-navitem-submenu'
+			)
 		) {
-			activeMenu.nextSibling.classList.remove('nfd-hidden');
+			activeMenu.nextSibling.classList.remove( 'nfd-hidden' );
 		}
-	}
+	};
 
-	useEffect(() => {
+	useEffect( () => {
 		SubMenusManager();
 		document.onclick = SubMenusManager;
-	}, [location]);
+	}, [ location ] );
 
 	return (
 		<div className="nfd-px-0.5 nfd-space-y-6">
-			{primaryMenu()}
-			{/* {secondaryMenu()} */}
+			{ primaryMenu() }
+			{ /* {secondaryMenu()} */ }
 		</div>
 	);
-}
+};
 
-export const SideNavMenuItem = ({ label, name, icon: Icon = null, path, action, subItems }) => {
+export const SideNavMenuItem = ( {
+	label,
+	name,
+	icon: Icon = null,
+	path,
+	action,
+	subItems,
+} ) => {
 	return (
 		<li className="nfd-mb-0">
 			<NavLink
-				onClick={(action && action instanceof Function) ? action : null}
-				to={path}
-				className={`wppcd-app-navitem wppcd-app-navitem-${ cleanForSlug( label ) } nfd-flex nfd-items-center nfd-gap-3 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2]`}
+				onClick={ action && action instanceof Function ? action : null }
+				to={ path }
+				className={ `wppcd-app-navitem wppcd-app-navitem-${ cleanForSlug(
+					label
+				) } nfd-flex nfd-items-center nfd-gap-3 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2]` }
 			>
-				{Icon &&
+				{ Icon && (
 					<Icon className="nfd-flex-shrink-0 nfd--ml-1 nfd-h-6 nfd-w-6" />
-				}
-				{label}
+				) }
+				{ label }
 			</NavLink>
 
-			{subItems && subItems.length > 0 &&
+			{ subItems && subItems.length > 0 && (
 				<ul className="wppcd-app-navitem-submenu nfd-hidden nfd-ml-8 nfd-m-2 nfd-space-y-1.5">
-					{subItems.map((subItem) => (
+					{ subItems.map( ( subItem ) => (
 						<SideNavMenuSubItem
-							key={subItem.name}
-							label={subItem.title}
-							name={subItem.name}
-							path={subItem.name}
-							action={subItem.action}
+							key={ subItem.name }
+							label={ subItem.title }
+							name={ subItem.name }
+							path={ subItem.name }
+							action={ subItem.action }
 						/>
-					))}
+					) ) }
 				</ul>
-			}
+			) }
 		</li>
 	);
-}
+};
 
-export const SideNavMenuSubItem = ({ label, name, path, action }) => {
+export const SideNavMenuSubItem = ( { label, name, path, action } ) => {
 	return (
 		<li className="nfd-m-0 nfd-pb-1">
 			<NavLink
-				onClick={(action && action instanceof Function) ? action : null}
-				to={path} 
-				className={`wppcd-app-subnavitem wppcd-app-subnavitem-${ cleanForSlug( label ) } nfd-flex nfd-items-center nfd-gap-3 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-body leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2] [&.active]:nfd-text-title`}
+				onClick={ action && action instanceof Function ? action : null }
+				to={ path }
+				className={ `wppcd-app-subnavitem wppcd-app-subnavitem-${ cleanForSlug(
+					label
+				) } nfd-flex nfd-items-center nfd-gap-3 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-body leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2] [&.active]:nfd-text-title` }
 			>
-				{label}
+				{ label }
 			</NavLink>
 		</li>
 	);
-}
+};
 
 export const SideNav = () => {
-	const  location = useLocation();
+	const location = useLocation();
 	const hashedPath = '#' + location.pathname;
 
 	return (
@@ -171,18 +190,17 @@ export const SideNav = () => {
 };
 
 export const MobileNav = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [ isOpen, setIsOpen ] = useState( false );
 
-	let location = useLocation();
+	const location = useLocation();
 	// Close mobile nav when location changes
-	useEffect(() => {
-		setIsOpen(false);
-	}, [location]);
+	useEffect( () => {
+		setIsOpen( false );
+	}, [ location ] );
 
 	return (
 		<header className="nfd-sticky nfd-z-30 nfd-top-0 min-[600px]:nfd-top-[46px] nfd-border-b nfd-border-line">
 			<div className="nfd-flex nfd-justify-between nfd-items-center nfd-bg-white">
-
 				<div className="nfd-px-4">
 					<Logo />
 				</div>
@@ -190,15 +208,17 @@ export const MobileNav = () => {
 					id="nfd-app-mobile-nav"
 					role="button"
 					className="nfd-h-16 nfd-px-4 nfd-text-body nfd-flex nfd-items-center focus:nfd-outline-none focus:nfd-ring-2 focus:nfd-ring-inset focus:nfd-ring-primary"
-					onClick={() => { setIsOpen(true) }}
+					onClick={ () => {
+						setIsOpen( true );
+					} }
 				>
 					<span className="nfd-sr-only">Open Navingation Menu</span>
 					<Bars3Icon className="nfd-w-6 nfd-h-6" />
 				</button>
 
 				<Modal
-					isOpen={isOpen}
-					onClose={() => setIsOpen(false)}
+					isOpen={ isOpen }
+					onClose={ () => setIsOpen( false ) }
 					className="wppcd-app-sidenav-mobile nfd-z-40"
 					initialFocus
 				>
@@ -208,25 +228,24 @@ export const MobileNav = () => {
 						</div>
 					</Modal.Panel>
 				</Modal>
-
 			</div>
 		</header>
 	);
-}
+};
 
 export const TopBarNav = () => {
-	const [isOpen, setIsOpen] = useState(false);
-	const isLargeViewport = useViewportMatch('medium');
-	let location = useLocation();
+	const [ isOpen, setIsOpen ] = useState( false );
+	const isLargeViewport = useViewportMatch( 'medium' );
+	const location = useLocation();
 	const hashedPath = '#' + location.pathname;
 	const { url } = NewfoldRuntime.siteDetails;
-	const isEcommerce = NewfoldRuntime.hasCapability('isEcommerce');
-	const isStore = window.location.href?.includes('store');
+	const isEcommerce = NewfoldRuntime.hasCapability( 'isEcommerce' );
+	const isStore = window.location.href?.includes( 'store' );
 
 	// Close mobile nav when location changes
-	useEffect(() => {
-		setIsOpen(false);
-	}, [location]);
+	useEffect( () => {
+		setIsOpen( false );
+	}, [ location ] );
 
 	return (
 		<header className="wppcd-app-topbar nfd-border-b nfd-border-line nfd-bg-white nfd-shadow-sm">
@@ -235,72 +254,96 @@ export const TopBarNav = () => {
 					<div className="nfd-shrink-0">
 						<Logo />
 					</div>
-					
-					{/* Desktop Navigation - Horizontal Menu */}
-					{isLargeViewport && (
+
+					{ /* Desktop Navigation - Horizontal Menu */ }
+					{ isLargeViewport && (
 						<nav className=" min-[783px]:nfd-flex nfd-items-center nfd-gap-1">
-							{topRoutes.map(
-								(page) => (
+							{ topRoutes.map(
+								( page ) =>
 									true === page.condition && (
 										<NavLink
-											key={page.name}
-											onClick={(page.action && page.action instanceof Function) ? page.action : null}
-											to={page.name}
-											className={`wppcd-app-navitem wppcd-app-navitem-${page.title} nfd-flex nfd-items-center nfd-gap-2 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2] nfd-transition-colors`}
+											key={ page.name }
+											onClick={
+												page.action &&
+												page.action instanceof Function
+													? page.action
+													: null
+											}
+											to={ page.name }
+											className={ `wppcd-app-navitem wppcd-app-navitem-${ page.title } nfd-flex nfd-items-center nfd-gap-2 nfd-px-3 nfd-py-2 nfd-rounded-md nfd-text-sm nfd-font-medium nfd-text-title leading-none hover:nfd-bg-slate-50 [&.active]:nfd-bg-[#E9F0E2] nfd-transition-colors` }
 										>
-											{page.Icon && <page.Icon className="nfd-w-5 nfd-h-5" />}
-											{page.title}
+											{ page.Icon && (
+												<page.Icon className="nfd-w-5 nfd-h-5" />
+											) }
+											{ page.title }
 										</NavLink>
 									)
-							))}
+							) }
 						</nav>
-					)}
+					) }
 				</div>
 
-				{/* Action Buttons */}
-				{isLargeViewport && (
+				{ /* Action Buttons */ }
+				{ isLargeViewport && (
 					<div className="nfd-flex nfd-items-center nfd-gap-3">
-						 <Button
+						<Button
 							as="a"
 							id="site_info_portal_button"
-							href= { window.NewfoldRuntime.linkTracker.addUtmParams( 'https://www.crazydomains.com/login/' ) }
+							href={ window.NewfoldRuntime.linkTracker.addUtmParams(
+								'https://www.crazydomains.com/login/'
+							) }
 							target="_blank"
-							variant="primary" 
-							className="nfd-bg-[#548224] nfd-text-white nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto hover:nfd-bg-[#548224]">
+							variant="primary"
+							className="nfd-bg-[#548224] nfd-text-white nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto hover:nfd-bg-[#548224]"
+						>
 							<CrazyDomainsIconWhite />
-							{ __("CD Account", "wp-plugin-crazy-domains") }
+							{ __( 'CD Account', 'wp-plugin-crazy-domains' ) }
 						</Button>
-						<Button 
-							as="a" 
+						<Button
+							as="a"
 							id="site_info_site_button"
-							href={(isEcommerce && isStore) ? window.NewfoldRuntime.linkTracker.addUtmParams(`${url}/shop`) : window.NewfoldRuntime.linkTracker.addUtmParams( url )}
-							target="_blank" 
-							variant="secondary" 
+							href={
+								isEcommerce && isStore
+									? window.NewfoldRuntime.linkTracker.addUtmParams(
+											`${ url }/shop`
+									  )
+									: window.NewfoldRuntime.linkTracker.addUtmParams(
+											url
+									  )
+							}
+							target="_blank"
+							variant="secondary"
 							className="nfd-bg-white nfd-text-slate-900 nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto nfd-border-slate-300 hover:nfd-bg-slate-50"
 						>
 							<WordPressIcon />
-						{ (isEcommerce && isStore) ? __("View Store", "wp-plugin-crazy-domains") : __("View Site", "wp-plugin-crazy-domains") }
+							{ isEcommerce && isStore
+								? __( 'View Store', 'wp-plugin-crazy-domains' )
+								: __( 'View Site', 'wp-plugin-crazy-domains' ) }
 						</Button>
 					</div>
-				)}
-				
-				{/* Mobile Menu Button */}
-				{!isLargeViewport && (
+				) }
+
+				{ /* Mobile Menu Button */ }
+				{ ! isLargeViewport && (
 					<button
 						id="nfd-app-mobile-nav"
 						role="button"
 						className="nfd-h-16 nfd-px-4 nfd-text-body nfd-flex nfd-items-center focus:nfd-outline-none focus:nfd-ring-2 focus:nfd-ring-inset focus:nfd-ring-primary min-[783px]:nfd-hidden"
-						onClick={() => { setIsOpen(true) }}
+						onClick={ () => {
+							setIsOpen( true );
+						} }
 					>
-						<span className="nfd-sr-only">Open Navigation Menu</span>
+						<span className="nfd-sr-only">
+							Open Navigation Menu
+						</span>
 						<Bars3Icon className="nfd-w-6 nfd-h-6" />
 					</button>
-				)}
+				) }
 
-				{/* Mobile Navigation Modal */}
+				{ /* Mobile Navigation Modal */ }
 				<Modal
-					isOpen={isOpen}
-					onClose={() => setIsOpen(false)}
+					isOpen={ isOpen }
+					onClose={ () => setIsOpen( false ) }
 					className="wppcd-app-sidenav-mobile nfd-z-40"
 					initialFocus
 				>
@@ -312,8 +355,8 @@ export const TopBarNav = () => {
 				</Modal>
 			</div>
 
-			{/* Notifications for desktop */}
-			{isLargeViewport && (
+			{ /* Notifications for desktop */ }
+			{ isLargeViewport && (
 				<div className="nfd-hidden">
 					<NewfoldNotifications
 						constants={ {
@@ -329,11 +372,11 @@ export const TopBarNav = () => {
 						} }
 					/>
 				</div>
-			)}
+			) }
 		</header>
 	);
-}
+};
 
 export const AppNav = () => {
 	return <TopBarNav />;
-}
+};

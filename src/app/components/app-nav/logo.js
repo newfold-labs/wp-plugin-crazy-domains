@@ -29,7 +29,10 @@ const Logo = () => {
 		<div className="wppcd-logo-wrap">
 			<Mark />
 			<Title as="h2" className="screen-reader-text">
-				{ __( 'Crazy Domains WordPress Plugin', 'wp-plugin-crazy-domains' ) }
+				{ __(
+					'Crazy Domains WordPress Plugin',
+					'wp-plugin-crazy-domains'
+				) }
 			</Title>
 		</div>
 	);

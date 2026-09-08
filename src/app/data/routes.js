@@ -1,11 +1,11 @@
-import { 
+import {
 	HomeIcon,
 	ShoppingBagIcon,
 	AdjustmentsHorizontalIcon,
 	BuildingStorefrontIcon,
-	QuestionMarkCircleIcon, 
-	BoltIcon} 
-from '@heroicons/react/24/outline';
+	QuestionMarkCircleIcon,
+	BoltIcon,
+} from '@heroicons/react/24/outline';
 import { NewfoldRuntime } from '@newfold/wp-module-runtime';
 import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
 import { Route, Routes } from 'react-router-dom';
@@ -66,12 +66,7 @@ export const AppRoutes = () => {
 	);
 };
 
-const topRoutePaths = [
-	'/home',
-	'/marketplace',
-	'/settings',
-	'/help',
-];
+const topRoutePaths = [ '/home', '/marketplace', '/settings', '/help' ];
 const utilityRoutePaths = [ '/help' ];
 
 export const routes = [

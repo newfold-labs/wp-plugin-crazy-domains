@@ -1,4 +1,4 @@
-import { Container, Page, Title } from "@newfold/ui-component-library";
+import { Container, Page, Title } from '@newfold/ui-component-library';
 import { useEffect } from '@wordpress/element';
 
 import ComingSoon from './comingSoon';
@@ -11,17 +11,15 @@ import { ChevronUpIcon } from '@heroicons/react/24/outline';
 const Settings = () => {
 	const isPerformanceEnabled =
 		window.NewfoldFeatures.features.performance === true;
-	const isStagingEnabled =
-		window.NewfoldFeatures.features.staging === true;
+	const isStagingEnabled = window.NewfoldFeatures.features.staging === true;
 
-		const location = useLocation();
+	const location = useLocation();
 
-		useEffect( () => {
+	useEffect( () => {
 		// run when mounts
 		const performancePortal =
 			document.getElementById( 'performance-portal' );
-		const stagingPortal =
-			document.getElementById( 'staging-portal' );
+		const stagingPortal = document.getElementById( 'staging-portal' );
 		if ( performancePortal ) {
 			window.NFDPortalRegistry.registerPortal(
 				'performance',
@@ -29,10 +27,7 @@ const Settings = () => {
 			);
 		}
 		if ( stagingPortal ) {
-			window.NFDPortalRegistry.registerPortal(
-				'staging',
-				stagingPortal
-			);
+			window.NFDPortalRegistry.registerPortal( 'staging', stagingPortal );
 		}
 		// run when unmounts
 		return () => {
@@ -68,7 +63,7 @@ const Settings = () => {
 		}
 	}, [ location.pathname ] );
 	return (
-		<Page title="Settings" className={"wppcd-app-settings-page"}>
+		<Page title="Settings" className={ 'wppcd-app-settings-page' }>
 			<div
 				id={ 'settings-header' }
 				className={ 'wppcd-app-settings-header' }
@@ -83,7 +78,7 @@ const Settings = () => {
 					) }
 				</Title>
 			</div>
-			<Container className={'wppcd-app-settings-container'}>
+			<Container className={ 'wppcd-app-settings-container' }>
 				<details className="nfd-details settings-app-wrapper settings-details">
 					<summary>
 						<div
@@ -110,7 +105,10 @@ const Settings = () => {
 							<ChevronUpIcon />
 						</span>
 					</summary>
-					<Container.Block separator={true} className={'wppcd-app-settings-coming-soon'}>
+					<Container.Block
+						separator={ true }
+						className={ 'wppcd-app-settings-coming-soon' }
+					>
 						<ComingSoon />
 					</Container.Block>
 
@@ -119,20 +117,31 @@ const Settings = () => {
 						className={ 'wppcd-app-settings-wonder-blocks' }
 					>
 						<Container.SettingsField
-							title={ __( 'Features', 'wp-plugin-crazy-domains' ) }
+							title={ __(
+								'Features',
+								'wp-plugin-crazy-domains'
+							) }
 						></Container.SettingsField>
 						<WonderBlocksSettings />
 					</Container.Block>
 
-					<Container.Block separator={true} className={'wppcd-app-settings-update'}>
+					<Container.Block
+						separator={ true }
+						className={ 'wppcd-app-settings-update' }
+					>
 						<AutomaticUpdates />
 					</Container.Block>
 
-					<Container.Block separator={true} className={'wppcd-app-settings-content'}>
+					<Container.Block
+						separator={ true }
+						className={ 'wppcd-app-settings-content' }
+					>
 						<ContentSettings />
 					</Container.Block>
 
-					<Container.Block className={'wppcd-app-settings-comments'}>
+					<Container.Block
+						className={ 'wppcd-app-settings-comments' }
+					>
 						<CommentSettings />
 					</Container.Block>
 				</details>
