@@ -1,7 +1,5 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useViewportMatch } from '@wordpress/compose';
-import { useEffect, useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 import { addQueryArgs, cleanForSlug } from '@wordpress/url';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { NewfoldRuntime } from '@newfold/wp-module-runtime';
