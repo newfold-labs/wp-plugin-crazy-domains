@@ -1,7 +1,7 @@
 <?php
 /**
  * Reset the connection attempts counter.
- * 
+ *
  * @package WPPluginCrazyDomains
  **/
 
