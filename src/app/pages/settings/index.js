@@ -1,12 +1,13 @@
-import { Container, Page, Title } from '@newfold/ui-component-library';
 import { useEffect } from '@wordpress/element';
-
-import ComingSoon from './comingSoon';
-import WonderBlocksSettings from './wonderBlocksSettings';
+import { __ } from '@wordpress/i18n';
+import { ChevronUpIcon } from '@heroicons/react/24/outline';
+import { Container, Page, Title } from '@newfold/ui-component-library';
+import { useLocation } from 'react-router-dom';
 import AutomaticUpdates from './automaticUpdates';
 import CommentSettings from './commentSettings';
+import ComingSoon from './comingSoon';
 import ContentSettings from './contentSettings';
-import { ChevronUpIcon } from '@heroicons/react/24/outline';
+import WonderBlocksSettings from './wonderBlocksSettings';
 
 const Settings = () => {
 	const isPerformanceEnabled =

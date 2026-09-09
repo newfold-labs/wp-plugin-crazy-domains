@@ -3,7 +3,6 @@ import { useUpdateEffect } from 'react-use';
 
 import { useNotification } from '../../components/notifications';
 import AppStore from '../../data/store';
-import { useContext } from '@wordpress/element';
 import { crazydomainsSettingsApiFetch } from '../../util/helpers';
 import { comingSoonAdminbarToggle } from '../../util/helpers';
 

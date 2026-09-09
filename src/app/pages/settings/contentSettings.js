@@ -1,9 +1,8 @@
-import AppStore from '../../data/store';
-import { crazydomainsSettingsApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
-import { useState } from '@wordpress/element';
 import { Alert, Container, SelectField } from '@newfold/ui-component-library';
-import { useNotification } from 'App/components/notifications';
+import AppStore from '../../data/store';
+import { useNotification } from '../../components/notifications';
+import { crazydomainsSettingsApiFetch } from '../../util/helpers';
 
 const ContentRevisions = ( { setError, notify } ) => {
 	const { store, setStore } = useContext( AppStore );
@@ -34,7 +33,9 @@ const ContentRevisions = ( { setError, notify } ) => {
 				'Saving drafts and updating published content creates revisions. Make changes with confidence, knowing you can take',
 				'wp-plugin-crazy-domains'
 			) +
+			' ' +
 			contentRevisions +
+			' ' +
 			_n(
 				'step back.',
 				'steps back.',
@@ -112,7 +113,9 @@ const EmptyTrash = ( { setError, notify } ) => {
 				'The trash will automatically empty every',
 				'wp-plugin-crazy-domains'
 			) +
+			' ' +
 			numTrashWeeks +
+			' ' +
 			_n(
 				'week.',
 				'weeks.',
@@ -163,7 +166,9 @@ const EmptyTrash = ( { setError, notify } ) => {
 					'The trash will automatically empty every',
 					'wp-plugin-crazy-domains'
 				) +
+				' ' +
 				numTrashWeeks +
+				' ' +
 				_n(
 					'week.',
 					'weeks.',

@@ -1,7 +1,7 @@
 import { Button } from '@wordpress/components';
 import { Title } from '@newfold/ui-component-library';
-import { ReactComponent as Brand } from '../../../../assets/svg/crazydomains-logo.svg';
 import { delay } from 'lodash';
+import { ReactComponent as Brand } from '../../../../assets/svg/crazydomains-logo.svg';
 
 const Mark = () => {
 	const defocus = () => {

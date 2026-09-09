@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from '@wordpress/element';
+import { createContext, useReducer } from '@wordpress/element';
 import { Notifications } from '@newfold/ui-component-library';
 
 const actions = { PUSH: 'push', DISMISS: 'dismiss' };

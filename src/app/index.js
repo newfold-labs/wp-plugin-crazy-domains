@@ -1,28 +1,24 @@
 import './stylesheet.scss';
 import './tailwind.pcss';
 
-import AppStore, { AppStoreProvider } from './data/store';
-import { useLocation, HashRouter as Router } from 'react-router-dom';
-import { NewfoldRuntime } from '@newfold/wp-module-runtime';
 import { SnackbarList, Spinner } from '@wordpress/components';
-import AppRoutes from './data/routes';
-import ErrorCard from './components/errorCard';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { useEffect } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
+import apiFetch from '@wordpress/api-fetch';
+import { useLocation, HashRouter as Router } from 'react-router-dom';
 import { store as noticesStore } from '@wordpress/notices';
-import { kebabCase, filter } from 'lodash';
-import { useHandlePageLoad } from './util/hooks';
+import { addQueryArgs } from '@wordpress/url';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Root } from '@newfold/ui-component-library';
+import { NewfoldRuntime } from '@newfold/wp-module-runtime';
+import { kebabCase, filter } from 'lodash';
 import { AppNav } from 'App/components/app-nav';
 import { NotificationFeed } from 'App/components/notifications';
-
 // component sourced from module
 import { default as NewfoldNotifications } from '../../vendor/newfold-labs/wp-module-notifications/assets/js/components/notifications/';
-// to pass to notifications module
-import apiFetch from '@wordpress/api-fetch';
-import { addQueryArgs } from '@wordpress/url';
-import { useState } from '@wordpress/element';
+import AppStore, { AppStoreProvider } from './data/store';
+import AppRoutes from './data/routes';
+import ErrorCard from './components/errorCard';
+import { useHandlePageLoad } from './util/hooks';
 
 const Notices = () => {
 	const notices = useSelect(

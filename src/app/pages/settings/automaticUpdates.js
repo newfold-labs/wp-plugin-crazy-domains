@@ -1,9 +1,8 @@
-import AppStore from '../../data/store';
-import { crazydomainsSettingsApiFetch } from '../../util/helpers';
-import { useUpdateEffect } from 'react-use';
-import { useState } from '@wordpress/element';
 import { Alert, Container, ToggleField } from '@newfold/ui-component-library';
-import { useNotification } from 'App/components/notifications';
+import { useUpdateEffect } from 'react-use';
+import AppStore from '../../data/store';
+import { useNotification } from '../../components/notifications';
+import { crazydomainsSettingsApiFetch } from '../../util/helpers';
 
 const AutomaticUpdatesAll = ( { setError, notify } ) => {
 	const { store, setStore } = useContext( AppStore );

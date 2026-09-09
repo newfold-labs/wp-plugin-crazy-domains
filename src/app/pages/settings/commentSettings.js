@@ -1,14 +1,13 @@
-import AppStore from '../../data/store';
-import { crazydomainsSettingsApiFetch } from '../../util/helpers';
 import { useUpdateEffect } from 'react-use';
-import { useState } from '@wordpress/element';
 import {
 	Alert,
 	Container,
-	ToggleField,
 	SelectField,
+	ToggleField,
 } from '@newfold/ui-component-library';
-import { useNotification } from 'App/components/notifications';
+import AppStore from '../../data/store';
+import { useNotification } from '../../components/notifications';
+import { crazydomainsSettingsApiFetch } from '../../util/helpers';
 
 const OldPostsComments = ( { setError, notify } ) => {
 	const { store, setStore } = useContext( AppStore );
@@ -107,7 +106,9 @@ const CloseCommentsDays = ( { setError, notify } ) => {
 		//`Close comments after ${closeCommentsDays} days.`
 		return (
 			__( 'Close comments after', 'wp-plugin-crazy-domains' ) +
+			' ' +
 			closeCommentsDays +
+			' ' +
 			_n(
 				'day.',
 				'days.',
@@ -228,7 +229,9 @@ const CommentsPerPage = ( { setError, notify } ) => {
 			id="comments-per-page-select"
 			label={
 				__( 'Display', 'wp-plugin-crazy-domains' ) +
+				' ' +
 				commentsPerPage +
+				' ' +
 				__( 'comments per page.', 'wp-plugin-crazy-domains' )
 			}
 			value={ commentsPerPage }

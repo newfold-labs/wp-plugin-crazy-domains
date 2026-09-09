@@ -6,7 +6,6 @@ import {
 	QuestionMarkCircleIcon,
 	BoltIcon,
 } from '@heroicons/react/24/outline';
-import { NewfoldRuntime } from '@newfold/wp-module-runtime';
 import { getMarketplaceSubnavRoutes } from '@modules/wp-module-marketplace/components/marketplaceSubnav';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/home';

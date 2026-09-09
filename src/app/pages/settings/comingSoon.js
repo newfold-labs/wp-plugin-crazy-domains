@@ -1,12 +1,11 @@
-import AppStore from '../../data/store';
-import {
-	crazydomainsSettingsApiFetch,
-	comingSoonAdminbarToggle,
-} from '../../util/helpers';
-import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
 import { Alert, Container, ToggleField } from '@newfold/ui-component-library';
-import { useNotification } from 'App/components/notifications';
+import AppStore from '../../data/store';
+import { useNotification } from '../../components/notifications';
+import {
+	comingSoonAdminbarToggle,
+	crazydomainsSettingsApiFetch,
+} from '../../util/helpers';
 
 const ComingSoon = () => {
 	const { store, setStore } = useContext( AppStore );

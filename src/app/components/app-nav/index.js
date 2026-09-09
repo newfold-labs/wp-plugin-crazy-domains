@@ -1,21 +1,21 @@
-import { useEffect, useState } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 import { useViewportMatch } from '@wordpress/compose';
+import { useEffect, useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 import { addQueryArgs, cleanForSlug } from '@wordpress/url';
-import { filter } from 'lodash';
+import { Bars3Icon } from '@heroicons/react/24/outline';
+import { NewfoldRuntime } from '@newfold/wp-module-runtime';
 import {
 	Button,
 	Modal,
 	SidebarNavigation,
 } from '@newfold/ui-component-library';
-import { NavLink, useLocation } from 'react-router-dom';
-import { Bars3Icon } from '@heroicons/react/24/outline';
-import { topRoutes, utilityRoutes } from 'App/data/routes';
-import Logo from './logo';
 import { default as NewfoldNotifications } from '@modules/wp-module-notifications/assets/js/components/notifications/';
-import { WordPressIcon } from '../icons';
-import { ReactComponent as CrazyDomainsIconWhite } from '../../../../assets/svg/crazydomains-icon.svg';
-import { NewfoldRuntime } from '@newfold/wp-module-runtime';
+import { filter } from 'lodash';
+import { NavLink, useLocation } from 'react-router-dom';
+import { topRoutes, utilityRoutes } from 'App/data/routes';
+import { CrazyDomainsIcon, WordPressIcon } from '../icons';
+import Logo from './logo';
 
 export const SideNavHeader = () => {
 	return (
@@ -294,9 +294,10 @@ export const TopBarNav = () => {
 							) }
 							target="_blank"
 							variant="primary"
-							className="nfd-bg-[#548224] nfd-text-white nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto hover:nfd-bg-[#548224]"
+							rel="noopener noreferrer"
+							className="nfd-bg-[#548224] nfd-text-white nfd-text-tiny nfd-w-full min-[400px]:nfd-w-auto hover:nfd-bg-[#548224] nfd-text-nowrap"
 						>
-							<CrazyDomainsIconWhite />
+							<CrazyDomainsIcon />
 							{ __( 'CD Account', 'wp-plugin-crazy-domains' ) }
 						</Button>
 						<Button

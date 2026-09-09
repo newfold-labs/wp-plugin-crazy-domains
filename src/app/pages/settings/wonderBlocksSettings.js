@@ -1,9 +1,8 @@
-import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
 import { Alert, ToggleField } from '@newfold/ui-component-library';
 import AppStore from '../../data/store';
+import { useNotification } from '../../components/notifications';
 import { featureToggle } from '../../util/helpers';
-import { useNotification } from 'App/components/notifications';
 
 const WonderBlocksSettings = () => {
 	const { store, setStore } = useContext( AppStore );
@@ -35,7 +34,6 @@ const WonderBlocksSettings = () => {
 
 	const toggleWonderBlocks = () => {
 		featureToggle( 'patterns', ( response ) => {
-			// console.log( response );
 			if ( response.success ) {
 				setWonderBlocks( ! wonderBlocks );
 			} else {

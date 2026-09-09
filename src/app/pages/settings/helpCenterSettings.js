@@ -1,9 +1,8 @@
-import { useState } from '@wordpress/element';
 import { useUpdateEffect } from 'react-use';
 import { Alert, ToggleField } from '@newfold/ui-component-library';
 import AppStore from '../../data/store';
+import { useNotification } from '../../components/notifications';
 import { featureToggle, updateUI } from '../../util/helpers';
-import { useNotification } from 'App/components/notifications';
 
 const HelpCenterSettings = ( { forceShow = false } ) => {
 	const { store, setStore } = useContext( AppStore );
