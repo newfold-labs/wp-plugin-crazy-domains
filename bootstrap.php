@@ -52,7 +52,7 @@ $nfd_module_container->set(
 );
 
 // Set coming soon values
-add_filter(
+\add_filter(
 	'newfold/coming-soon/filter/args',
 	function ( $args, $default_args ) {
 
@@ -105,7 +105,7 @@ require_once CRAZYDOMAINS_PLUGIN_DIR . '/inc/Data.php';
  * Sub-brands like 'web', 'vodien', and 'crazy-domains' should use 'networksolutions'
  * as the brand identifier when making AI SiteGen API calls.
  */
-add_filter(
+\add_filter(
 	'newfold_ai_sitegen_brand',
 	function ( $brand ) {
 		// Check if this plugin's Data class has the get_ai_sitegen_brand method
