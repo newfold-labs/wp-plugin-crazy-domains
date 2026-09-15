@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e16fc3150a205fc82b85a69731891932",
+    "content-hash": "6e9a0251805650e6fce29dc6e169d3f4",
     "packages": [
         {
             "name": "colinmollenhour/credis",
@@ -2426,7 +2426,7 @@
         },
         {
             "name": "newfold-labs/wp-module-secure-passwords",
-            "version": "1.2.0",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-secure-passwords.git",
@@ -2446,6 +2446,7 @@
                 "phpunit/phpcov": "*",
                 "wp-cli/i18n-command": "^2.7.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
@@ -5916,6 +5917,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "newfold-labs/wp-module-onboarding": 20,
+        "newfold-labs/wp-module-secure-passwords": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": false,
