@@ -124,54 +124,6 @@
             "time": "2017-07-22T12:18:28+00:00"
         },
         {
-            "name": "instawp/connect-helpers",
-            "version": "1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/InstaWP/connect-helpers.git",
-                "reference": "e40678f5a7fd3e678e2706a0e72af76b97a3fd5f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/InstaWP/connect-helpers/zipball/e40678f5a7fd3e678e2706a0e72af76b97a3fd5f",
-                "reference": "e40678f5a7fd3e678e2706a0e72af76b97a3fd5f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">= 5.6",
-                "wp-cli/wp-config-transformer": "^1.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "InstaWP\\Connect\\Helpers\\": "src/"
-                }
-            },
-            "scripts": {
-                "build": [
-                    "composer dump-autoload"
-                ],
-                "build-nd": [
-                    "composer dump-autoload --no-dev"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sayan Datta",
-                    "email": "sayan@instawp.com"
-                }
-            ],
-            "description": "CLI Package for InstaWP Remote Features",
-            "support": {
-                "source": "https://github.com/InstaWP/connect-helpers/tree/1.1.2",
-                "issues": "https://github.com/InstaWP/connect-helpers/issues"
-            },
-            "time": "2026-06-09T10:48:48+00:00"
-        },
-        {
             "name": "newfold-labs/container",
             "version": "1.2.4",
             "source": {
@@ -1621,20 +1573,19 @@
         },
         {
             "name": "newfold-labs/wp-module-migration",
-            "version": "1.7.4",
+            "version": "1.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-migration.git",
-                "reference": "489c642d5f2717cd4c460cc07f55fdd3fd34debd"
+                "reference": "fd8e9cecc3b9f699049fa201082be3454fe47dd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/489c642d5f2717cd4c460cc07f55fdd3fd34debd",
-                "reference": "489c642d5f2717cd4c460cc07f55fdd3fd34debd",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-migration/zipball/fd8e9cecc3b9f699049fa201082be3454fe47dd7",
+                "reference": "fd8e9cecc3b9f699049fa201082be3454fe47dd7",
                 "shasum": ""
             },
             "require": {
-                "instawp/connect-helpers": "^1.1.2",
                 "newfold-labs/wp-module-loader": "^1.1.0"
             },
             "require-dev": {
@@ -1702,7 +1653,7 @@
                 }
             ],
             "description": "Initiates the migration process",
-            "time": "2026-07-22T20:26:39+00:00"
+            "time": "2026-09-11T07:15:49+00:00"
         },
         {
             "name": "newfold-labs/wp-module-next-steps",
@@ -2178,16 +2129,16 @@
         },
         {
             "name": "newfold-labs/wp-module-performance",
-            "version": "3.9.1",
+            "version": "3.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/newfold-labs/wp-module-performance.git",
-                "reference": "6bb95bb65486d2a7f65c9b71f58bf5f0879791a4"
+                "reference": "01a8d608c744f87cc209cea40fab28b867a12f15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/6bb95bb65486d2a7f65c9b71f58bf5f0879791a4",
-                "reference": "6bb95bb65486d2a7f65c9b71f58bf5f0879791a4",
+                "url": "https://api.github.com/repos/newfold-labs/wp-module-performance/zipball/01a8d608c744f87cc209cea40fab28b867a12f15",
+                "reference": "01a8d608c744f87cc209cea40fab28b867a12f15",
                 "shasum": ""
             },
             "require": {
@@ -2207,7 +2158,7 @@
                 "10up/wp_mock": "^0.5.0|^1.0.0",
                 "johnpbloch/wordpress": "6.9.4",
                 "lucatume/wp-browser": "*",
-                "newfold-labs/wp-php-standards": "^1.2",
+                "newfold-labs/wp-php-standards": "^2.0",
                 "phpunit/phpcov": "*",
                 "wp-cli/i18n-command": "^2.7",
                 "wp-cli/wp-cli-bundle": "^2.8.1|^2.12"
@@ -2276,7 +2227,7 @@
                 }
             ],
             "description": "A module for managing caching functionality.",
-            "time": "2026-08-25T08:11:34+00:00"
+            "time": "2026-09-15T09:01:39+00:00"
         },
         {
             "name": "newfold-labs/wp-module-pls",
@@ -4002,12 +3953,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mck89/peast.git",
-                "reference": "ae6f534363f64743957dd6435f59fe29a56e1dd2"
+                "reference": "70881e535f519aba943b6200411d2888d6c50dec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mck89/peast/zipball/ae6f534363f64743957dd6435f59fe29a56e1dd2",
-                "reference": "ae6f534363f64743957dd6435f59fe29a56e1dd2",
+                "url": "https://api.github.com/repos/mck89/peast/zipball/70881e535f519aba943b6200411d2888d6c50dec",
+                "reference": "70881e535f519aba943b6200411d2888d6c50dec",
                 "shasum": ""
             },
             "require": {
@@ -4022,7 +3973,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18.0-dev"
+                    "dev-master": "1.18.1-dev"
                 }
             },
             "autoload": {
@@ -4045,7 +3996,7 @@
                 "issues": "https://github.com/mck89/peast/issues",
                 "source": "https://github.com/mck89/peast/tree/master"
             },
-            "time": "2026-09-04T08:32:03+00:00"
+            "time": "2026-09-15T06:27:15+00:00"
         },
         {
             "name": "newfold-labs/wp-php-standards",
@@ -4407,12 +4358,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHPCSUtils.git",
-                "reference": "9cb28234cb75d4b09a5227fb591bb4b3e7bd39c5"
+                "reference": "68da2016f9163ff7d761a67c58e1d0c7b1fe53bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/9cb28234cb75d4b09a5227fb591bb4b3e7bd39c5",
-                "reference": "9cb28234cb75d4b09a5227fb591bb4b3e7bd39c5",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/68da2016f9163ff7d761a67c58e1d0c7b1fe53bd",
+                "reference": "68da2016f9163ff7d761a67c58e1d0c7b1fe53bd",
                 "shasum": ""
             },
             "require": {
@@ -4493,7 +4444,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2026-08-14T23:44:47+00:00"
+            "time": "2026-09-11T18:20:41+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -4501,12 +4452,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "55a9238f51c5449fdaa650fb03322dfca498a2e5"
+                "reference": "eddf5ff07ff44f9c121b404971f5577e81602779"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/55a9238f51c5449fdaa650fb03322dfca498a2e5",
-                "reference": "55a9238f51c5449fdaa650fb03322dfca498a2e5",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/eddf5ff07ff44f9c121b404971f5577e81602779",
+                "reference": "eddf5ff07ff44f9c121b404971f5577e81602779",
                 "shasum": ""
             },
             "conflict": {
@@ -5104,9 +5055,9 @@
                 "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
                 "october/backend": "<1.1.2",
                 "october/cms": "<1.0.469|==1.0.469|==1.0.471|==1.1.1",
-                "october/october": "<3.7.14|>=4,<4.1.10",
+                "october/october": "<3.7.14|>=4,<4.1.10|>=4.3,<4.3.4",
                 "october/rain": "<=3.7.13|>=4,<=4.1.9",
-                "october/system": "<3.7.16|>=4,<4.1.16",
+                "october/system": "<3.7.17|>=4,<4.2.23",
                 "oliverklee/phpunit": "<3.5.15",
                 "omeka/omeka-s": "<4.0.3",
                 "onelogin/php-saml": "<2.21.1|>=3,<3.8.1|>=4,<4.3.1",
@@ -5266,7 +5217,7 @@
                 "sheng/yiicms": "<1.2.1",
                 "shlinkio/shlink": "<=5.0.1",
                 "shopper/cart": "<2.8",
-                "shopper/framework": "<2.8",
+                "shopper/framework": "<2.9.2",
                 "shopware/core": "<6.6.10.18-dev|>=6.7,<6.7.10.1-dev",
                 "shopware/platform": "<6.6.10.18-dev|>=6.7,<6.7.10.1-dev",
                 "shopware/production": "<=6.3.5.2",
@@ -5639,7 +5590,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-09T20:29:53+00:00"
+            "time": "2026-09-14T17:48:00+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
