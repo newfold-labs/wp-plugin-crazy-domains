@@ -47,7 +47,7 @@ const help = [
 		name: 'help',
 		title: __( 'Online Support', 'wp-plugin-crazy-domains' ),
 		description: __(
-			"Find tutorials, answers and guides in our online support knowledge base.",
+			'Find tutorials, answers and guides in our online support knowledge base.',
 			'wp-plugin-crazy-domains'
 		),
 		icon: 'book',

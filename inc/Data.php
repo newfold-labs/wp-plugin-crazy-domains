@@ -29,7 +29,7 @@ final class Data {
 		global $nfd_module_container;
 
 		$runtime = array(
-			'plugin' => array(
+			'plugin'   => array(
 				'url'     => CRAZYDOMAINS_BUILD_URL,
 				'version' => CRAZYDOMAINS_PLUGIN_VERSION,
 				'assets'  => CRAZYDOMAINS_PLUGIN_URL . 'assets/',

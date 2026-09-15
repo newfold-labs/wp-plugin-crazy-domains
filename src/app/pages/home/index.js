@@ -1,12 +1,11 @@
-import { Page, Container } from "@newfold/ui-component-library";
+import { Page, Container } from '@newfold/ui-component-library';
 import SettingsSection from './settingsSection';
 import WebContentSection from './webContentSection';
 import WebHostingSection from './webHostingSection';
-import NextSteps from "./nextSteps";
-import StoreDetails from "./storeDetails";
+import NextSteps from './nextSteps';
+import StoreDetails from './storeDetails';
 
 const Home = () => {
-
 	useEffect( () => {
 		// run when mounts
 		const comingSoonPortal =
@@ -26,31 +25,40 @@ const Home = () => {
 	}, [] );
 
 	return (
-		<Page title="Settings" className={"wppcd-app-home-page wppcd-home"}>
+		<Page title="Settings" className={ 'wppcd-app-home-page wppcd-home' }>
 			<StoreDetails />
-			{/* <WelcomeSection /> */}
+			{ /* <WelcomeSection /> */ }
 			<Container className="nfd-max-w-full nfd-p-8 nfd-shadow-none nfd-rounded-xl nfd-border nfd-border-[#D5D5D5]">
 				<div id="coming-soon-portal" />
 			</Container>
 			<NextSteps />
-			<Container className={'wppcd-app-home-container'}>
+			<Container className={ 'wppcd-app-home-container' }>
 				<Container.Header
-					title={__('More', 'wp-plugin-carzy-domains')}
-					className={'wppcd-app-home-header display-none'}
+					title={ __( 'More', 'wp-plugin-carzy-domains' ) }
+					className={ 'wppcd-app-home-header display-none' }
 				/>
-				{/* <Container.Block separator={true} className={'wppcd-app-home-coming-soon'}>
+				{ /* <Container.Block separator={true} className={'wppcd-app-home-coming-soon'}>
 					<ComingSoon />
-				</Container.Block> */}
+				</Container.Block> */ }
 
-				<Container.Block separator={true} className={'wppcd-app-home-content'}>
+				<Container.Block
+					separator={ true }
+					className={ 'wppcd-app-home-content' }
+				>
 					<WebContentSection />
 				</Container.Block>
 
-				<Container.Block separator={true} className={'wppcd-app-home-settings'}>
+				<Container.Block
+					separator={ true }
+					className={ 'wppcd-app-home-settings' }
+				>
 					<SettingsSection />
 				</Container.Block>
 
-				<Container.Block separator={false} className={'wppcd-app-home-hosting'}>
+				<Container.Block
+					separator={ false }
+					className={ 'wppcd-app-home-hosting' }
+				>
 					<WebHostingSection />
 				</Container.Block>
 			</Container>
