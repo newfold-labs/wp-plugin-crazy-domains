@@ -86,7 +86,7 @@ add_action( 'admin_init', __NAMESPACE__ . '\\crazydomains_setup' );
 function crazydomains_install_date_filter( $install_date ) {
 	return crazydomains_get_plugin_install_date();
 }
-add_filter( 'nfd_install_date_filter', __NAMESPACE__ . '\\crazydomains_install_date_filter' );
+\add_filter( 'nfd_install_date_filter', __NAMESPACE__ . '\\crazydomains_install_date_filter' );
 
 
 /**

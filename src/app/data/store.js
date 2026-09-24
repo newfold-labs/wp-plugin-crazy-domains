@@ -38,7 +38,7 @@ export const AppStoreProvider = ( { children } ) => {
 		if ( false === booted ) {
 			crazydomainsApiFetchSettings()
 				.then( ( settings ) => {
-					setStore( { 
+					setStore( {
 						...store,
 						...window.WPPCD,
 						...settings,
@@ -62,13 +62,13 @@ export const AppStoreProvider = ( { children } ) => {
 };
 
 export const selectors = {
-	getEcommerceCapabilities(store) {
-		let capabilities = new Set();
-		if (store.isWooActive) {
-			capabilities.add('standard');
-			capabilities.add('experience');
+	getEcommerceCapabilities( store ) {
+		const capabilities = new Set();
+		if ( store.isWooActive ) {
+			capabilities.add( 'standard' );
+			capabilities.add( 'experience' );
 		} else {
-			capabilities.add('upgrade');
+			capabilities.add( 'upgrade' );
 		}
 		return capabilities;
 	},

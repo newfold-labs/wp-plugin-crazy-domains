@@ -83,9 +83,9 @@ function auto_update_configure() {
 
 		foreach ( $settings as $name => $value ) {
 			if ( $value ) {
-				add_filter( $name, '__return_true' );
+				\add_filter( $name, '__return_true' );
 			} else {
-				add_filter( $name, '__return_false' );
+				\add_filter( $name, '__return_false' );
 			}
 		}
 	}
@@ -119,7 +119,7 @@ function plugin_auto_update_setting_html( $html ) {
 	);
 }
 
-add_filter( 'plugin_auto_update_setting_html', __NAMESPACE__ . '\\plugin_auto_update_setting_html' );
+\add_filter( 'plugin_auto_update_setting_html', __NAMESPACE__ . '\\plugin_auto_update_setting_html' );
 
 /**
  * Changes the text in the Automatic updates column of the theme list table to inform the user
@@ -145,7 +145,7 @@ function theme_auto_update_setting_html( $html ) {
 	);
 }
 
-add_filter( 'theme_auto_update_setting_html', __NAMESPACE__ . '\\theme_auto_update_setting_html' );
+\add_filter( 'theme_auto_update_setting_html', __NAMESPACE__ . '\\theme_auto_update_setting_html' );
 
 /**
  * Changes the text in the theme details overlay to inform the user
@@ -174,7 +174,7 @@ function theme_auto_update_setting_template( $template ) {
 	return str_replace( $template_string, $replacement, $template );
 }
 
-add_filter( 'theme_auto_update_setting_template', __NAMESPACE__ . '\\theme_auto_update_setting_template' );
+\add_filter( 'theme_auto_update_setting_template', __NAMESPACE__ . '\\theme_auto_update_setting_template' );
 
 /**
  * Sync the plugin's Core major auto-update setting with core's.
